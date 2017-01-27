@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public enum gameStates
 {
     PlaceMagnets,
@@ -12,14 +12,22 @@ public enum gameStates
 public class GameStateManager : MonoBehaviour {
 
     public static gameStates gameState = gameStates.PlaceMagnets;
-    public static string level;
-    public static Vector3[] ballPositions = { new Vector3(0,0.5f,0), new Vector3(31.37f, 0.5f, 1.5f) };
-    public static Vector3[] camerasPositions = { new Vector3(0, 20.5f, 0), new Vector3(31.85f, 20f, 20.5f) };
+    public int levelInut;
+    public static int level;
+    public static bool switchLevel;
 
-    public void Start()
+    void Start()
     {
-        gameState = gameStates.PlaceMagnets;
-        level = "level1";
-    
+        
+        level = levelInut;
+    }
+
+    public static void ManageScenes()
+    {
+        SceneManager.LoadScene("level" + GameStateManager.level);
+        if(switchLevel)
+        {
+
+        }
     }
 }

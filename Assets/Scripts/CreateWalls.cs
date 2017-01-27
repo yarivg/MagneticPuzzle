@@ -7,52 +7,62 @@ public class CreateWalls : MonoBehaviour {
 
     [System.Serializable]
     public struct Wall{
-        public Vector2 startPoint;
-        public Vector2 endPoint;
+        public GameVector2 startPoint;
+        public GameVector2 endPoint;
+
+        public Wall(GameVector2 start,GameVector2 end)
+        {
+            this.startPoint = start;
+            this.endPoint = end;
+        }
+
+        public GameVector2 middleWallPosition()
+        {
+            return new GameVector2((startPoint.xAxis + endPoint.xAxis) / 2, (startPoint.zAxis + endPoint.zAxis) / 2);
+        }
+
+        public double wallLength()
+        {
+            return Math.Sqrt(Math.Pow((this.startPoint.xAxis - this.endPoint.xAxis), 2)
+                                       + Math.Pow((this.startPoint.zAxis - this.endPoint.zAxis), 2));
+        }
+
+
     }
 
     public GameObject wallPrefab;
-    private Vector2 wallOffset = new Vector2(0.5f, 0.5f);
+    private GameVector2 wallOffset = new GameVector2(0.5f,0.5f);
     public Wall[] wallsArray;
-    public GameObject squarePrefab;
 
 	// Use this for initialization
 	void Start () {
         GameObject wallObj;
-
-        for (int i = 0; i < wallsArray.Length; i++)
+        foreach(Wall curWall in wallsArray)
         {
-            double deg = CalculateRotation(wallsArray[i]);
+            double deg = CalculateRotation(curWall);
 
 
             wallObj = Instantiate(wallPrefab, gameObject.transform);
-            //*squarePrefab.transform.localScale.z
-            wallObj.transform.position = gameObject.transform.position + new Vector3((wallsArray[i].startPoint.y + wallsArray[i].endPoint.y) / 2 - wallOffset.x,
-                                                     0,
-                                                     (wallsArray[i].startPoint.x + wallsArray[i].endPoint.x)  / 2 - wallOffset.y);
+            wallObj.transform.position = gameObject.transform.position + 
+                new Vector3(curWall.middleWallPosition().xAxis - wallOffset.xAxis,
+                           0,
+                           curWall.middleWallPosition().zAxis - wallOffset.zAxis);
             wallObj.transform.rotation = Quaternion.Euler(0, (float)deg, 0);
-            double wallLength = Math.Sqrt(Math.Pow((wallsArray[i].startPoint.x - wallsArray[i].endPoint.x), 2)
-                                       + Math.Pow((wallsArray[i].startPoint.y - wallsArray[i].endPoint.y), 2));
 
-            wallObj.transform.localScale = new Vector3(wallObj.transform.localScale.x, wallObj.transform.localScale.y, (float)wallLength);
+
+            wallObj.transform.localScale = new Vector3(wallObj.transform.localScale.x, wallObj.transform.localScale.y, (float)curWall.wallLength());
             // add rotation.
         }
     }
     
     private double CalculateRotation(Wall wallObj)
     {
-        Vector2 difference = new Vector2(wallObj.endPoint.x - wallObj.startPoint.x,
-                                         wallObj.endPoint.y - wallObj.startPoint.y);
+        GameVector2 difference = new GameVector2(wallObj.endPoint.xAxis - wallObj.startPoint.xAxis,
+                                         wallObj.endPoint.zAxis - wallObj.startPoint.zAxis);
         difference.Normalize();
 
-        double angleRad = Math.Atan2(difference.y, difference.x);
+        double angleRad = Math.Atan2(difference.xAxis, difference.zAxis);
         var deg = angleRad * (180 / Math.PI);
-
         return deg;
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }

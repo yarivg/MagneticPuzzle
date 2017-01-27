@@ -43,4 +43,10 @@ public class MagneticForce : MonoBehaviour {
             }
         }
     }
+
+    public void initMagneticForce(bool isPulling)
+    {
+        this.isPulling = isPulling;
+    }
+
 }

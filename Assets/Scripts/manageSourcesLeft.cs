@@ -22,7 +22,8 @@ public class manageSourcesLeft : MonoBehaviour {
 	
     public void DecreaseSource()
     {
-        if(numOfSourcesToPaint > 0)
+
+        if (numOfSourcesToPaint > 0)
         {
             sources[--numOfSourcesToPaint].SetActive(false);
         }
@@ -31,5 +32,10 @@ public class manageSourcesLeft : MonoBehaviour {
     public void IncreaseSource()
     {
         sources[numOfSourcesToPaint++].SetActive(true);
+    }
+
+    public bool remainMagnets()
+    {
+        return numOfSourcesToPaint > 0;
     }
 }
