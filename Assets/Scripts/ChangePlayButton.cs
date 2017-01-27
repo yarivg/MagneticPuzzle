@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class changePlayButton : MonoBehaviour {
+public class ChangePlayButton : MonoBehaviour {
 
     void OnMouseOver()
     {
         if (Input.GetMouseButtonDown((int)Mouseclicks.leftClick))
         {
-            if (GameStateManager.gameState == gameStates.PlaceMagnets) {
+            if (GameStateManager.gameState == gameStates.PlaceMagnets)
+            {
                 GameStateManager.gameState = gameStates.Play;
-                GetComponent<MeshRenderer>().material = (Material)Resources.Load("playButtonRedMat", typeof(Material));
+                GetComponent<MeshRenderer>().material = (Material)Resources.Load(Matirials.playButtonRedMat.ToString(), typeof(Material));
             }
         }
     }

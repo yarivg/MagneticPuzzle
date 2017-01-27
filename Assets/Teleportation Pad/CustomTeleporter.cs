@@ -116,7 +116,10 @@ public class CustomTeleporter : MonoBehaviour
 					subject.transform.position = destinationPad[0].transform.position + new Vector3(0,teleportationHeightOffset,0);
 					//play teleport sound
 					teleportSound.Play();
+
                     GameStateManager.switchLevel = true;
+                    GameStateManager.level++;
+                    GameStateManager.gameState = gameStates.PlaceMagnets;
                     SceneManager.LoadScene("level" + SceneToLoad.ToString());
                 }
 			}

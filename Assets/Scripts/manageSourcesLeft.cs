@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class manageSourcesLeft : MonoBehaviour {
+public class ManageSourcesLeft : MonoBehaviour {
 
     public int numOfSourcesToPaint;
     public GameObject sourcePrefab;
     public GameObject[] sources;
 
-	// Use this for initialization
 	void Start () {
         sources = new GameObject[numOfSourcesToPaint];
 

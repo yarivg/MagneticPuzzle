@@ -2,56 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Mouseclicks
-{
-    leftClick,
-    rightClick,
-    
-}
-
 public class ClickableSquare : MonoBehaviour
 {
+    // Magnetical power on the square
     private MagneticForce magneticalPower = null;
 
     void OnCollisionEnter(Collision collision)
     {
-        if(this.tag == "Magnetic Floor")
+        if(this.tag == Tags.MagneticFloor.ToString())
         {
-            gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Out", typeof(Material));
+            gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Matirials.Push.ToString(), typeof(Material));
             magneticalPower.isPulling = false;
         }
     }
 
     void OnMouseOver()
     {
-        Debug.Log("level" + GameStateManager.level.ToString());
-        Debug.Log(GameObject.Find("Level"+GameStateManager.level.ToString()));
-            manageSourcesLeft currentSources = GameObject.Find("Level" + GameStateManager.level.ToString()).transform.Find("HUD/SourceLeftText/SourceManager").GetComponent<manageSourcesLeft>();
+        ManageSourcesLeft currentSources = GameObject.Find("Level" + GameStateManager.level.ToString()).transform.Find("HUD/SourceLeftText/SourceManager").GetComponent<ManageSourcesLeft>();
             if (!magneticExist() && clickOnSquare(Mouseclicks.leftClick))
             {
                 if (currentSources.remainMagnets())
                 {
+                    this.tag = Tags.MagneticFloor.ToString();
+
+                    // Put pull magnet
                     magneticalPower = gameObject.AddComponent<MagneticForce>();
                     magneticalPower.initMagneticForce(true);
-                    gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("In", typeof(Material));
+
+                    // Set picture
+                    gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Pull", typeof(Material));
+
                     currentSources.DecreaseSource();
-                    this.tag = "Magnetic Floor";
+
+                    // Show the circle
                     gameObject.transform.FindChild("circle").gameObject.SetActive(true);
-
-
             }
         }
             else if(magneticExist() && clickOnSquare(Mouseclicks.rightClick))
             {
+                this.tag = Tags.Floor.ToString();
                 Destroy(magneticalPower);
-                gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Empty", typeof(Material));
+                gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Matirials.Empty.ToString(), typeof(Material));
                 currentSources.IncreaseSource();
-                this.tag = "Floor";
                 gameObject.transform.FindChild("circle").gameObject.SetActive(false);
-
         }
     }
-
 
     bool magneticExist()
     {
@@ -64,45 +59,4 @@ public class ClickableSquare : MonoBehaviour
             Input.GetMouseButton((int)click);
     }
 }
-
-
-    //void OnMouseOver()
-    //{
-
-    //    Debug.Log(GameStateManager.gameState);
-    //    if (GameStateManager.gameState == gameStates.PlaceMagnets)
-    //    {
-    //        if (Input.GetMouseButtonDown(0))
-    //        {
-    //            mForce = gameObject.GetComponent<MagneticForce>();
-    //            manageSourcesLeft sourcesLeft = GameObject.FindGameObjectWithTag("sourcesManager" + GameStateManager.level.ToString()).GetComponent<manageSourcesLeft>();
-
-    //            if (mForce == null)
-    //            {
-    //                if (sourcesLeft.numOfSourcesToPaint > 0)
-    //                {
-    //                    mForce = gameObject.AddComponent<MagneticForce>();
-    //                    mForce.isPulling = true;
-
-    //                    gameObject.transform.FindChild("circle").gameObject.SetActive(true);
-
-    //                    // Pull
-    //                    gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("in", typeof(Material));
-
-    //                    sourcesLeft.DecreaseSource();
-    //                }
-    //            }
-    //            else // If MagneticForce exists
-    //            {
-    //                gameObject.transform.FindChild("circle").gameObject.SetActive(false);
-    //                Destroy(mForce);
-
-    //                // Pull
-    //                gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Wood Texture 13 diffuse", typeof(Material));
-
-    //                sourcesLeft.IncreaseSource();
-    //            }
-    //        }        
-    //    }
-    //}
 
