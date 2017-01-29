@@ -6,7 +6,7 @@ public class ManageSourcesLeft : MonoBehaviour {
 
     public int numOfSourcesToPaint;
     public GameObject sourcePrefab;
-    public GameObject[] sources;
+    private GameObject[] sources;
 
 	void Start () {
         sources = new GameObject[numOfSourcesToPaint];
