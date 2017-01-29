@@ -43,11 +43,9 @@ public class BallMovement : MonoBehaviour
 
         if (speed < MIN_SPEED_TO_DIE) {
             framesWithSlowSpeed = framesWithSlowSpeed+=1;
-            Debug.Log("increase slow frames :" + framesWithSlowSpeed);
             }
         else {
             framesWithSlowSpeed = 0;
-            Debug.Log("zero frames");
         }
 
 
