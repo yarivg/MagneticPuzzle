@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.SceneManagement;
 public class CustomTeleporter : MonoBehaviour
 {
 	//teleport instantly upon entering trigger?
@@ -39,9 +39,10 @@ public class CustomTeleporter : MonoBehaviour
 	//simple enable/disable function in case you want the teleport not working at some point
 	//without disabling the entire script, so receiving objects still works
 	public bool teleportPadOn = true;
-    public GameObject ball;
 
-    void Start ()
+    public string SceneToLoad;
+
+	void Start ()
 	{
 		//Set the countdown ready to the time you chose
 		curTeleportTime = teleportTime;
@@ -67,12 +68,8 @@ public class CustomTeleporter : MonoBehaviour
 			//if you chose instant + random teleport, teleport to a random pad from the array
 			if(randomTeleport)
 			{
-                ball.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-                GameStateManager.level = "level2";
-                GameStateManager.gameState = gameStates.PlaceMagnets;
-
-                //choose a random pad from the array
-                int chosenPad = Random.Range(0,destinationPad.Length);
+				//choose a random pad from the array
+				int chosenPad = Random.Range(0,destinationPad.Length);
 				//set arrived to true in that array, so it doesnt teleport the subject back
 				destinationPad[chosenPad].GetComponent<CustomTeleporter>().arrived = true;
 				//and teleport the subject
@@ -82,12 +79,8 @@ public class CustomTeleporter : MonoBehaviour
 			}
 			else //if not random, teleport to the first one in the array list
 			{
-                ball.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-                GameStateManager.level = "level2";
-                GameStateManager.gameState = gameStates.PlaceMagnets;
-
-                //set arrived to true in that array, so it doesnt teleport the subject back
-                destinationPad[0].GetComponent<CustomTeleporter>().arrived = true;
+				//set arrived to true in that array, so it doesnt teleport the subject back
+				destinationPad[0].GetComponent<CustomTeleporter>().arrived = true;
 				//and teleport the subject
 				subject.transform.position = destinationPad[0].transform.position + new Vector3(0,teleportationHeightOffset,0);
 				//play teleport sound
@@ -106,12 +99,8 @@ public class CustomTeleporter : MonoBehaviour
 				//if you chose delayed + random teleport, teleport to random pad from array, after the delay
 				if(randomTeleport)
 				{
-                    ball.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-                    GameStateManager.level = "level2";
-                    GameStateManager.gameState = gameStates.PlaceMagnets;
-
-                    //choose a random pad from the array
-                    int chosenPad = Random.Range(0,destinationPad.Length);
+					//choose a random pad from the array
+					int chosenPad = Random.Range(0,destinationPad.Length);
 					//set arrived to true in that array, so it doesnt teleport the subject back
 					destinationPad[chosenPad].GetComponent<CustomTeleporter>().arrived = true;
 					//teleport
@@ -121,17 +110,18 @@ public class CustomTeleporter : MonoBehaviour
 				}
 				else //if not random, teleport to the first one in the array list
 				{
-                    ball.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-                    GameStateManager.level = "level2";
-                    GameStateManager.gameState = gameStates.PlaceMagnets;
-
-                    //set arrived to true in that array, so it doesnt teleport the subject back
-                    destinationPad[0].GetComponent<CustomTeleporter>().arrived = true;
+					//set arrived to true in that array, so it doesnt teleport the subject back
+					destinationPad[0].GetComponent<CustomTeleporter>().arrived = true;
 					//teleport
 					subject.transform.position = destinationPad[0].transform.position + new Vector3(0,teleportationHeightOffset,0);
 					//play teleport sound
 					teleportSound.Play();
-				}
+
+                    GameStateManager.switchLevel = true;
+                    GameStateManager.level++;
+                    GameStateManager.gameState = gameStates.PlaceMagnets;
+                    SceneManager.LoadScene("level" + SceneToLoad.ToString());
+                }
 			}
 		}
 		else if(buttonTeleport) //if you selected a teleport activated by a button
@@ -169,6 +159,7 @@ public class CustomTeleporter : MonoBehaviour
 							subject.transform.position = destinationPad[0].transform.position + new Vector3(0,teleportationHeightOffset,0);
 							//play teleport sound
 							teleportSound.Play();
+
 						}
 					}
 				}

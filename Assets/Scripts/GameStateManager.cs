@@ -1,25 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public enum gameStates
-{
-    PlaceMagnets,
-    Play
-}
-
+using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour {
 
+    public int levelInput;
+    public static int level = 1;
+    public static bool switchLevel;
     public static gameStates gameState = gameStates.PlaceMagnets;
-    public static string level;
-    public static Vector3[] ballPositions = { new Vector3(0,0.5f,0), new Vector3(31.37f, 0.5f, 1.5f) };
-    public static Vector3[] camerasPositions = { new Vector3(0, 20.5f, 0), new Vector3(31.85f, 20f, 20.5f) };
 
-    public void Start()
+    void Start()
     {
-        gameState = gameStates.PlaceMagnets;
-        level = "level1";
-    
+        // If the user enter input , use his input 
+        // Important to use this for menu
+        level = levelInput == 0 ? level : levelInput;
+    }
+
+    public static void loadScene()
+    {
+        SceneManager.LoadScene("level" + GameStateManager.level);
     }
 }

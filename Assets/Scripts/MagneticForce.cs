@@ -5,16 +5,22 @@ using UnityEngine;
 
 public class MagneticForce : MonoBehaviour {
 
-    public float forceFactor = 115;
-    public float maxRadius = 4;
-    public float switchRadius = 0.8f;
-    private bool firstSwitch = true;
+    public float forceFactor;
+    public float maxRadius;
     public bool isPulling;
     private float magnitude;
+    public bool useDefaultValues = true;
+
+    void Start()
+    {
+        if(useDefaultValues)
+        {
+            defaultMagneticValues();
+        }
+    }
     
     void FixedUpdate () {
-        GameObject[] balls = GameObject.FindGameObjectsWithTag("Ball");
-
+        GameObject[] balls = GameObject.FindGameObjectsWithTag(Tags.Ball.ToString());
         foreach (GameObject ball in balls)
         {
             Vector3 direction = transform.position - ball.transform.position;
@@ -22,25 +28,22 @@ public class MagneticForce : MonoBehaviour {
 
             if (magnitude < maxRadius)
             {
-                // Enters only once
-                if (firstSwitch)
-                {
-                    if (magnitude < switchRadius)
-                    {
-                        isPulling = false;
-
-                        // Push
-                        gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("out", typeof(Material));
-
-                        firstSwitch = false;
-                    }
-
-                }
-
                 direction = isPulling ? direction : -direction;
                 direction.Normalize();
                 ball.GetComponent<Rigidbody>().AddForce(direction * forceFactor * Time.deltaTime / magnitude);
             }
         }
     }
+
+    public void initMagneticForce(bool isPulling)
+    {
+        this.isPulling = isPulling;
+    }
+
+    private void defaultMagneticValues()
+    {
+        forceFactor = 115;
+        maxRadius = 4;
+    }
+
 }

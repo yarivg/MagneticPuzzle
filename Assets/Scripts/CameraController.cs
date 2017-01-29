@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-
-
     public GameObject player;
+    private float camSpeed;
     private Vector3 offset;
 
-    // Use this for initialization
     void Start()
     {
-        offset = this.transform.position - player.transform.position;
+        offset = new Vector3(4, 20, -10);
+        camSpeed = 0.02f;
+
+        // Do effect of move when we switch level
+        if (GameStateManager.switchLevel == false)
+        {
+            this.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+        }
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
-        this.transform.position = player.transform.position + new Vector3(0, 20, -10);
+        this.transform.position = Vector3.Lerp(this.transform.position,player.transform.position + offset, camSpeed);
     }
 }
