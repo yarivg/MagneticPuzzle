@@ -28,7 +28,10 @@ public class SquareCreator : MonoBehaviour
 
                     // Init the circle
                     GameObject circle = Instantiate(circlePrefab, curSquare.transform);
-                    circle.transform.position = gameObject.transform.position + squarePosition;
+                    circle.transform.position = new Vector3(
+                        gameObject.transform.position.x + squarePosition.x,
+                        gameObject.transform.position.y + squarePosition.y + 0.1f,
+                        gameObject.transform.position.z + squarePosition.z);
                     circle.SetActive(false);
                     circle.name = "circle";
                     
