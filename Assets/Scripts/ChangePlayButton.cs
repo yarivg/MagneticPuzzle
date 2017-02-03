@@ -11,7 +11,17 @@ public class ChangePlayButton : MonoBehaviour {
             if (GameStateManager.gameState == gameStates.PlaceMagnets)
             {
                 GameStateManager.gameState = gameStates.Play;
-                GetComponent<MeshRenderer>().material = (Material)Resources.Load(Matirials.playButtonRedMat.ToString(), typeof(Material));
+                GetComponent<MeshRenderer>().material =
+                    (Material) Resources.Load(Materials.playButtonRestart.ToString(), typeof(Material));
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().material =
+                    (Material)Resources.Load(Materials.playButtonGreenMat.ToString(), typeof(Material));
+
+                GameStateManager.gameState = gameStates.PlaceMagnets;
+                GameStateManager.switchLevel = false;
+                GameStateManager.loadScene();
             }
         }
     }

@@ -11,7 +11,7 @@ public class ClickableSquare : MonoBehaviour
     {
         if(this.tag == Tags.MagneticFloor.ToString())
         {
-            gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Matirials.Push.ToString(), typeof(Material));
+            gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Materials.Push.ToString(), typeof(Material));
             magneticalPower.isPulling = false;
         }
     }
@@ -42,7 +42,7 @@ public class ClickableSquare : MonoBehaviour
             {
                 this.tag = Tags.Floor.ToString();
                 Destroy(magneticalPower);
-                gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Matirials.Empty.ToString(), typeof(Material));
+                gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Materials.Empty.ToString(), typeof(Material));
                 currentSources.IncreaseSource();
                 gameObject.transform.FindChild("circle").gameObject.SetActive(false);
         }
