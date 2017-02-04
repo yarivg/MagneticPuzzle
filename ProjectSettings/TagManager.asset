@@ -13,6 +13,7 @@ TagManager:
   - squareslevel2
   - playButtonlevel2
   - Floor
+  - SquareManager
   layers:
   - Default
   - TransparentFX

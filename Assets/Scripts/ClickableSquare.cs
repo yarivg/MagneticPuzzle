@@ -42,7 +42,7 @@ public class ClickableSquare : MonoBehaviour
             {
                 this.tag = Tags.Floor.ToString();
                 Destroy(magneticalPower);
-                gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Materials.Empty.ToString(), typeof(Material));
+                gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Materials.squareAvailable.ToString(), typeof(Material));
                 currentSources.IncreaseSource();
                 gameObject.transform.FindChild("circle").gameObject.SetActive(false);
         }
