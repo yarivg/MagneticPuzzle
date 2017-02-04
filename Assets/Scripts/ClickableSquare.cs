@@ -28,6 +28,7 @@ public class ClickableSquare : MonoBehaviour
                     // Put pull magnet
                     magneticalPower = gameObject.AddComponent<MagneticForce>();
                     magneticalPower.initMagneticForce(true);
+                    magneticalPower.initMagneticOffset(new Vector3(this.transform.localScale.x * 5, 0, this.transform.localScale.z * 5));
 
                     // Set picture
                     gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Pull", typeof(Material));
