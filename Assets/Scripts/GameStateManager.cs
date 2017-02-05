@@ -15,6 +15,8 @@ public class GameStateManager : MonoBehaviour {
         // If the user enter input , use his input 
         // Important to use this for menu
         level = levelInput == 0 ? level : levelInput;
+        Debug.Log(level);
+
     }
 
     public static void loadScene()

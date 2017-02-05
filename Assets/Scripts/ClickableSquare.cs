@@ -18,6 +18,7 @@ public class ClickableSquare : MonoBehaviour
 
     void OnMouseOver()
     {
+        Debug.Log("answer:" + GameObject.Find("Level1"));
             ManageSourcesLeft currentSources = GameObject.Find("Level" + GameStateManager.level.ToString()).transform.Find("HUD/SourceLeftText/SourceManager").GetComponent<ManageSourcesLeft>();
             if (!magneticExist() && clickOnSquare(Mouseclicks.leftClick))
             {

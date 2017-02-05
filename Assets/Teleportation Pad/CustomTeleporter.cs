@@ -111,12 +111,14 @@ public class CustomTeleporter : MonoBehaviour
 				else //if not random, teleport to the first one in the array list
 				{
 					//set arrived to true in that array, so it doesnt teleport the subject back
-					destinationPad[0].GetComponent<CustomTeleporter>().arrived = true;
+				//	destinationPad[0].GetComponent<CustomTeleporter>().arrived = true;
 					//teleport
-					subject.transform.position = destinationPad[0].transform.position + new Vector3(0,teleportationHeightOffset,0);
+					//subject.transform.position = destinationPad[0].transform.position + new Vector3(0,teleportationHeightOffset,0);
 					//play teleport sound
 					teleportSound.Play();
 
+                    // delay
+                    Debug.Log("level up");
                     GameStateManager.switchLevel = true;
                     GameStateManager.level++;
                     GameStateManager.gameState = gameStates.PlaceMagnets;
