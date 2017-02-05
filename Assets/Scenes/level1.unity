@@ -3396,7 +3396,7 @@ GameObject:
   - component: {fileID: 576490344}
   m_Layer: 0
   m_Name: SquareLevel1
-  m_TagString: Untagged
+  m_TagString: SquareManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7692,7 +7692,7 @@ GameObject:
   - component: {fileID: 1760267505}
   m_Layer: 0
   m_Name: squarelevel2
-  m_TagString: squareslevel2
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
