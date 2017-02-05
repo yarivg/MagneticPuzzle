@@ -27,12 +27,14 @@ public enum Tags
 
 }
 
-public enum Matirials
+public enum Materials
 {
     playButtonRedMat,
     Push,
     Pull,
-    Empty
+    Empty,
+    playButtonGreenMat,
+    playButtonRestart
 }
 
 #endregion

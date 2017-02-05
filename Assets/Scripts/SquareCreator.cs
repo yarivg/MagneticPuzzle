@@ -5,55 +5,82 @@ using UnityEngine;
 public class SquareCreator : MonoBehaviour
 {
     // The square and the circle 
-    public GameObject squarePrefab;
-    public GameObject circlePrefab;
+    public GameObject controlableSquare;
+    public GameObject drawFieldSquare;
+    public GameObject MagneticCircle;
 
     // all the shapes in the area
-    public Area[] fieldValues;
+    public Area[] allSquares;
 
     void Awake()
     {
-        foreach (Area line in fieldValues)
-        {
-            if(line.isOneUnit)
-            {
-                Vector3 squarePrefabScale = squarePrefab.transform.localScale;
-                Vector3 CenterPoint = new Vector3(line.middlePosition().xAxis,0,line.middlePosition().zAxis);
+        // TASK LIST:
+        // - make prefabs - V
+        // - make control layer - X
+        // - make draw layer - X
 
-                // The add is because the distance take one square less then what is real
-                Vector3 squareScale = new Vector3(squarePrefabScale.x * Mathf.Abs(line.end.xAxis - line.start.xAxis) + squarePrefabScale.x,
-                                                1,
-                                                squarePrefabScale.z * Mathf.Abs(line.end.zAxis - line.start.zAxis) + squarePrefabScale.z);
-                initSquare(CenterPoint, squareScale);
-                
+        foreach (Area area in allSquares)
+        {
+
+            // Draw the big plane
+            Vector3 squarePrefabScale = controlableSquare.transform.localScale;
+            Vector3 CenterPoint = new Vector3(area.middlePosition().xAxis, 0, area.middlePosition().zAxis);
+
+            // The add is because the distance take one square less then what is real
+            Vector3 squareScale = new Vector3(squarePrefabScale.x * Mathf.Abs(area.end.xAxis - area.start.xAxis) + squarePrefabScale.x,
+                                            1,
+                                            squarePrefabScale.z * Mathf.Abs(area.end.zAxis - area.start.zAxis) + squarePrefabScale.z);
+            GameObject father = this.gameObject.transform.Find("BigField").gameObject;
+            createSquare(CenterPoint, squareScale, drawFieldSquare, father, false);
+
+
+            if (area.isOneUnit)
+            {
+                createSquare(CenterPoint, squareScale, controlableSquare, this.gameObject, true);
             }
 
 
-            for (int xIndex = (int)line.start.xAxis; xIndex <= line.end.xAxis && !line.isOneUnit; xIndex++)
+            for (int xIndex = (int)area.start.xAxis; xIndex <= area.end.xAxis && !area.isOneUnit; xIndex++)
             {
-                for (int zIndex = (int)line.start.zAxis; zIndex <= line.end.zAxis; zIndex++)
+                for (int zIndex = (int)area.start.zAxis; zIndex <= area.end.zAxis; zIndex++)
                 {
                     Vector3 squarePosition = new Vector3(xIndex, 0, zIndex);
-                    initSquare(squarePosition, squarePrefab.transform.localScale);
-                    
+                    createSquare(squarePosition, controlableSquare.transform.localScale, controlableSquare, this.gameObject, true);
                 }
+
             }
         }
-
     }
 
-    void initSquare(Vector3 squarePosition,Vector3 squareScale)
+
+
+    void createSquare(Vector3 squarePosition, Vector3 squareScale, GameObject squarePrefab, GameObject father, bool makeCircleBehind)
     {
         // Init the square
-        GameObject curSquare = Instantiate(squarePrefab, gameObject.transform);
-        curSquare.transform.position = gameObject.transform.position + squarePosition;
+        GameObject curSquare = Instantiate(squarePrefab, father.transform);
+        curSquare.transform.position = gameObject.transform.position + squarePosition - curSquare.transform.localPosition;
+
         curSquare.transform.localScale = squareScale;
         curSquare.name = "Square" + squarePosition.x + squarePosition.z;
 
         // Init the circle
-        GameObject circle = Instantiate(circlePrefab, curSquare.transform);
-        circle.transform.position = gameObject.transform.position + squarePosition;
-        circle.SetActive(false);
-        circle.name = "circle";
+        if (makeCircleBehind)
+        {
+            createMagneticCircle(curSquare);
+        }
     }
+
+    // Controlable - by square
+    void createMagneticCircle(GameObject squareInside)
+    {
+        GameObject circle = Instantiate(MagneticCircle, squareInside.transform);
+        circle.name = "circle";
+        circle.transform.position = new Vector3(
+                                gameObject.transform.position.x + squareInside.transform.position.x,
+                                gameObject.transform.position.y + squareInside.transform.position.y + 0.1f,
+                                gameObject.transform.position.z + squareInside.transform.position.z);
+    }
+
+
+
 }
