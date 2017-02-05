@@ -22,12 +22,12 @@ GameObject:
   - component: {fileID: 33051676302677958}
   - component: {fileID: 23153925907515526}
   m_Layer: 0
-  m_Name: dottedCircle
+  m_Name: MageticCircleRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4311152571712182
 Transform:
   m_ObjectHideFlags: 1

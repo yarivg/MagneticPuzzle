@@ -36,7 +36,7 @@ public class SquareCreator : MonoBehaviour
 
             if (area.isOneUnit)
             {
-                createSquare(CenterPoint, squareScale, controlableSquare, this.gameObject, true);
+                createSquare(CenterPoint, squareScale, controlableSquare, this.gameObject.transform.Find("CtrlSquares").gameObject, true);
             }
 
 
@@ -45,7 +45,7 @@ public class SquareCreator : MonoBehaviour
                 for (int zIndex = (int)area.start.zAxis; zIndex <= area.end.zAxis; zIndex++)
                 {
                     Vector3 squarePosition = new Vector3(xIndex, 0, zIndex);
-                    createSquare(squarePosition, controlableSquare.transform.localScale, controlableSquare, this.gameObject, true);
+                    createSquare(squarePosition, controlableSquare.transform.localScale, controlableSquare, this.gameObject.transform.Find("CtrlSquares").gameObject, true);
                 }
 
             }
@@ -58,7 +58,9 @@ public class SquareCreator : MonoBehaviour
     {
         // Init the square
         GameObject curSquare = Instantiate(squarePrefab, father.transform);
-        curSquare.transform.position = gameObject.transform.position + squarePosition - curSquare.transform.localPosition;
+        curSquare.transform.position =  squarePosition - curSquare.transform.localPosition;
+
+
 
         curSquare.transform.localScale = squareScale;
         curSquare.name = "Square" + squarePosition.x + squarePosition.z;
@@ -75,10 +77,9 @@ public class SquareCreator : MonoBehaviour
     {
         GameObject circle = Instantiate(MagneticCircle, squareInside.transform);
         circle.name = "circle";
-        circle.transform.position = new Vector3(
-                                gameObject.transform.position.x + squareInside.transform.position.x,
-                                gameObject.transform.position.y + squareInside.transform.position.y + 0.1f,
-                                gameObject.transform.position.z + squareInside.transform.position.z);
+        circle.transform.position = new Vector3( squareInside.transform.position.x,
+                                                 squareInside.transform.position.y + 0.1f,
+                                                 squareInside.transform.position.z);
     }
 
 

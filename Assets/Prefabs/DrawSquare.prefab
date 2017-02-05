@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23267180715611984}
   - component: {fileID: 114516707072818694}
   m_Layer: 0
-  m_Name: Square
+  m_Name: DrawSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
