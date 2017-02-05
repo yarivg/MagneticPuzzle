@@ -18,6 +18,7 @@ public class ClickableSquare : MonoBehaviour
 
     void OnMouseOver()
     {
+        Debug.Log("answer:" + GameObject.Find("Level1"));
             ManageSourcesLeft currentSources = GameObject.Find("Level" + GameStateManager.level.ToString()).transform.Find("HUD/SourceLeftText/SourceManager").GetComponent<ManageSourcesLeft>();
             if (!magneticExist() && clickOnSquare(Mouseclicks.leftClick))
             {
@@ -28,11 +29,13 @@ public class ClickableSquare : MonoBehaviour
                     // Put pull magnet
                     magneticalPower = gameObject.AddComponent<MagneticForce>();
                     magneticalPower.initMagneticForce(true);
+                    magneticalPower.initMagneticOffset(new Vector3(this.transform.localScale.x * 5, 0, this.transform.localScale.z * 5));
 
                     // Set picture
                     gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Pull", typeof(Material));
+                    gameObject.GetComponent<MeshRenderer>().enabled = true;
 
-                    currentSources.DecreaseSource();
+                currentSources.DecreaseSource();
 
                     // Show the circle
                     gameObject.transform.FindChild("circle").gameObject.SetActive(true);
@@ -45,6 +48,7 @@ public class ClickableSquare : MonoBehaviour
                 gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Materials.squareAvailable.ToString(), typeof(Material));
                 currentSources.IncreaseSource();
                 gameObject.transform.FindChild("circle").gameObject.SetActive(false);
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
     }
 
