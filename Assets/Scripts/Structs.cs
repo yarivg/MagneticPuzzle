@@ -24,7 +24,6 @@ public enum Tags
     Play,
     MagneticFloor,
     Floor
-
 }
 
 public enum Materials

@@ -118,7 +118,6 @@ public class CustomTeleporter : MonoBehaviour
 					teleportSound.Play();
 
                     // delay
-                    Debug.Log("level up");
                     GameStateManager.switchLevel = true;
                     GameStateManager.level++;
                     GameStateManager.gameState = gameStates.PlaceMagnets;
