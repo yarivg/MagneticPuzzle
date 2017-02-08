@@ -31,12 +31,14 @@ public class ClickableSquare : MonoBehaviour
             {
                 this.tag = Tags.MagneticFloor.ToString();
 
-                // Put pull magnet
-                magneticalPower = gameObject.AddComponent<MagneticForce>();
-                magneticalPower.initMagneticForce(true);
+                    // Put pull magnet
+                    magneticalPower = gameObject.AddComponent<MagneticForce>();
+                    magneticalPower.initMagneticForce(true);
+                    magneticalPower.initMagneticOffset(new Vector3(this.transform.localScale.x * 5, 0, this.transform.localScale.z * 5));
 
-                // Set picture
-                gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Pull", typeof(Material));
+                    // Set picture
+                    gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Pull", typeof(Material));
+                    gameObject.GetComponent<MeshRenderer>().enabled = true;
 
                 currentSources.DecreaseSource();
 
@@ -46,15 +48,15 @@ public class ClickableSquare : MonoBehaviour
                 PickupSound();
             }
         }
-        else if (magneticExist() && clickOnSquare(Mouseclicks.rightClick))
-        {
-            this.tag = Tags.Floor.ToString();
-            Destroy(magneticalPower);
-            gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Materials.squareAvailable.ToString(), typeof(Material));
-            currentSources.IncreaseSource();
-            gameObject.transform.FindChild("circle").gameObject.SetActive(false);
-
-            PickupSound();
+            else if(magneticExist() && clickOnSquare(Mouseclicks.rightClick))
+            {
+                this.tag = Tags.Floor.ToString();
+                Destroy(magneticalPower);
+                gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Materials.squareAvailable.ToString(), typeof(Material));
+            Debug.Log((Material)Resources.Load(Materials.squareAvailable.ToString(), typeof(Material)));
+                currentSources.IncreaseSource();
+                gameObject.transform.FindChild("circle").gameObject.SetActive(false);
+                PickupSound();
         }
     }
 

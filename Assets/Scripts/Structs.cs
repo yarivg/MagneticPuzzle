@@ -24,7 +24,6 @@ public enum Tags
     Play,
     MagneticFloor,
     Floor
-
 }
 
 public enum Materials
@@ -67,6 +66,19 @@ public struct Area
 {
     public GameVector2 start;
     public GameVector2 end;
+    public bool isOneUnit;
+
+    public GameVector2 middlePosition()
+    {
+        return new GameVector2((start.xAxis + end.xAxis) / 2, (start.zAxis + end.zAxis) / 2);
+    }
+
+    public double SquareSize()
+    {
+        return Mathf.Sqrt(Mathf.Pow((this.start.xAxis - this.end.xAxis), 2)
+                                   + Mathf.Pow((this.start.zAxis - this.end.zAxis), 2));
+    }
+
 }
 
 [System.Serializable]

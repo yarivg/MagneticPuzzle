@@ -21,7 +21,6 @@ public class ManageSourcesLeft : MonoBehaviour {
 	
     public void DecreaseSource()
     {
-
         if (numOfSourcesToPaint > 0)
         {
             sources[--numOfSourcesToPaint].SetActive(false);
@@ -30,6 +29,9 @@ public class ManageSourcesLeft : MonoBehaviour {
 
     public void IncreaseSource()
     {
+        Debug.Log(gameObject.name);
+        Debug.Log(sources.Length);
+        Debug.Log(numOfSourcesToPaint);
         sources[numOfSourcesToPaint++].SetActive(true);
     }
 
