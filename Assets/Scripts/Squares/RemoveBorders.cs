@@ -12,11 +12,11 @@ public class RemoveBorders : MonoBehaviour {
 
     private void manageBorders(bool add)
     {
-        foreach (Transform transform in this.transform)
+       // foreach (Transform transform in this.transform)
         {
-            if (transform.gameObject.GetComponent<MagneticForce>() == null)
+       //     if (transform.gameObject.GetComponent<MagneticForce>() == null)
             {
-                transform.gameObject.GetComponent<MeshRenderer>().enabled = add;
+                this.gameObject.GetComponent<MeshRenderer>().enabled = add;
             }
         }
     }
