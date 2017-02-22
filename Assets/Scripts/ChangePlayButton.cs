@@ -46,7 +46,7 @@ public class ChangePlayButton : MonoBehaviour
         {
             if (transform.gameObject.GetComponent<MagneticForce>() == null)
             {
-                transform.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                transform.gameObject.GetComponent<ClickableSquare>().squarePicture.GetComponent<MeshRenderer>().enabled = false;
             }
         }
     }
