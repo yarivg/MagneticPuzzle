@@ -65,23 +65,20 @@ public class SquareCreator : MonoBehaviour
         curSquare.transform.localScale = squareScale;
         curSquare.name = "Square" + squarePosition.x + squarePosition.z;
 
-        // Init the circle
-        if (makeCircleBehind)
-        {
-            createMagneticCircle(curSquare);
-        }
+        //// Init the circle
+        //if (makeCircleBehind)
+        //{
+        //    createMagneticCircle(curSquare);
+        //}
     }
 
-    // Controlable - by square
-    void createMagneticCircle(GameObject squareInside)
-    {
-        GameObject circle = Instantiate(MagneticCircle, squareInside.transform);
-        circle.name = "circle";
-        circle.transform.position = new Vector3( squareInside.transform.position.x,
-                                                 squareInside.transform.position.y + 0.1f,
-                                                 squareInside.transform.position.z);
-    }
-
-
-
+    //// Controlable - by square
+    //void createMagneticCircle(GameObject squareInside)
+    //{
+    //    GameObject circle = Instantiate(MagneticCircle, squareInside.transform);
+    //    circle.name = "circle";
+    //    circle.transform.position = new Vector3( squareInside.transform.position.x,
+    //                                             squareInside.transform.position.y + 0.1f,
+    //                                             squareInside.transform.position.z);
+    //}
 }

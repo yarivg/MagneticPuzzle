@@ -34,7 +34,8 @@ public enum Materials
     Empty,
     playButtonGreenMat,
     playButtonRestart,
-    squareAvailable
+    squareAvailable,
+    blueCircle
 }
 
 #endregion
