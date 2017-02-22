@@ -13,13 +13,8 @@ public class ClickableSquare : MonoBehaviour
     void Start()
     {
         pickupGO = GameObject.FindWithTag("Pickup");
-
-        // TODO - if square55 didn't had this script than I didn't had to check that
-        if (gameObject.transform.FindChild("squareCircle") && gameObject.transform.FindChild("squarePicture"))
-        {
-            squareCircle = gameObject.transform.FindChild("squareCircle").gameObject;
-            squarePicture = gameObject.transform.FindChild("squarePicture").gameObject;
-        }
+        squareCircle = gameObject.transform.FindChild("squareCircle").gameObject;
+        squarePicture = gameObject.transform.FindChild("squarePicture").gameObject;
     }
 
     void OnCollisionEnter(Collision collision)
