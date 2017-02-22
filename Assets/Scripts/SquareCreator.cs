@@ -16,7 +16,6 @@ public class SquareCreator : MonoBehaviour
     {
         foreach (Area area in allSquares)
         {
-
             // Draw the big plane
             Vector3 squarePrefabScale = controlableSquare.transform.localScale;
             Vector3 CenterPoint = new Vector3(area.middlePosition().xAxis, 0, area.middlePosition().zAxis);
@@ -26,21 +25,19 @@ public class SquareCreator : MonoBehaviour
                                             1,
                                             squarePrefabScale.z * Mathf.Abs(area.end.zAxis - area.start.zAxis) + squarePrefabScale.z);
             GameObject father = this.gameObject.transform.Find("BigField").gameObject;
-            createSquare(CenterPoint, squareScale, drawFieldSquare, father, false);
-
+            createSquare(CenterPoint, squareScale, drawFieldSquare, father);
 
             if (area.isOneUnit)
             {
-                createSquare(CenterPoint, squareScale, controlableSquare, this.gameObject.transform.Find("CtrlSquares").gameObject, true);
+                createSquare(CenterPoint, squareScale, controlableSquare, this.gameObject.transform.Find("CtrlSquares").gameObject);
             }
-
 
             for (int xIndex = (int)area.start.xAxis; xIndex <= area.end.xAxis && !area.isOneUnit; xIndex++)
             {
                 for (int zIndex = (int)area.start.zAxis; zIndex <= area.end.zAxis; zIndex++)
                 {
                     Vector3 squarePosition = new Vector3(xIndex, 0, zIndex);
-                    createSquare(squarePosition, controlableSquare.transform.localScale, controlableSquare, this.gameObject.transform.Find("CtrlSquares").gameObject, true);
+                    createSquare(squarePosition, controlableSquare.transform.localScale, controlableSquare, this.gameObject.transform.Find("CtrlSquares").gameObject);
                 }
 
             }
@@ -49,34 +46,13 @@ public class SquareCreator : MonoBehaviour
 
 
 
-    void createSquare(Vector3 squarePosition, Vector3 squareScale, GameObject squarePrefab, GameObject father, bool makeCircleBehind)
+    void createSquare(Vector3 squarePosition, Vector3 squareScale, GameObject squarePrefab, GameObject father)
     {
         // Init the square
         GameObject curSquare = Instantiate(squarePrefab, father.transform);
+
         curSquare.transform.position =  squarePosition - curSquare.transform.localPosition;
-
-
-
         curSquare.transform.localScale = squareScale;
         curSquare.name = "Square" + squarePosition.x + squarePosition.z;
-
-        // Init the circle
-        if (makeCircleBehind)
-        {
-            createMagneticCircle(curSquare);
-        }
     }
-
-    // Controlable - by square
-    void createMagneticCircle(GameObject squareInside)
-    {
-        GameObject circle = Instantiate(MagneticCircle, squareInside.transform);
-        circle.name = "circle";
-        circle.transform.position = new Vector3( squareInside.transform.position.x,
-                                                 squareInside.transform.position.y + 0.1f,
-                                                 squareInside.transform.position.z);
-    }
-
-
-
 }
