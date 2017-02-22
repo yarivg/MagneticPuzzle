@@ -3371,48 +3371,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 359171757}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &490175024
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4311152571712182, guid: 6ee61571eb89d7248a8f340e62706bc4, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4311152571712182, guid: 6ee61571eb89d7248a8f340e62706bc4, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4311152571712182, guid: 6ee61571eb89d7248a8f340e62706bc4, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4311152571712182, guid: 6ee61571eb89d7248a8f340e62706bc4, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4311152571712182, guid: 6ee61571eb89d7248a8f340e62706bc4, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4311152571712182, guid: 6ee61571eb89d7248a8f340e62706bc4, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4311152571712182, guid: 6ee61571eb89d7248a8f340e62706bc4, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4311152571712182, guid: 6ee61571eb89d7248a8f340e62706bc4, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 6ee61571eb89d7248a8f340e62706bc4, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &500728477
 GameObject:
   m_ObjectHideFlags: 0
@@ -3764,9 +3722,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f9a843f9c092a4eb5929ea9f6a5892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfSourcesToPaint: 5
-  sourcePrefab: {fileID: 1006343211871934, guid: be23006f0583b774791899b26e0250d5,
-    type: 2}
 --- !u!1 &1209748742
 GameObject:
   m_ObjectHideFlags: 0
@@ -4496,9 +4451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f9a843f9c092a4eb5929ea9f6a5892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfSourcesToPaint: 4
-  sourcePrefab: {fileID: 1006343211871934, guid: be23006f0583b774791899b26e0250d5,
-    type: 2}
 --- !u!1 &1760267504
 GameObject:
   m_ObjectHideFlags: 0

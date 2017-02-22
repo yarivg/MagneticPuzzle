@@ -8,13 +8,18 @@ public class ClickableSquare : MonoBehaviour
     private MagneticForce magneticalPower = null;
     private GameObject pickupGO;
     private GameObject squareCircle;
-    private GameObject squarePicture;
+    public GameObject squarePicture;
 
     void Start()
     {
         pickupGO = GameObject.FindWithTag("Pickup");
-        squareCircle = gameObject.transform.FindChild("squareCircle").gameObject;
-        squarePicture = gameObject.transform.FindChild("squarePicture").gameObject;
+
+        // TODO - if square55 didn't had this script than I didn't had to check that
+        if (gameObject.transform.FindChild("squareCircle") && gameObject.transform.FindChild("squarePicture"))
+        {
+            squareCircle = gameObject.transform.FindChild("squareCircle").gameObject;
+            squarePicture = gameObject.transform.FindChild("squarePicture").gameObject;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -57,7 +62,6 @@ public class ClickableSquare : MonoBehaviour
                 this.tag = Tags.Floor.ToString();
                 Destroy(magneticalPower);
                 squarePicture.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Materials.squareAvailable.ToString(), typeof(Material));
-                Debug.Log((Material)Resources.Load(Materials.squareAvailable.ToString(), typeof(Material)));
                 currentSources.IncreaseSource();
                 squareCircle.SetActive(false);
                 PickupSound();

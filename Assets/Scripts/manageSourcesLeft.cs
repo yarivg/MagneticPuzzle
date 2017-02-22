@@ -29,9 +29,6 @@ public class ManageSourcesLeft : MonoBehaviour {
 
     public void IncreaseSource()
     {
-        Debug.Log(gameObject.name);
-        Debug.Log(sources.Length);
-        Debug.Log(numOfSourcesToPaint);
         sources[numOfSourcesToPaint++].SetActive(true);
     }
 
