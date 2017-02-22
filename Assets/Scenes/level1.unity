@@ -3722,6 +3722,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f9a843f9c092a4eb5929ea9f6a5892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numOfSourcesToPaint: 0
+  sourcePrefab: {fileID: 0}
 --- !u!1 &1209748742
 GameObject:
   m_ObjectHideFlags: 0
@@ -4451,6 +4453,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f9a843f9c092a4eb5929ea9f6a5892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numOfSourcesToPaint: 4
+  sourcePrefab: {fileID: 1006343211871934, guid: be23006f0583b774791899b26e0250d5,
+    type: 2}
 --- !u!1 &1760267504
 GameObject:
   m_ObjectHideFlags: 0
