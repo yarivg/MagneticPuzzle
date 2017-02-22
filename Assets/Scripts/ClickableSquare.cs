@@ -15,9 +15,9 @@ public class ClickableSquare : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (this.tag == Tags.MagneticFloor.ToString())
+        if (gameObject.haveTag(Tags.MagneticFloor))
         {
-            gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Materials.Push.ToString(), typeof(Material));
+            gameObject.setMatirial(Materials.Push);
             magneticalPower.isPulling = false;
         }
     }
@@ -36,8 +36,8 @@ public class ClickableSquare : MonoBehaviour
                     magneticalPower.initMagneticForce(true);
                     magneticalPower.initMagneticOffset(new Vector3(this.transform.localScale.x * 5, 0, this.transform.localScale.z * 5));
 
-                    // Set picture
-                    gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Pull", typeof(Material));
+                // Set picture
+                    gameObject.setMatirial(Materials.Pull);
                     gameObject.GetComponent<MeshRenderer>().enabled = true;
 
                 currentSources.DecreaseSource();
@@ -52,8 +52,7 @@ public class ClickableSquare : MonoBehaviour
             {
                 this.tag = Tags.Floor.ToString();
                 Destroy(magneticalPower);
-                gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Materials.squareAvailable.ToString(), typeof(Material));
-            Debug.Log((Material)Resources.Load(Materials.squareAvailable.ToString(), typeof(Material)));
+                gameObject.setMatirial(Materials.squareAvailable); 
                 currentSources.IncreaseSource();
                 gameObject.transform.FindChild("circle").gameObject.SetActive(false);
                 PickupSound();

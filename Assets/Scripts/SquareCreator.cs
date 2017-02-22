@@ -14,11 +14,6 @@ public class SquareCreator : MonoBehaviour
 
     void Awake()
     {
-        // TASK LIST:
-        // - make prefabs - V
-        // - make control layer - X
-        // - make draw layer - X
-
         foreach (Area area in allSquares)
         {
 

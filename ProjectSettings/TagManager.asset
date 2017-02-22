@@ -15,6 +15,7 @@ TagManager:
   - Floor
   - SquareManager
   - Pickup
+  - Teleporter
   layers:
   - Default
   - TransparentFX

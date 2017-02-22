@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void ChangeGameState();
+
+public static class Events
+{
+    public static ChangeGameState START_GAME;
+    public static ChangeGameState STOP_GAME;
+}
+
+
 #region Enums
 
 public enum gameStates
