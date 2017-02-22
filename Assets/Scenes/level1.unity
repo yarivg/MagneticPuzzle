@@ -100,7 +100,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 37498803}
-  - component: {fileID: 37498804}
   m_Layer: 0
   m_Name: CtrlSquares
   m_TagString: SquareManager
@@ -121,17 +120,6 @@ Transform:
   m_Father: {fileID: 1561226186}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &37498804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 37498802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81e3348e19806924ea3d99332d10e364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &108213475
 Prefab:
   m_ObjectHideFlags: 0
@@ -4514,7 +4502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f9a843f9c092a4eb5929ea9f6a5892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfSourcesToPaint: 5
+  numOfSourcesToPaint: 4
   sourcePrefab: {fileID: 1006343211871934, guid: be23006f0583b774791899b26e0250d5,
     type: 2}
 --- !u!1 &1760267504
