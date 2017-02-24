@@ -16,7 +16,7 @@ public class RemoveBorders : MonoBehaviour {
         {
             if (transform.gameObject.GetComponent<MagneticForce>() == null)
             {
-                transform.FindChild("squarePicture").GetComponent<MeshRenderer>().enabled = false; 
+                transform.FindChild("squarePicture").GetComponent<MeshRenderer>().enabled = add; 
                // this.gameObject.GetComponent<MeshRenderer>().enabled = add;
             }
         }

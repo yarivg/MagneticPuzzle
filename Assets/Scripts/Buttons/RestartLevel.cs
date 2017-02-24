@@ -18,7 +18,6 @@ public class RestartLevel : MonoBehaviour
         if (Input.GetMouseButtonDown((int)Mouseclicks.leftClick))
         {
             GameStateManager.switchLevel = false;
-            Events.STOP_GAME = Events.START_GAME = null;
             GameStateManager.loadScene();
         }
     }

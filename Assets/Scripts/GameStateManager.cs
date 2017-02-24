@@ -19,39 +19,7 @@ public class GameStateManager : MonoBehaviour {
 
     public static void loadScene()
     {
+        Events.restartEvents();
         SceneManager.LoadScene("level" + GameStateManager.level);
-    }
-
-    void ballMove(GameObject[] ball,bool move) { }
-
-    void enableInGameObjects(bool toEnable) {
-
-        // Ball , Lights? , Camera ? , Restartbutton
-        ballMove(GameObject.FindGameObjectsWithTag(Tags.Ball.ToString()), toEnable);
-        if(toEnable)
-        {
-          
-        }
-    }
-
-    void enablePreGameObjects(bool value) {
-
-
-    }
-
-    void enableMenuObjects(bool value) { }
-
-    void playGame()
-    {
-        ballMove(GameObject.FindGameObjectsWithTag(Tags.Ball.ToString()), false);
-   //     disableMenuObjects(true);
-     //   disablePreGameObjects(true);
-       // disableInGameObjects(false);
-    }
-
-
-    void Update()
-    {
-
     }
 }

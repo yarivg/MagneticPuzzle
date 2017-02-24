@@ -8,6 +8,12 @@ public static class Events
 {
     public static ChangeGameState START_GAME;
     public static ChangeGameState STOP_GAME;
+
+    public static void restartEvents()
+    {
+        STOP_GAME = null;
+        START_GAME = null;
+    }
 }
 
 

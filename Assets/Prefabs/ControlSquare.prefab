@@ -58,7 +58,6 @@ GameObject:
   - component: {fileID: 23279801765074540}
   - component: {fileID: 33811074450767718}
   - component: {fileID: 114160147738197226}
-  - component: {fileID: 114551054768061168}
   m_Layer: 0
   m_Name: squarePicture
   m_TagString: Untagged
@@ -258,14 +257,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squarePicture: {fileID: 0}
---- !u!114 &114551054768061168
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1830898365771182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81e3348e19806924ea3d99332d10e364, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
