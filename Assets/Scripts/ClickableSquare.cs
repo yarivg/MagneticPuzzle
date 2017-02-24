@@ -15,53 +15,59 @@ public class ClickableSquare : MonoBehaviour
         pickupGO = GameObject.FindWithTag("Pickup");
         squareCircle = gameObject.transform.FindChild("squareCircle").gameObject;
         squarePicture = gameObject.transform.FindChild("squarePicture").gameObject;
+        Events.START_GAME += disable;
+        Events.STOP_GAME += enable;
     }
 
     void OnCollisionEnter(Collision collision)
     {
         if (this.tag == Tags.MagneticFloor.ToString())
         {
-            squarePicture.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Materials.Push.ToString(), typeof(Material));
+            squarePicture.setMatirial(Materials.Push);
             magneticalPower.isPulling = false;
         }
     }
 
     void OnMouseOver()
     {
-        SourcesLeftMangager currentSources = GameObject.Find("Level" + GameStateManager.level.ToString()).transform.Find("HUD/SourceLeftText/SourceManager").GetComponent<SourcesLeftMangager>();
-        if (!magneticExist() && clickOnSquare(Mouseclicks.leftClick))
-        {
-            if (currentSources.remainMagnets())
+        // Just update method effect from enable
+        if(this.enabled)
+        {        
+            SourcesLeftMangager currentSources = GameObject.Find("Level" + GameStateManager.level.ToString()).transform.Find("HUD/SourceLeftText/SourceManager").GetComponent<SourcesLeftMangager>();
+            if (!magneticExist() && clickOnSquare(Mouseclicks.leftClick))
             {
-                this.tag = Tags.MagneticFloor.ToString();
+                if (currentSources.remainMagnets())
+                {
+                    this.tag = Tags.MagneticFloor.ToString();
 
-                // Put pull magnet
-                magneticalPower = gameObject.AddComponent<MagneticForce>();
-                magneticalPower.initMagneticForce(true);
-                magneticalPower.initMagneticOffset(new Vector3(this.transform.localScale.x * 5, 0, this.transform.localScale.z * 5));
+                        // Put pull magnet
+                        magneticalPower = gameObject.AddComponent<MagneticForce>();
+                        magneticalPower.initMagneticForce(true);
+                        magneticalPower.initMagneticOffset(new Vector3(this.transform.localScale.x * 5, 0, this.transform.localScale.z * 5));
 
-                // Set picture
-                squarePicture.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Pull", typeof(Material));
-                squarePicture.GetComponent<MeshRenderer>().enabled = true;
+                        // Set picture
+                        squarePicture.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Pull", typeof(Material));
+                        squarePicture.GetComponent<MeshRenderer>().enabled = true;
 
-                currentSources.DecreaseSource();
+                        currentSources.DecreaseSource();
 
-                // Show the circle
-                squareCircle.SetActive(true);
+                        // Show the circle
+                        squareCircle.SetActive(true);
 
-                PickupSound();
+                        PickupSound();
+                    }
+                }
+                else if (magneticExist() && clickOnSquare(Mouseclicks.rightClick))
+                {
+                    this.tag = Tags.Floor.ToString();
+                    Destroy(magneticalPower);
+                    squarePicture.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Materials.squareAvailable.ToString(), typeof(Material));
+                    currentSources.IncreaseSource();
+                    squareCircle.SetActive(false);
+                    PickupSound();
+                }
             }
         }
-            else if(magneticExist() && clickOnSquare(Mouseclicks.rightClick))
-            {
-                this.tag = Tags.Floor.ToString();
-                Destroy(magneticalPower);
-                squarePicture.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Materials.squareAvailable.ToString(), typeof(Material));
-                currentSources.IncreaseSource();
-                squareCircle.SetActive(false);
-                PickupSound();
-        }
-    }
 
     bool magneticExist()
     {
@@ -80,6 +86,16 @@ public class ClickableSquare : MonoBehaviour
         {
             pickupGO.GetComponent<AudioSource>().Play();
         }
+    }
+
+    void enable()
+    {
+        this.enabled = true;
+    }
+
+    void disable()
+    {
+        this.enabled = false;
     }
 }
 

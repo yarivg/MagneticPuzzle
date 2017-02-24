@@ -19,6 +19,7 @@ public class GameStateManager : MonoBehaviour {
 
     public static void loadScene()
     {
+        Events.restartEvents();
         SceneManager.LoadScene("level" + GameStateManager.level);
     }
 }
