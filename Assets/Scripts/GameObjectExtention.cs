@@ -19,5 +19,10 @@ public static class GameObjectExtention {
         gameObject.GetComponent<Rigidbody>().isKinematic = value;
     }
 
+    public static void PlaySound(this GameObject gameObject)
+    {
+        gameObject.GetComponent<AudioSource>().Play();
+    }
+
 
 }

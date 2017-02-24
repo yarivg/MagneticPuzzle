@@ -8,24 +8,21 @@ public class MagneticForce : MonoBehaviour {
     public float forceFactor;
     public float maxRadius;
     public bool isPulling;
-    private float magnitude;
-    public bool useDefaultValues = true;
     private Vector3 MagneticOffset;
 
     void Start()
     {
-        if(useDefaultValues)
-        {
-            defaultMagneticValues();
-        }
+        this.MagneticOffset = new Vector3((this.transform.lossyScale.x - 0.1f)/0.1f,
+                                          0,
+                                          (this.transform.lossyScale.z - 0.1f) / 0.1f);
     }
     
     void FixedUpdate () {
         GameObject[] balls = GameObject.FindGameObjectsWithTag(Tags.Ball.ToString());
         foreach (GameObject ball in balls)
         {
-            Vector3 direction = (transform.position) -  ball.transform.position;
-            magnitude = direction.magnitude;
+            Vector3 direction = (transform.position + MagneticOffset) -  ball.transform.position;
+            float magnitude = direction.magnitude;
 
             if (magnitude < maxRadius)
             {
@@ -35,21 +32,4 @@ public class MagneticForce : MonoBehaviour {
             }
         }
     }
-
-    public void initMagneticForce(bool isPulling)
-    {
-        this.isPulling = isPulling;
-    }
-
-    public void initMagneticOffset(Vector3 offset)
-    {
-        this.MagneticOffset = offset;
-    }
-
-    private void defaultMagneticValues()
-    {
-        forceFactor = 115;
-        maxRadius = 4;
-    }
-
 }

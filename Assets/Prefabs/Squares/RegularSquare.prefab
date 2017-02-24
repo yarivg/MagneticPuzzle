@@ -40,8 +40,9 @@ GameObject:
   - component: {fileID: 64192365203005578}
   - component: {fileID: 23267180715611984}
   - component: {fileID: 114516707072818694}
+  - component: {fileID: 114113439038685230}
   m_Layer: 0
-  m_Name: ControlSquare
+  m_Name: RegularSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,6 +235,20 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114113439038685230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1343671213657528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8305090f76623bd4a8c926a60f220034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Magnet: {fileID: 1343671213657528, guid: a71b355c6cdcbeb4083dd75be5301f3f, type: 2}
+  pickupSound: {fileID: 1567310776825462, guid: 7e6cdb8c49711bc4ebba610f09939c56,
+    type: 2}
 --- !u!114 &114160147738197226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -256,4 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: badbbe287bd6d6a4a8470d33f38972b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  magneticalPower: {fileID: 0}
+  pickupGO: {fileID: 0}
+  squareCircle: {fileID: 0}
   squarePicture: {fileID: 0}
