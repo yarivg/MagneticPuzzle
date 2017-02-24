@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManageSourcesLeft : MonoBehaviour
+public class SourcesLeftMangager : MonoBehaviour
 {
 
     public int numOfSourcesToPaint;

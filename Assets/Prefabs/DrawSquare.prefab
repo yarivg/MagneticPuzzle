@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33006756394203060}
   - component: {fileID: 64192365203005578}
   - component: {fileID: 23267180715611984}
-  - component: {fileID: 114516707072818694}
   m_Layer: 0
   m_Name: DrawSquare
   m_TagString: Untagged
@@ -95,14 +94,3 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114516707072818694
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1343671213657528}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: badbbe287bd6d6a4a8470d33f38972b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
