@@ -41,7 +41,7 @@ public class ClickableSquare : MonoBehaviour
                 magneticalPower.initMagneticOffset(new Vector3(this.transform.localScale.x * 5, 0, this.transform.localScale.z * 5));
 
                 // Set picture
-                squarePicture.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Pull", typeof(Material));
+                squarePicture.GetComponent<MeshRenderer>().material = (Material)Resources.Load(Materials.Pull.ToString(), typeof(Material));
                 squarePicture.GetComponent<MeshRenderer>().enabled = true;
 
                 currentSources.DecreaseSource();

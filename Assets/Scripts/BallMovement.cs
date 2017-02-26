@@ -40,14 +40,7 @@ public class BallMovement : MonoBehaviour
         speed = (transform.position - prevPosition).magnitude / Time.deltaTime;
         prevPosition = transform.position;
 
-
-        if (speed < MIN_SPEED_TO_DIE) {
-            framesWithSlowSpeed = framesWithSlowSpeed+=1;
-            }
-        else {
-            framesWithSlowSpeed = 0;
-        }
-
+        framesWithSlowSpeed = speed < MIN_SPEED_TO_DIE ? framesWithSlowSpeed + 1 : 0;
 
         if ((transform.position.y < LOST_VALUE_Y || framesWithSlowSpeed > MAX_FRAMES_WITH_SLOW_SPEED))
         {
