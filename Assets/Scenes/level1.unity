@@ -3751,7 +3751,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1101163214}
-  - component: {fileID: 1101163215}
   m_Layer: 5
   m_Name: SourcesPainter
   m_TagString: sourcesManagerlevel2
@@ -3772,17 +3771,6 @@ Transform:
   m_Father: {fileID: 1617514579}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1101163215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1101163213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f9a843f9c092a4eb5929ea9f6a5892, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1209748742
 GameObject:
   m_ObjectHideFlags: 0
@@ -4800,7 +4788,6 @@ GameObject:
   - component: {fileID: 1973715016}
   - component: {fileID: 1973715015}
   - component: {fileID: 1973715014}
-  - component: {fileID: 1973715013}
   m_Layer: 0
   m_Name: Play Button
   m_TagString: playButtonlevel2
@@ -4808,17 +4795,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1973715013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1973715012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1e50c39a44c8944b8113047b27ce6a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1973715014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5207,7 +5183,6 @@ GameObject:
   - component: {fileID: 2130338644}
   - component: {fileID: 2130338643}
   - component: {fileID: 2130338642}
-  - component: {fileID: 2130338641}
   m_Layer: 0
   m_Name: Teleporter Pad A
   m_TagString: Untagged
@@ -5228,17 +5203,6 @@ Transform:
   m_Father: {fileID: 500728478}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2130338641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2130338639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f72d6a1bdfcd4ef4b9e7c6bc7ef70108, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &2130338642
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5457,7 +5421,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 1095617254
+  randomSeed: -1701002617
   InitialModule:
     serializedVersion: 3
     enabled: 1

@@ -21,9 +21,6 @@ public static class GameObjectExtention {
 
     public static void playSound(this GameObject gameObject)
     {
-        Debug.Log(gameObject.GetComponent<AudioSource>().clip);
         gameObject.GetComponent<AudioSource>().Play();
     }
-
-
 }
