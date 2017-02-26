@@ -3489,7 +3489,7 @@ GameObject:
   - component: {fileID: 800717602}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3783,8 +3783,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f9a843f9c092a4eb5929ea9f6a5892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfSourcesToPaint: 0
-  sourcePrefab: {fileID: 0}
 --- !u!1 &1209748742
 GameObject:
   m_ObjectHideFlags: 0
@@ -4377,7 +4375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73bf45730d544ef48b2b5a8b24bb3e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlableSquare: {fileID: 1343671213657528, guid: dffbbac32e76b1f45bf124bf045deaec,
+  controlableSquare: {fileID: 1343671213657528, guid: e8b556e2668de1f4aa5015ecaa0e5ee6,
     type: 2}
   drawFieldSquare: {fileID: 1343671213657528, guid: 2092347e54d278148b80e5ad6b4371a0,
     type: 2}
@@ -4511,7 +4509,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1630592695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f9a843f9c092a4eb5929ea9f6a5892, type: 3}
+  m_Script: {fileID: 11500000, guid: a244deb710409cf409463f726912f0d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   numOfSourcesToPaint: 4
