@@ -46,11 +46,10 @@ public class SquareCreator : MonoBehaviour
 
 
 
-    void createSquare(Vector3 squarePosition, Vector3 squareScale, GameObject squarePrefab, GameObject father)
+    public static void createSquare(Vector3 squarePosition, Vector3 squareScale, GameObject squarePrefab, GameObject father)
     {
         // Init the square
         GameObject curSquare = Instantiate(squarePrefab, father.transform);
-
         curSquare.transform.position =  squarePosition - curSquare.transform.localPosition;
         curSquare.transform.localScale = squareScale;
         curSquare.name = "Square" + squarePosition.x + squarePosition.z;

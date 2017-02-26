@@ -120,6 +120,7 @@ public class CustomTeleporter : MonoBehaviour
                     // delay
                     GameStateManager.switchLevel = true;
                     GameStateManager.level++;
+                    GameStateManager.gameState = gameStates.PlaceMagnets;
                     GameStateManager.loadScene();
                 }
 			}

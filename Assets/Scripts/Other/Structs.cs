@@ -38,7 +38,8 @@ public enum Tags
     SourcesManager,
     Play,
     MagneticFloor,
-    Floor
+    Floor,
+    Pickup
 }
 
 public enum Materials
