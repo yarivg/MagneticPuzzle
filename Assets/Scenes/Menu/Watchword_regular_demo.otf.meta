@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 76fe89f13c35f804e8d6d72b78f9ed65
+timeCreated: 1488229413
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Watchword Regular Demo
+  fontNames:
+  - Watchword Regular Demo
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -16,6 +16,7 @@ public class CreateMenuItems : MonoBehaviour {
 
     public GameObject levelButtonPrefab;
     public GameObject difficultyTextPrefab;
+    public int levelsInRow;
     public int differenceBetweenItems;
 
     // Help buttons
@@ -27,9 +28,13 @@ public class CreateMenuItems : MonoBehaviour {
     private Vector2 offset;
 
     void Start () {
+        Camera.main.aspect = 480f / 800f;
+        Debug.Log(UnityEngine.Screen.height);
+        Debug.Log(UnityEngine.Screen.width);
+
         GameObject goDifficulty;
         Color buttonColor;
-        offset = new Vector2(0, differenceBetweenItems);
+        offset = new Vector2(0, 0);
 
         // Create difficulty
         for (int difficultyIndex = 0; difficultyIndex < difficulties.Length; difficultyIndex++)
@@ -45,21 +50,25 @@ public class CreateMenuItems : MonoBehaviour {
             goDifficulty.transform.localScale = new Vector3(1, 1, 1);
             goDifficulty.transform.position = new Vector3(710 + offset.x, 75,0);
 
+            int odd = difficulties[difficultyIndex].levelsNumber % levelsInRow > 0 ? 1 : 0;
+            int numOfRows = difficulties[difficultyIndex].levelsNumber / levelsInRow + odd;
             // Create level buttons
-            for (int levelIndex = 0; levelIndex < difficulties[difficultyIndex].levelsNumber; levelIndex++)
+            for (int levelIndex = 0; levelIndex < numOfRows; levelIndex++)
             {
-                CreateLevelButton(goDifficulty, levelIndex, difficulties[difficultyIndex].difficultyName, buttonColor, offset);
+                for(int inRow = 0; inRow < levelsInRow && levelIndex * levelsInRow + inRow < difficulties[difficultyIndex].levelsNumber; inRow++)
+                {
+                    CreateLevelButton(goDifficulty, levelIndex * levelsInRow + inRow + 1, difficulties[difficultyIndex].difficultyName, buttonColor, offset);
+                    offset.x += differenceBetweenItems;
+                }
 
-                offset.x = levelIndex % 2 == 0 ? offset.x : offset.x + differenceBetweenItems;
-                offset.y = offset.y != 0 ? 0 : differenceBetweenItems;
+                offset.y -= differenceBetweenItems;
+                offset.x = 0;
             }
 
             offset.x += difficulties[difficultyIndex].levelsNumber % 2 == 0 ? 50 : 100;
             offset.y = differenceBetweenItems;
         }
-
-        Debug.Log(offset.x);
-
+        
         nextButton.onClick.AddListener(NextLevelPage);
         prevButton.onClick.AddListener(PrevLevelPage);
     }
