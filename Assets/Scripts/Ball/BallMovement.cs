@@ -16,23 +16,17 @@ public class BallMovement : MonoBehaviour
     private int framesWithSlowSpeed;
     private Vector3 prevPosition;
 
-    void Start()
+    void Awake()
     {
         framesWithSlowSpeed = 0;
         prevPosition = transform.position;
+        Events.START_GAME += enableBallMovementAbillity;
+        Events.STOP_GAME += disableBallMovementAbillity;
     }
 
     void FixedUpdate()
     {
-        if (GameStateManager.gameState == gameStates.Play)
-        {
-            DetectIfLost();
-            GetComponent<Rigidbody>().isKinematic = false;
-        }
-        else if (GameStateManager.gameState == gameStates.PlaceMagnets)
-        {
-            GetComponent<Rigidbody>().isKinematic = true;
-        }
+        DetectIfLost();
     }
 
     private void DetectIfLost()
@@ -48,5 +42,17 @@ public class BallMovement : MonoBehaviour
             GameStateManager.switchLevel = false;
             GameStateManager.loadScene();
         }
+    }
+
+    void enableBallMovementAbillity()
+    {
+        this.enabled = true;
+        this.gameObject.setKinematic(false);
+    }
+
+    void disableBallMovementAbillity()
+    {
+        this.enabled = false;
+        this.gameObject.setKinematic(true);
     }
 }

@@ -2,6 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void ChangeGameState();
+
+public static class Events
+{
+    public static ChangeGameState START_GAME;
+    public static ChangeGameState STOP_GAME;
+
+    public static void restartEvents()
+    {
+        STOP_GAME = null;
+        START_GAME = null;
+    }
+}
+
+
 #region Enums
 
 public enum gameStates
@@ -23,7 +38,8 @@ public enum Tags
     SourcesManager,
     Play,
     MagneticFloor,
-    Floor
+    Floor,
+    Pickup
 }
 
 public enum Materials

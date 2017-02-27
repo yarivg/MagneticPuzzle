@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1343671213657528
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,9 +39,9 @@ GameObject:
   - component: {fileID: 33006756394203060}
   - component: {fileID: 64192365203005578}
   - component: {fileID: 23267180715611984}
-  - component: {fileID: 114516707072818694}
+  - component: {fileID: 114007411900611350}
   m_Layer: 0
-  m_Name: ControlSquare
+  m_Name: OutMagneticSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 3f4de49078094a94ea6de4a7a8ef8322, type: 2}
+  - {fileID: 2100000, guid: a76b97ab7efc913489cdd83fe408d55f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -233,7 +233,7 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114516707072818694
+--- !u!114 &114007411900611350
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -241,7 +241,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1343671213657528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: badbbe287bd6d6a4a8470d33f38972b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d05968d56cd6984283565a7678445ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  squarePicture: {fileID: 0}
+  forceFactor: 115
+  maxRadius: 4
+  isPulling: 0
+  useDefaultValues: 1
