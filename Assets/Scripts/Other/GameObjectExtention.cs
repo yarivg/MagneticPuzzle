@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class GameObjectExtention {
 
-    public static void setMatirial(this GameObject gameObject,Materials material)
+    public static void setMaterial(this GameObject gameObject,Materials material)
     {
         gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(material.ToString(), typeof(Material));
     }

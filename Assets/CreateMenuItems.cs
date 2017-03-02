@@ -19,10 +19,6 @@ public class CreateMenuItems : MonoBehaviour {
     public int levelsInRow;
     public int differenceBetweenItems;
 
-    // Help buttons
-    public Button nextButton;
-    public Button prevButton;
-
     public Difficulty[] difficulties;
     
     private Vector2 offset;
@@ -68,9 +64,6 @@ public class CreateMenuItems : MonoBehaviour {
             offset.x += difficulties[difficultyIndex].levelsNumber % 2 == 0 ? 50 : 100;
             offset.y = differenceBetweenItems;
         }
-        
-        nextButton.onClick.AddListener(NextLevelPage);
-        prevButton.onClick.AddListener(PrevLevelPage);
     }
 
     // TODO : use UnityEngine.screen.height/width for fixing image streching
