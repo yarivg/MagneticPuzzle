@@ -14,95 +14,66 @@ public class CreateMenuItems : MonoBehaviour {
         public int levelsNumber;
     }
 
+    public Vector2 startPieceOfScreen;
+    public Vector2 buttonScale;
     public GameObject levelButtonPrefab;
     public GameObject difficultyTextPrefab;
-    public int levelsInRow;
-    public int differenceBetweenItems;
+    //public int levelsInRow;
+    public Vector2 differenceBetweenItems;
 
-    public Difficulty[] difficulties;
+    public Difficulty difficulty;
     
     private Vector2 offset;
 
     void Start () {
-        Camera.main.aspect = 480f / 800f;
-        Debug.Log(UnityEngine.Screen.height);
-        Debug.Log(UnityEngine.Screen.width);
-
         GameObject goDifficulty;
-        Color buttonColor;
-        offset = new Vector2(0, 0);
 
-        // Create difficulty
-        for (int difficultyIndex = 0; difficultyIndex < difficulties.Length; difficultyIndex++)
+        offset = new Vector2(startPieceOfScreen.x * ScreenDimensions.widthUnit,
+                             startPieceOfScreen.y * ScreenDimensions.heightUnit);
+
+        goDifficulty = Instantiate(difficultyTextPrefab, transform);
+        goDifficulty.GetComponent<Text>().text = difficulty.difficultyName;
+        goDifficulty.name = difficulty.difficultyName;
+        //goDifficulty.GetComponent<Text>().color = buttonColor;
+        goDifficulty.transform.localScale = new Vector3(1, 1, 1);
+        goDifficulty.transform.position = new Vector3(5 * ScreenDimensions.widthUnit, Screen.height - 1.5f * ScreenDimensions.heightUnit, 0);
+        Debug.Log(offset.y - 2 * ScreenDimensions.heightUnit);
+
+        for(int nLevelIndex = 0; nLevelIndex < difficulty.levelsNumber; nLevelIndex++)
         {
-            // Weird representation of color in unity that's why this assign needed
-            buttonColor = difficulties[difficultyIndex].backgroundColor;
-            buttonColor = new Color(buttonColor.r, buttonColor.g, buttonColor.b);
+            CreateLevelButton(nLevelIndex, difficulty.difficultyName, offset);
 
-            goDifficulty = Instantiate(difficultyTextPrefab, transform);
-            goDifficulty.GetComponent<Text>().text = difficulties[difficultyIndex].difficultyName;
-            goDifficulty.name = difficulties[difficultyIndex].difficultyName;
-            goDifficulty.GetComponent<Text>().color = buttonColor;
-            goDifficulty.transform.localScale = new Vector3(1, 1, 1);
-            goDifficulty.transform.position = new Vector3(710 + offset.x, 75,0);
-
-            int odd = difficulties[difficultyIndex].levelsNumber % levelsInRow > 0 ? 1 : 0;
-            int numOfRows = difficulties[difficultyIndex].levelsNumber / levelsInRow + odd;
-            // Create level buttons
-            for (int levelIndex = 0; levelIndex < numOfRows; levelIndex++)
+            if(nLevelIndex % 2 == 0)
             {
-                for(int inRow = 0; inRow < levelsInRow && levelIndex * levelsInRow + inRow < difficulties[difficultyIndex].levelsNumber; inRow++)
-                {
-                    CreateLevelButton(goDifficulty, levelIndex * levelsInRow + inRow + 1, difficulties[difficultyIndex].difficultyName, buttonColor, offset);
-                    offset.x += differenceBetweenItems;
-                }
-
-                offset.y -= differenceBetweenItems;
-                offset.x = 0;
+                offset.x += differenceBetweenItems.x * ScreenDimensions.widthUnit;
+            } else
+            {
+                offset.x = startPieceOfScreen.x * ScreenDimensions.widthUnit;
+                offset.y += differenceBetweenItems.y * ScreenDimensions.widthUnit;
             }
-
-            offset.x += difficulties[difficultyIndex].levelsNumber % 2 == 0 ? 50 : 100;
-            offset.y = differenceBetweenItems;
         }
     }
-
-    // TODO : use UnityEngine.screen.height/width for fixing image streching
-    private void CreateLevelButton(GameObject difficultyParent, int levelIndex, string difficultyName, Color buttonColor, Vector2 offset)
+    
+    private void CreateLevelButton(int levelIndex, string difficultyName, Vector2 offset)
     {
         int levelNumber = levelIndex + 1;
 
-        GameObject goLevel = Instantiate(levelButtonPrefab, difficultyParent.transform);
+        GameObject goLevel = Instantiate(levelButtonPrefab, transform);
 
         goLevel.name = "Button" + levelIndex;
-        goLevel.GetComponent<Image>().color = buttonColor;
         goLevel.transform.FindChild("Image")
                .GetComponent<Image>().sprite = (Sprite)Resources.Load(
-                                                            "Levels/" + difficultyName + "/level" + levelNumber, typeof(Sprite));
+                                                            //"Levels/" + difficultyName + "/level" + levelNumber, typeof(Sprite));
+                                                            "Levels/Begginer/level1", typeof(Sprite));
+        goLevel.transform.FindChild("Text").GetComponent<Text>().text = levelNumber.ToString();
 
-        goLevel.transform.localScale = new Vector3(1, 1, 1);
-        goLevel.transform.position = new Vector3(200 + goLevel.transform.position.x + offset.x,
-                                                 120 + offset.y,
+        goLevel.transform.localScale = new Vector3(buttonScale.x, buttonScale.y, 1);
+        goLevel.transform.position = new Vector3(offset.x,
+                                                 Screen.height - offset.y,
                                                  0);
 
         // Created a script which listen to clicks with the level number
         clickLevelButton clButton = goLevel.AddComponent<clickLevelButton>();
         clButton.levelNumber = levelNumber;
-    }
-
-    void NextLevelPage()
-    {
-        if (transform.position.x >= -offset.x)
-        {
-            Debug.Log(offset.x / difficulties.Length);
-            transform.position = new Vector3(transform.position.x - offset.x / difficulties.Length, transform.position.y, transform.position.z);
-        }
-    }
-
-    void PrevLevelPage()
-    {
-        if(transform.position.x <= 0)
-        {
-            transform.position = new Vector3(transform.position.x + offset.x / difficulties.Length, transform.position.y, transform.position.z);
-        }
     }
 }

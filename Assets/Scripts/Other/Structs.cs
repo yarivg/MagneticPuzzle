@@ -54,6 +54,12 @@ public enum Materials
     blueCircle
 }
 
+public enum SCREEN_STATE
+{
+    PORTARAIT,
+    LANDSPACE
+}
+
 #endregion
 
 #region Structs

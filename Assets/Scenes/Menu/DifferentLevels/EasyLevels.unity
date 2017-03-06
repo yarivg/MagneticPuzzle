@@ -91,46 +91,128 @@ NavMeshSettings:
     cellSize: 0.16666667
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &721015615
+--- !u!1 &56564292
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 721015617}
-  - component: {fileID: 721015616}
+  - component: {fileID: 56564294}
+  - component: {fileID: 56564293}
+  - component: {fileID: 56564295}
   m_Layer: 0
-  m_Name: onclickMethods
+  m_Name: IconMethods
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &721015616
+--- !u!114 &56564293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 721015615}
+  m_GameObject: {fileID: 56564292}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c095b0b10b884f44afc52cb44c001e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &721015617
+  electricity: {fileID: 56564295}
+--- !u!4 &56564294
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 721015615}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 56564292}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 60, y: 921.60004, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &56564295
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 56564292}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4507e83b012a72545a3bb95665b0ccef, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &847202807
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +310,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &862088011
 GameObject:
@@ -268,7 +350,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &967490514
 GameObject:
@@ -332,217 +414,8 @@ Transform:
   m_LocalScale: {x: 1.1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1037181472
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1037181474}
-  - component: {fileID: 1037181473}
-  m_Layer: 0
-  m_Name: lightning
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!82 &1037181473
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1037181472}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4cb51844734fb0a42aff1db6f053c696, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!4 &1037181474
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1037181472}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1089186410
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 57
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 57
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224735832290174162, guid: 7a4e28f00b588ce499e6e0a3492dd584,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 7a4e28f00b588ce499e6e0a3492dd584, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1583812034
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +489,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1775122965
 GameObject:
@@ -629,8 +502,8 @@ GameObject:
   - component: {fileID: 1775122969}
   - component: {fileID: 1775122968}
   - component: {fileID: 1775122967}
-  - component: {fileID: 1775122966}
   - component: {fileID: 1775122972}
+  - component: {fileID: 1775122966}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -649,123 +522,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd92c8063d2e08042b557a9492d1d9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 1531751742397892, guid: 232e9e8b9b9cee2439ba7dbb6f167122,
+  icons:
+  - portrait:
+      part_of_screen: {x: 1.33, y: 0.76}
+      scale_factor: {x: 2, y: 2}
+    landspace:
+      part_of_screen: {x: 0, y: 0}
+      scale_factor: {x: 0, y: 0}
+    icon_name: back-button
+    action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 56564293}
+          m_MethodName: ChangeScene
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: DifficultyPicker
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  - portrait:
+      part_of_screen: {x: 5, y: 2.7}
+      scale_factor: {x: 4, y: 3.5}
+    landspace:
+      part_of_screen: {x: 0, y: 0}
+      scale_factor: {x: 0, y: 0}
+    icon_name: magnet
+    action:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+  icon_prefab: {fileID: 1531751742397892, guid: 232e9e8b9b9cee2439ba7dbb6f167122,
     type: 2}
-  portrait_icons:
-  - part_of_screen: {x: 5, y: 2}
-    scaleFactor: {x: 5, y: 5, z: 5}
-    iconName: title
-    action:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 3, y: 5}
-    scaleFactor: {x: 2.5, y: 2.5, z: 2.5}
-    iconName: soundOn
-    action:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 721015616}
-          m_MethodName: SoundIconAction
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 7, y: 5}
-    scaleFactor: {x: 2.5, y: 2.5, z: 2.5}
-    iconName: settings
-    action:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 721015616}
-          m_MethodName: SettingIconAction
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 5, y: 8}
-    scaleFactor: {x: 4, y: 4, z: 4}
-    iconName: play
-    action:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 721015616}
-          m_MethodName: PlayIconAction
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 5, y: 6}
-    scaleFactor: {x: 5, y: 5, z: 5}
-    iconName: lightning
-    action:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  landspace_icons:
-  - part_of_screen: {x: 5, y: 2}
-    scaleFactor: {x: 2.5, y: 2.5, z: 2.5}
-    iconName: title
-    action:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 2, y: 5}
-    scaleFactor: {x: 1.2, y: 1.2, z: 1.2}
-    iconName: soundOn
-    action:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 8, y: 5}
-    scaleFactor: {x: 1.2, y: 1.2, z: 1.2}
-    iconName: settings
-    action:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 5, y: 8}
-    scaleFactor: {x: 2, y: 2, z: 2}
-    iconName: play
-    action:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 5, y: 6}
-    scaleFactor: {x: 2, y: 2, z: 2}
-    iconName: lightning
-    action:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+  isChangingOnUpdate: 1
 --- !u!114 &1775122967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,7 +628,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -851,13 +646,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9616dc8854c99714cb3e8d01ac3e2187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelButtonPrefab: {fileID: 1799311134371814, guid: 7a4e28f00b588ce499e6e0a3492dd584,
+  startPieceOfScreen: {x: 3, y: 4.5}
+  buttonScale: {x: 6, y: 4.5}
+  levelButtonPrefab: {fileID: 1454599444985314, guid: 6491492662a6227488d4d975d0d8dd0c,
     type: 2}
   difficultyTextPrefab: {fileID: 1937212489173108, guid: fe4ed7111f6fd7f4e9eb8cc899eaafa4,
     type: 2}
-  levelsInRow: 3
-  differenceBetweenItems: 10
-  difficulties:
-  - difficultyName: Begginer
-    backgroundColor: {r: 0.58823526, g: 0.23788927, b: 0.23788927, a: 0}
-    levelsNumber: 9
+  differenceBetweenItems: {x: 4, y: 2.5}
+  difficulty:
+    difficultyName: Easy
+    backgroundColor: {r: 0.06423011, g: 0.20550355, b: 0.32352942, a: 0}
+    levelsNumber: 8

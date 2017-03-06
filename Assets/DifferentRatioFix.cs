@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class DifferentRatioFix : MonoBehaviour {
@@ -6,63 +7,121 @@ public class DifferentRatioFix : MonoBehaviour {
     [System.Serializable]
     public struct Icon
     {
-        public Vector2 part_of_screen;
-        public Vector3 scaleFactor;
-        public string iconName;
+        public Ratio portrait;
+        public Ratio landspace;
+        public string icon_name;
         public Button.ButtonClickedEvent action;
     }
 
-    public GameObject buttonPrefab;
-    public Icon[] portrait_icons;
-    public Icon[] landspace_icons;
-    private Rect titleRect;
-    private Rect settingsRect;
-    private Rect soundRect;
-    private Rect playRect;
-    //private float dx, dy;
+    [System.Serializable]
+    public struct Ratio
+    {
+        public Vector2 part_of_screen;
+        public Vector2 scale_factor;
+    }
 
+
+    public Icon[] icons;
+    private Icon[] prev_icons;
+    public GameObject icon_prefab;
+    private Rect title_rect;
+    private Rect settings_rect;
+    private Rect sound_rect;
+    private Rect play_rect;
+
+    private GameObject[] go_icons;
+    // 
+    public bool isChangingOnUpdate;
     void Start () {
-        //dx = Screen.width / 10f;
-        //dy = Screen.height / 10f;
-
         Debug.Log("Widht: " + ScreenDimensions.widthUnit + " & Height: " + ScreenDimensions.heightUnit);
-        SetGUIAspectRatio();
+        // TODO only for production, now using update method
+        if (!isChangingOnUpdate)
+        {
+            SetGUIAspectRatio();
+        } else
+        {
+            prev_icons = new Icon[icons.Length];
+            go_icons = new GameObject[icons.Length];
+
+            for (int icon_index = 0; icon_index < icons.Length; icon_index++)
+            {
+                prev_icons[icon_index].portrait.part_of_screen.x = icons[icon_index].portrait.part_of_screen.x;
+                prev_icons[icon_index].portrait.part_of_screen.y = icons[icon_index].portrait.part_of_screen.y;
+                prev_icons[icon_index].portrait.scale_factor.x = icons[icon_index].portrait.scale_factor.x;
+                prev_icons[icon_index].portrait.scale_factor.y = icons[icon_index].portrait.scale_factor.y;
+
+                prev_icons[icon_index].landspace.part_of_screen.x = icons[icon_index].landspace.part_of_screen.x;
+                prev_icons[icon_index].landspace.part_of_screen.y = icons[icon_index].landspace.part_of_screen.y;
+                prev_icons[icon_index].landspace.scale_factor.x = icons[icon_index].landspace.scale_factor.x;
+                prev_icons[icon_index].landspace.scale_factor.y = icons[icon_index].landspace.scale_factor.y;
+
+                go_icons[icon_index] = CreateIcon(icons[icon_index], ScreenDimensions.Screen_State);
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if(isChangingOnUpdate)
+        {
+            for (int icon_index = 0; icon_index < icons.Length; icon_index++)
+            {
+                if (isDifferentPositionOrScale(prev_icons[icon_index].portrait, icons[icon_index].portrait) ||
+                    isDifferentPositionOrScale(prev_icons[icon_index].landspace, icons[icon_index].landspace))
+                {
+                    Debug.Log("Desroying");
+                    Destroy(go_icons[icon_index]);
+                    go_icons[icon_index] = CreateIcon(icons[icon_index], ScreenDimensions.Screen_State);
+                }
+            }
+
+            for (int icon_index = 0; icon_index < icons.Length; icon_index++)
+            {
+                prev_icons[icon_index].portrait.part_of_screen.x = icons[icon_index].portrait.part_of_screen.x;
+                prev_icons[icon_index].portrait.part_of_screen.y = icons[icon_index].portrait.part_of_screen.y;
+                prev_icons[icon_index].portrait.scale_factor.x = icons[icon_index].portrait.scale_factor.x;
+                prev_icons[icon_index].portrait.scale_factor.y = icons[icon_index].portrait.scale_factor.y;
+
+                prev_icons[icon_index].landspace.part_of_screen.x = icons[icon_index].landspace.part_of_screen.x;
+                prev_icons[icon_index].landspace.part_of_screen.y = icons[icon_index].landspace.part_of_screen.y;
+                prev_icons[icon_index].landspace.scale_factor.x = icons[icon_index].landspace.scale_factor.x;
+                prev_icons[icon_index].landspace.scale_factor.y = icons[icon_index].landspace.scale_factor.y;
+            }
+        }
+    }
+
+    private bool isDifferentPositionOrScale(Ratio r1, Ratio r2)
+    {
+        if(r1.part_of_screen.x != r2.part_of_screen.x ||
+            r1.part_of_screen.y != r2.part_of_screen.y ||
+            r1.scale_factor.x != r2.scale_factor.x ||
+            r1.scale_factor.y != r2.scale_factor.y)
+        {
+            return true;
+        }
+
+        return false;
     }
 
     void SetGUIAspectRatio()
     {
-        if(ScreenDimensions.heightUnit > ScreenDimensions.widthUnit)
+        foreach (var icon in icons)
         {
-            foreach (var icon in portrait_icons)
-            {
-                CreateIcon(icon);
-            }
-            //CreateIcon(5, 8, 5, "title");
-            //CreateIcon(3, 5, 2.5f, "soundOn");
-            //CreateIcon(7, 5, 2.5f, "settings");
-            //CreateIcon(5, 2, 4, "play");
-            //CreateIcon(5, 3, 5, "lightning");
-        } else
-        {
-            foreach (var icon in landspace_icons)
-            {
-                CreateIcon(icon);
-            }
-            //CreateIcon(5, 8, 2.5f, "title");
-            //CreateIcon(2, 5, 1, "soundOn");
-            //CreateIcon(8, 5, 1, "settings");
-            //CreateIcon(5, 2, 2, "play");
-            //CreateIcon(5, 4, 2, "lightning");
+            CreateIcon(icon, ScreenDimensions.Screen_State);
         }
     }
 
-    GameObject CreateIcon(Icon icon)
+    GameObject CreateIcon(Icon icon, SCREEN_STATE state)
     {
-        GameObject go = Instantiate(buttonPrefab, transform);
-        go.name = icon.iconName;
-        go.transform.position = new Vector3(icon.part_of_screen.x * ScreenDimensions.widthUnit, Screen.height - icon.part_of_screen.y * ScreenDimensions.heightUnit, go.transform.position.z);
-        go.transform.localScale = icon.scaleFactor;
-        go.GetComponent<Image>().sprite = (Sprite)Resources.Load("MenuIcons/" + icon.iconName, typeof(Sprite));
+        Vector2 part_of_screen = state == SCREEN_STATE.PORTARAIT ? icon.portrait.part_of_screen : icon.landspace.part_of_screen;
+        Vector2 scale_factor = state == SCREEN_STATE.PORTARAIT ? icon.portrait.scale_factor : icon.landspace.scale_factor;
+        Debug.Log(part_of_screen);
+        Debug.Log(scale_factor);
+        GameObject go = Instantiate(icon_prefab, transform);
+        go.name = icon.icon_name;
+        go.transform.position = new Vector3(part_of_screen.x * ScreenDimensions.widthUnit, Screen.height - part_of_screen.y * ScreenDimensions.heightUnit, go.transform.position.z);
+        go.transform.localScale = scale_factor;
+        go.GetComponent<Image>().sprite = (Sprite)Resources.Load("MenuIcons/" + icon.icon_name, typeof(Sprite));
 
         if(icon.action.GetPersistentEventCount() > 0)
         {

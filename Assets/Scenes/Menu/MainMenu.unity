@@ -91,46 +91,128 @@ NavMeshSettings:
     cellSize: 0.16666667
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &763602605
+--- !u!1 &741248424
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 763602607}
-  - component: {fileID: 763602606}
+  - component: {fileID: 741248426}
+  - component: {fileID: 741248425}
+  - component: {fileID: 741248427}
   m_Layer: 0
-  m_Name: onclickMethods
+  m_Name: IconMethods
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &763602606
+--- !u!114 &741248425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 763602605}
+  m_GameObject: {fileID: 741248424}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c095b0b10b884f44afc52cb44c001e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &763602607
+  electricity: {fileID: 741248427}
+--- !u!4 &741248426
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 763602605}
+  m_GameObject: {fileID: 741248424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 60, y: 921.60004, z: 0}
+  m_LocalPosition: {x: 16.493532, y: 86.85181, z: -107.11008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &741248427
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 741248424}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4507e83b012a72545a3bb95665b0ccef, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &913932704
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,62 +600,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd92c8063d2e08042b557a9492d1d9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 1531751742397892, guid: 232e9e8b9b9cee2439ba7dbb6f167122,
-    type: 2}
-  portrait_icons:
-  - part_of_screen: {x: 5, y: 2}
-    scaleFactor: {x: 5, y: 5, z: 5}
-    iconName: title
+  icons:
+  - portrait:
+      part_of_screen: {x: 5, y: 1.7}
+      scale_factor: {x: 4, y: 4}
+    landspace:
+      part_of_screen: {x: 5, y: 2}
+      scale_factor: {x: 4, y: 2}
+    icon_name: title
     action:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 3, y: 5}
-    scaleFactor: {x: 2.5, y: 2.5, z: 2.5}
-    iconName: soundOn
+  - portrait:
+      part_of_screen: {x: 5.27, y: 5.37}
+      scale_factor: {x: 6.7, y: 5.94}
+    landspace:
+      part_of_screen: {x: 4.18, y: 5.13}
+      scale_factor: {x: 3.78, y: 2.72}
+    icon_name: lightning
     action:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 763602606}
-          m_MethodName: SoundIconAction
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
       m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 7, y: 5}
-    scaleFactor: {x: 2.5, y: 2.5, z: 2.5}
-    iconName: settings
+  - portrait:
+      part_of_screen: {x: 5, y: 8.15}
+      scale_factor: {x: 4, y: 4}
+    landspace:
+      part_of_screen: {x: 5, y: 6.43}
+      scale_factor: {x: 2, y: 2}
+    icon_name: play
     action:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 763602605}
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 5, y: 8}
-    scaleFactor: {x: 4, y: 4, z: 4}
-    iconName: play
-    action:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 763602606}
+        - m_Target: {fileID: 741248425}
           m_MethodName: ChangeScene
           m_Mode: 5
           m_Arguments:
@@ -586,55 +648,55 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 5, y: 6}
-    scaleFactor: {x: 5, y: 5, z: 5}
-    iconName: lightning
+  - portrait:
+      part_of_screen: {x: 8, y: 5.2}
+      scale_factor: {x: 2.5, y: 2.5}
+    landspace:
+      part_of_screen: {x: 7.9, y: 7.91}
+      scale_factor: {x: 1.5, y: 1.5}
+    icon_name: settings
     action:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 741248425}
+          m_MethodName: ChangeScene
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Settings
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  landspace_icons:
-  - part_of_screen: {x: 5, y: 2}
-    scaleFactor: {x: 2.5, y: 2.5, z: 2.5}
-    iconName: title
+  - portrait:
+      part_of_screen: {x: 2, y: 5.2}
+      scale_factor: {x: 2.5, y: 2.5}
+    landspace:
+      part_of_screen: {x: 2.1, y: 7.91}
+      scale_factor: {x: 1.5, y: 1.5}
+    icon_name: soundOn
     action:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 741248425}
+          m_MethodName: SoundIconAction
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
         Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 2, y: 5}
-    scaleFactor: {x: 1.2, y: 1.2, z: 1.2}
-    iconName: soundOn
-    action:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 8, y: 5}
-    scaleFactor: {x: 1.2, y: 1.2, z: 1.2}
-    iconName: settings
-    action:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 5, y: 8}
-    scaleFactor: {x: 2, y: 2, z: 2}
-    iconName: play
-    action:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - part_of_screen: {x: 5, y: 6}
-    scaleFactor: {x: 2, y: 2, z: 2}
-    iconName: lightning
-    action:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
-        Culture=neutral, PublicKeyToken=null
+  icon_prefab: {fileID: 1531751742397892, guid: 232e9e8b9b9cee2439ba7dbb6f167122,
+    type: 2}
+  isChangingOnUpdate: 1
 --- !u!1 &2118625279
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +706,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2118625281}
   - component: {fileID: 2118625280}
+  - component: {fileID: 2118625282}
   m_Layer: 0
   m_Name: back-blue
   m_TagString: Untagged
@@ -699,6 +762,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2118625282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2118625279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ce47492afdb2a4bb15f1e9550c7b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portraitBackgrond: {fileID: 21300000, guid: fc25fe94c05bf974bbc737a1ebf9e28b, type: 3}
+  landspaceBackground: {fileID: 21300000, guid: fc25fe94c05bf974bbc737a1ebf9e28b,
+    type: 3}
 --- !u!1 &2141019532
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +786,7 @@ GameObject:
   - component: {fileID: 2141019534}
   - component: {fileID: 2141019533}
   m_Layer: 0
-  m_Name: GlobalStuff
+  m_Name: Global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -737,5 +814,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
