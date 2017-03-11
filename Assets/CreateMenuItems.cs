@@ -36,8 +36,7 @@ public class CreateMenuItems : MonoBehaviour {
         goDifficulty.name = difficulty.difficultyName;
         //goDifficulty.GetComponent<Text>().color = buttonColor;
         goDifficulty.transform.localScale = new Vector3(1, 1, 1);
-        goDifficulty.transform.position = new Vector3(5 * ScreenDimensions.widthUnit, Screen.height - 1.5f * ScreenDimensions.heightUnit, 0);
-        Debug.Log(offset.y - 2 * ScreenDimensions.heightUnit);
+        goDifficulty.transform.position = new Vector3(5 * ScreenDimensions.widthUnit, Screen.height - 1.6f * ScreenDimensions.heightUnit, 0);
 
         for(int nLevelIndex = 0; nLevelIndex < difficulty.levelsNumber; nLevelIndex++)
         {
@@ -63,8 +62,9 @@ public class CreateMenuItems : MonoBehaviour {
         goLevel.name = "Button" + levelIndex;
         goLevel.transform.FindChild("Image")
                .GetComponent<Image>().sprite = (Sprite)Resources.Load(
-                                                            //"Levels/" + difficultyName + "/level" + levelNumber, typeof(Sprite));
-                                                            "Levels/Begginer/level1", typeof(Sprite));
+                                                            "Levels/" + difficultyName + "/level" + levelNumber, typeof(Sprite));
+        // Only displaying first level -                    "Levels/Begginer/level1", typeof(Sprite));
+
         goLevel.transform.FindChild("Text").GetComponent<Text>().text = levelNumber.ToString();
 
         goLevel.transform.localScale = new Vector3(buttonScale.x, buttonScale.y, 1);

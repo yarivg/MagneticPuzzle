@@ -43,9 +43,7 @@ public class SquareCreator : MonoBehaviour
             }
         }
     }
-
-
-
+    
     public static void createSquare(Vector3 squarePosition, Vector3 squareScale, GameObject squarePrefab, GameObject father)
     {
         // Init the square

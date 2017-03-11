@@ -260,8 +260,8 @@ MonoBehaviour:
       m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
         Culture=neutral, PublicKeyToken=null
   - portrait:
-      part_of_screen: {x: 5.35, y: 0.85}
-      scale_factor: {x: 5.56, y: 3}
+      part_of_screen: {x: 5, y: 1}
+      scale_factor: {x: 4, y: 3}
     landspace:
       part_of_screen: {x: 0, y: 0}
       scale_factor: {x: 0, y: 0}
@@ -272,8 +272,8 @@ MonoBehaviour:
       m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
         Culture=neutral, PublicKeyToken=null
   - portrait:
-      part_of_screen: {x: 5, y: 4.5}
-      scale_factor: {x: 9, y: 3}
+      part_of_screen: {x: 5, y: 5}
+      scale_factor: {x: 9, y: 2.5}
     landspace:
       part_of_screen: {x: 0, y: 0}
       scale_factor: {x: 0, y: 0}
@@ -295,8 +295,8 @@ MonoBehaviour:
       m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
         Culture=neutral, PublicKeyToken=null
   - portrait:
-      part_of_screen: {x: 5, y: 6.5}
-      scale_factor: {x: 9, y: 3}
+      part_of_screen: {x: 5, y: 6.75}
+      scale_factor: {x: 9, y: 2.5}
     landspace:
       part_of_screen: {x: 0, y: 0}
       scale_factor: {x: 0, y: 0}
@@ -319,7 +319,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   - portrait:
       part_of_screen: {x: 5, y: 8.5}
-      scale_factor: {x: 9, y: 3}
+      scale_factor: {x: 9, y: 2.5}
     landspace:
       part_of_screen: {x: 0, y: 0}
       scale_factor: {x: 0, y: 0}
@@ -341,8 +341,8 @@ MonoBehaviour:
       m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
         Culture=neutral, PublicKeyToken=null
   - portrait:
-      part_of_screen: {x: 5, y: 2.7}
-      scale_factor: {x: 4, y: 3.5}
+      part_of_screen: {x: 5, y: 3}
+      scale_factor: {x: 4, y: 4}
     landspace:
       part_of_screen: {x: 0, y: 0}
       scale_factor: {x: 0, y: 0}

@@ -2,36 +2,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuClicks : MonoBehaviour {
 
-    public AudioSource electricity;
-    //private int toMilliseconds = 1000;
-
-	public void ChangeScene(string sceneName)
-    {
-        if (electricity != null)
-        {
-            electricity.Play();
-            StartCoroutine(WaitForIt(electricity.clip.length, sceneName));
-        } else
-        {
-            SceneManager.LoadScene(sceneName);
-        }
+    public GameObject parentGUI;
+    public string soundOnName;
+    public string soundOffName;
+    private GameObject soundObject;
+    
+    void Start () {
+        // **My hack because you need a little delay to get the children of the canvas
+        StartCoroutine(getGUIchildsWithDelay());
     }
 
-    private IEnumerator WaitForIt(float Time, string sceneName)
+    IEnumerator getGUIchildsWithDelay()
     {
-        Debug.Log(DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond);
-        yield return new WaitForSeconds(Time);
-        Debug.Log(DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond);
+        yield return new WaitForSeconds(0.01f);
+        soundObject = parentGUI.transform.FindChild(soundOnName).gameObject;
 
-        SceneManager.LoadScene(sceneName);
+
+        LoadSound();
     }
 
-    public void SoundIconAction()
+    private void LoadSound()
     {
-        // TODO - change texture and remove all audios
+        string icon_to_load = UserPreferences.PlaySounds ? soundOnName : soundOffName;
+        soundObject.GetComponent<Image>().sprite = (Sprite)Resources.Load("MenuIcons/" + icon_to_load, typeof(Sprite));
+    }
+
+    public void ChangeSound()
+    {
+        string icon_to_load = soundObject.GetComponent<Image>().sprite.name == soundOnName ? soundOffName : soundOnName;
+        soundObject.GetComponent<Image>().sprite = (Sprite)Resources.Load("MenuIcons/" + icon_to_load, typeof(Sprite));
+
+        UserPreferences.ChangeVolume(); 
     }
 }

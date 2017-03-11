@@ -524,7 +524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icons:
   - portrait:
-      part_of_screen: {x: 1.33, y: 0.76}
+      part_of_screen: {x: 1.25, y: 0.75}
       scale_factor: {x: 2, y: 2}
     landspace:
       part_of_screen: {x: 0, y: 0}
@@ -547,8 +547,8 @@ MonoBehaviour:
       m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
         Culture=neutral, PublicKeyToken=null
   - portrait:
-      part_of_screen: {x: 5, y: 2.7}
-      scale_factor: {x: 4, y: 3.5}
+      part_of_screen: {x: 8.5, y: 0.8}
+      scale_factor: {x: 2.5, y: 2.5}
     landspace:
       part_of_screen: {x: 0, y: 0}
       scale_factor: {x: 0, y: 0}
@@ -560,7 +560,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   icon_prefab: {fileID: 1531751742397892, guid: 232e9e8b9b9cee2439ba7dbb6f167122,
     type: 2}
-  isChangingOnUpdate: 0
+  isChangingOnUpdate: 1
 --- !u!114 &1775122967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,13 +646,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9616dc8854c99714cb3e8d01ac3e2187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPieceOfScreen: {x: 3, y: 4.5}
-  buttonScale: {x: 6, y: 4.5}
+  startPieceOfScreen: {x: 3, y: 3}
+  buttonScale: {x: 7, y: 5}
   levelButtonPrefab: {fileID: 1454599444985314, guid: 6491492662a6227488d4d975d0d8dd0c,
     type: 2}
   difficultyTextPrefab: {fileID: 1937212489173108, guid: fe4ed7111f6fd7f4e9eb8cc899eaafa4,
     type: 2}
-  differenceBetweenItems: {x: 4, y: 2.5}
+  differenceBetweenItems: {x: 4, y: 3}
   difficulty:
     difficultyName: Easy
     backgroundColor: {r: 0.06423011, g: 0.20550355, b: 0.32352942, a: 0}

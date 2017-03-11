@@ -115,8 +115,7 @@ public class DifferentRatioFix : MonoBehaviour {
     {
         Vector2 part_of_screen = state == SCREEN_STATE.PORTARAIT ? icon.portrait.part_of_screen : icon.landspace.part_of_screen;
         Vector2 scale_factor = state == SCREEN_STATE.PORTARAIT ? icon.portrait.scale_factor : icon.landspace.scale_factor;
-        Debug.Log(part_of_screen);
-        Debug.Log(scale_factor);
+
         GameObject go = Instantiate(icon_prefab, transform);
         go.name = icon.icon_name;
         go.transform.position = new Vector3(part_of_screen.x * ScreenDimensions.widthUnit, Screen.height - part_of_screen.y * ScreenDimensions.heightUnit, go.transform.position.z);

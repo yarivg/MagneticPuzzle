@@ -30,8 +30,7 @@ public class ScreenDimensions : MonoBehaviour {
 
         widthUnit = Screen.width / 10f;
         heightUnit = Screen.height / 10f;
-
-        //Camera.main.aspect = 480f / 800f;
+        
         DontDestroyOnLoad(gameObject);
     }
 }
