@@ -7,16 +7,30 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour {
 
     public AudioSource electricity;
+    private AudioSource a;
 
-	public void ChangeScene(string sceneName)
+    private void Start()
     {
-        if(UserPreferences.PlaySounds)
-        {
-            if (electricity != null)
-            {
-                electricity.Play();
-                StartCoroutine(WaitForIt(electricity.clip.length, sceneName));
+        GameObject go = FindObjectOfType<ScreenDimensions>().gameObject;
 
+        a = go.GetComponent<AudioSource>();
+        if (a == null)
+        {
+            a = go.AddComponent<AudioSource>();
+        }
+        
+        a.clip = (AudioClip)Resources.Load("Sounds/" + "electricity", typeof(AudioClip));
+    }
+    public void ChangeScene(string sceneName)
+    {
+        //a.Play();
+        if (UserPreferences.PlaySounds)
+        {
+            if (a != null)
+            {
+                a.Play();
+                //electricity.Play();
+                StartCoroutine(WaitForIt(electricity.clip.length / 2, sceneName));
                 return;
             }
         }
