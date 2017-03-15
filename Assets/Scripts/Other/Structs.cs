@@ -8,11 +8,13 @@ public static class Events
 {
     public static ChangeGameState START_GAME;
     public static ChangeGameState STOP_GAME;
+    public static ChangeGameState BEFORE_THE_GAME_BEGIN;
 
     public static void restartEvents()
     {
         STOP_GAME = null;
         START_GAME = null;
+        BEFORE_THE_GAME_BEGIN = null;
     }
 }
 
@@ -123,5 +125,20 @@ public struct Wall
 
 
 }
+
+public struct TransformByValue
+{
+    public Vector3 position;
+    public Vector3 rotation;
+    public float scale;
+
+    public TransformByValue(Vector3 position,Vector3 rotation,float scale) 
+    {
+        this.position = position;
+        this.rotation = rotation;
+        this.scale = scale;
+    }
+}
+
 
 #endregion

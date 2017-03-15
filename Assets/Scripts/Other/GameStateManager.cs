@@ -8,7 +8,6 @@ public class GameStateManager : MonoBehaviour {
     public int levelInput;
     public static int level = 1;
     public static bool switchLevel;
-    public static gameStates gameState = gameStates.PlaceMagnets;
     public static BaseClicker keys;
 
     void Start()

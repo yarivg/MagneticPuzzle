@@ -26,7 +26,7 @@ public class BallMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        DetectIfLost();
+    //    DetectIfLost();
     }
 
     private void DetectIfLost()
@@ -45,7 +45,6 @@ public class BallMovement : MonoBehaviour
 
         if ((transform.position.y < LOST_VALUE_Y || framesWithSlowSpeed > MAX_FRAMES_WITH_SLOW_SPEED))
         {
-            GameStateManager.gameState = gameStates.PlaceMagnets;
             GameStateManager.switchLevel = false;
             GameStateManager.loadScene();
         }

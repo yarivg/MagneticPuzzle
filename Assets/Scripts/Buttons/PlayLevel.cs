@@ -6,17 +6,27 @@ public class PlayLevel : MonoBehaviour {
 
     void Awake()
     {
+        Events.BEFORE_THE_GAME_BEGIN += movePlay;
         Events.START_GAME += disable;
         Events.STOP_GAME += enable;
     }
 
     void OnMouseOver()
     {
-        if(Input.GetMouseButtonDown((int)Mouseclicks.leftClick))
+
+        if (GameStateManager.keys.select(gameObject))
         {
-            if(Events.START_GAME != null)
-                Events.START_GAME();
+            if (Events.BEFORE_THE_GAME_BEGIN != null)
+                Events.BEFORE_THE_GAME_BEGIN();
+            StartCoroutine(startGameWithWait(2));
+            
+
         }
+    }
+
+    void movePlay()
+    {
+        this.gameObject.transform.GetComponent<Transform>().position = new Vector3(1000, 1000, 1000);
     }
 
     void disable()
@@ -27,5 +37,12 @@ public class PlayLevel : MonoBehaviour {
     void enable()
     {
         this.gameObject.SetActive(true);
+    }
+
+    IEnumerator startGameWithWait(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        if (Events.START_GAME != null)
+            Events.START_GAME();
     }
 }

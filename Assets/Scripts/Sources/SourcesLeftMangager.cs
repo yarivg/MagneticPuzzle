@@ -11,12 +11,14 @@ public class SourcesLeftMangager : MonoBehaviour
 
     void Start()
     {
+        Events.BEFORE_THE_GAME_BEGIN += disableDad;
         sources = new GameObject[numOfSourcesToPaint];
 
         for (int i = 0; i < numOfSourcesToPaint; i++)
         {
             sources[i] = Instantiate(sourcePrefab, gameObject.transform);
-            sources[i].transform.position = gameObject.transform.position + new Vector3(1.2f + (1.5f * i), 0, -2.5f);
+            sources[i].transform.localPosition = new Vector3();
+            sources[i].transform.localPosition = gameObject.transform.position + new Vector3((12 * i), 0, 0);
             sources[i].name = "source" + i;
         }
     }
@@ -37,5 +39,10 @@ public class SourcesLeftMangager : MonoBehaviour
     public bool remainMagnets()
     {
         return numOfSourcesToPaint > 0;
+    }
+
+    public void disableDad()
+    {
+        gameObject.transform.parent.gameObject.SetActive(false);
     }
 }
