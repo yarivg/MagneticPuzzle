@@ -10,14 +10,12 @@ public static class Events
 {
     public static ChangeGameState START_GAME;
     public static ChangeGameState STOP_GAME;
-    public static ChangeOrientation CHANGE_ORIENTATION;
     public static BackButtonPressed BACK_BUTTON_PRESSED;
 
     public static void restartEvents()
     {
         STOP_GAME = null;
         START_GAME = null;
-        CHANGE_ORIENTATION = null;
         BACK_BUTTON_PRESSED = null;
     }
 }
@@ -59,12 +57,6 @@ public enum Materials
     squareAvailable,
     blueCircle
 }
-
-//public enum DeviceOrientation
-//{
-//    PORTARAIT,
-//    LANDSPACE
-//}
 
 #endregion
 

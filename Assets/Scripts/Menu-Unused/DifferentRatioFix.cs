@@ -20,8 +20,7 @@ public class DifferentRatioFix : MonoBehaviour {
         public Vector2 part_of_screen;
         public Vector2 scale_factor;
     }
-
-
+    
     public Icon[] icons;
     private Icon[] prev_icons;
     public GameObject icon_prefab;
@@ -36,8 +35,6 @@ public class DifferentRatioFix : MonoBehaviour {
 
     void Start () {
         Debug.Log("Widht: " + ScreenDimensions.widthUnit + " & Height: " + ScreenDimensions.heightUnit);
-
-        //Events.CHANGE_ORIENTATION += OnOrientationChange;
 
         // TODO only for production, now using update method
         if (!isChangingOnUpdate)
