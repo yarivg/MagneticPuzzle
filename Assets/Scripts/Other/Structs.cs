@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void ChangeGameState();
+public delegate void ChangeOrientation();
+public delegate void BackButtonPressed();
 
 public static class Events
 {
     public static ChangeGameState START_GAME;
     public static ChangeGameState STOP_GAME;
+    public static ChangeOrientation CHANGE_ORIENTATION;
+    public static BackButtonPressed BACK_BUTTON_PRESSED;
 
     public static void restartEvents()
     {
         STOP_GAME = null;
         START_GAME = null;
+        CHANGE_ORIENTATION = null;
+        BACK_BUTTON_PRESSED = null;
     }
 }
 
@@ -54,11 +60,11 @@ public enum Materials
     blueCircle
 }
 
-public enum SCREEN_STATE
-{
-    PORTARAIT,
-    LANDSPACE
-}
+//public enum DeviceOrientation
+//{
+//    PORTARAIT,
+//    LANDSPACE
+//}
 
 #endregion
 

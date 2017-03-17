@@ -17,6 +17,11 @@ public abstract class BaseClicker
         }
         return false;
     }
+    
+    public bool is_back_button_pressed()
+    {
+        return Input.GetKeyDown(KeyCode.Escape);
+    }
 }
 
 public class AndroidClicker : BaseClicker
