@@ -15,6 +15,8 @@ public class GameStateManager : MonoBehaviour {
 
     void Awake()
     {
+        Camera.main.aspect = 480f / 800f;
+
         switch (Application.platform)
         {
             case RuntimePlatform.Android:

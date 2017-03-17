@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UserPreferences : Singleton<UserPreferences>
-{
+public class UserPreferences : Singleton<UserPreferences> {
 
     protected UserPreferences() { }
     public bool PlaySounds = true;
@@ -20,7 +19,6 @@ public class UserPreferences : Singleton<UserPreferences>
         
         LastScene = SceneManager.GetActiveScene().name;
         game_dict = new Dictionary<string, string>();
-        game_dict.Add("Yariv", "Gavriel");
     }
 
     void ChangeAllAudio(float volumeVal)
