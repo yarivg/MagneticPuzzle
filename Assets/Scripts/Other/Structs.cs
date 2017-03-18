@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void ChangeGameState();
-public delegate void ChangeOrientation();
-public delegate void BackButtonPressed();
+public delegate void DeviceButtonPressed();
 
 public static class Events
 {
     public static ChangeGameState START_GAME;
     public static ChangeGameState STOP_GAME;
-    public static BackButtonPressed BACK_BUTTON_PRESSED;
+    public static DeviceButtonPressed BACK_BUTTON_PRESSED;
 
     public static void restartEvents()
     {

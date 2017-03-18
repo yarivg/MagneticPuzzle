@@ -12,9 +12,10 @@ public class SceneLoader : MonoBehaviour {
     private static float alpha_incrememnt_interval = 0.001f;
     private static float alpha_increment_value = 0.02f;
     private static float alpha_decrement_value = 0.02f;
+    private static bool can_change_screen;
     private static Transform[] fadeObjects;
 
-    private static AudioSource electricitySound {
+    private AudioSource electricitySound {
         get {
             GameObject go = GameObject.FindObjectOfType<GameStateManager>().gameObject;
             AudioSource sound = go.GetOrAddComponent<AudioSource>();
@@ -26,14 +27,25 @@ public class SceneLoader : MonoBehaviour {
 
     private void Start()
     {
-        Debug.Log(UserPreferences.Instance);
-        
         Events.BACK_BUTTON_PRESSED += PreviousScene;
+        StartCoroutine(init_screen_change(0.5f));
+    }
+
+    private IEnumerator init_screen_change(float Time)
+    {
+        can_change_screen = false;
+        yield return new WaitForSeconds(Time);
+        can_change_screen = true;
     }
 
     private void PreviousScene()
     {
-        ChangeScene(UserPreferences.Instance.LastScene);
+        if(can_change_screen)
+        {
+            Debug.Log(string.Format("Going to previous scene: {0}", UserPreferences.Instance.LastScene));
+            ChangeScene(UserPreferences.Instance.LastScene);
+            can_change_screen = false;
+        }
     }
 
     public void ChangeScene(string sceneName)
@@ -45,19 +57,23 @@ public class SceneLoader : MonoBehaviour {
                 electricitySound.Play();
             }
         }
-        StartCoroutine(WaitForIt(electricitySound.clip.length, sceneName));
+
+        SceneLoader.WaitForIt(electricitySound.clip.length, sceneName);
     }
 
-    private IEnumerator WaitForIt(float Time, string sceneName)
+    private static void WaitForIt(float Time, string sceneName)
     {
-        yield return new WaitForSeconds(Time / 4);
-        StartCoroutine(FadeOut());
-        yield return new WaitForSeconds(Time * 3 / 4);
-
+        UserPreferences.Instance.WaitForIt(Time / 4);
+        FadeOut();
+        UserPreferences.Instance.WaitForIt(Time * 3 / 4);
         UserPreferences.Instance.LastScene = SceneManager.GetActiveScene().name;
+        
         SceneManager.LoadScene(sceneName);
     }
-
+    private void Update()
+    {
+        Debug.Log(can_change_screen);
+    }
     public static IEnumerator FadeIn(GameObject canvas)
     {
         Transform[] children = canvas.GetComponentsInChildren<Transform>();

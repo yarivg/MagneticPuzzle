@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public delegate void BACK_BUTTON_PRESSED();
-
 public class GameStateManager : MonoBehaviour {
 
     public int levelInput;
@@ -15,6 +13,7 @@ public class GameStateManager : MonoBehaviour {
 
     void Awake()
     {
+        Debug.Log(UserPreferences.Instance);
         Camera.main.aspect = 480f / 800f;
 
         switch (Application.platform)
@@ -44,12 +43,11 @@ public class GameStateManager : MonoBehaviour {
 
     private void Update()
     {
-        if (UserPreferences.Instance.LastScene != SceneManager.GetActiveScene().name && keys != null)
+        if (keys != null && UserPreferences.Instance.LastScene != SceneManager.GetActiveScene().name && keys.is_back_button_pressed())
         {
-            if (keys.is_back_button_pressed())
-            {
-                Events.BACK_BUTTON_PRESSED();
-            }
+            Debug.Log(string.Format("Last: {0}, Current: {1}", UserPreferences.Instance.LastScene, SceneManager.GetActiveScene().name));
+
+            Events.BACK_BUTTON_PRESSED();
         }
     }
 }

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UserPreferences : Singleton<UserPreferences> {
+public class UserPreferences : Singleton<UserPreferences>
+{
 
     protected UserPreferences() { }
     public bool PlaySounds = true;
@@ -16,7 +17,7 @@ public class UserPreferences : Singleton<UserPreferences> {
     {
         allAudioSources = FindObjectsOfType<AudioSource>();
         ChangeAllAudio(PlaySounds ? volumeVal : 0);
-        
+
         LastScene = SceneManager.GetActiveScene().name;
         game_dict = new Dictionary<string, string>();
     }
@@ -50,5 +51,15 @@ public class UserPreferences : Singleton<UserPreferences> {
     public string GetValue(string key)
     {
         return game_dict.ContainsKey(key) ? this.game_dict[key] : null;
+    }
+
+    public void WaitForIt(float Time)
+    {
+        StartCoroutine(Wait(Time));
+    }
+
+    private IEnumerator Wait(float Time)
+    {
+        yield return new WaitForSeconds(Time);
     }
 }
