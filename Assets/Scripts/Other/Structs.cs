@@ -3,18 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void ChangeGameState();
+public delegate void ChangeSquareState(GameObject square);
 public delegate void DeviceButtonPressed();
 
 public static class Events
 {
     public static ChangeGameState START_GAME;
     public static ChangeGameState STOP_GAME;
+    public static ChangeGameState BEFORE_THE_GAME_BEGIN;
+    public static ChangeSquareState CLICK_ON_EMPTY_SQUARE;
+    public static ChangeSquareState CLICK_ON_MAGNETIC_SQUARE;
     public static DeviceButtonPressed BACK_BUTTON_PRESSED;
 
     public static void restartEvents()
     {
         STOP_GAME = null;
         START_GAME = null;
+        BEFORE_THE_GAME_BEGIN = null;
+        CLICK_ON_MAGNETIC_SQUARE = null;
+        CLICK_ON_EMPTY_SQUARE = null;
         BACK_BUTTON_PRESSED = null;
     }
 }
@@ -55,6 +62,11 @@ public enum Materials
     playButtonRestart,
     squareAvailable,
     blueCircle
+}
+
+public enum LightType
+{
+    nightLight
 }
 
 #endregion
@@ -126,5 +138,20 @@ public struct Wall
 
 
 }
+
+public struct TransformByValue
+{
+    public Vector3 position;
+    public Vector3 rotation;
+    public float scale;
+
+    public TransformByValue(Vector3 position,Vector3 rotation,float scale) 
+    {
+        this.position = position;
+        this.rotation = rotation;
+        this.scale = scale;
+    }
+}
+
 
 #endregion

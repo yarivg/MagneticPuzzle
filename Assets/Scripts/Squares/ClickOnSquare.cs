@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ClickOnSquare : MonoBehaviour
 {
-
+    public GameObject light; 
     private GameObject Magnet;
     private GameObject pickupSound;
     public ClickableSquareHandler manager;
     private SourcesLeftMangager source;
     void Start()
     {
-        source = GameObject.Find("Level" + GameStateManager.level.ToString()).transform.Find("HUD/SourceLeftText/SourceManager").GetComponent<SourcesLeftMangager>();
+        source = GameObject.Find("CurLevel").transform.Find("HUD/SourceLeftText/SourceManager").GetComponent<SourcesLeftMangager>();
         pickupSound = GameObject.FindGameObjectWithTag(Tags.Pickup.ToString());
 
         if(gameObject.tag == Tags.Floor.ToString())
@@ -23,7 +23,7 @@ public class ClickOnSquare : MonoBehaviour
         {
             manager = new ClickOnMagnetic();
         }
-        Events.START_GAME += disable;
+        Events.BEFORE_THE_GAME_BEGIN += disable;
         Events.STOP_GAME += enable;
     }
 
@@ -36,9 +36,10 @@ public class ClickOnSquare : MonoBehaviour
             SquareCreator.createSquare(this.transform.localPosition, this.transform.lossyScale,manager.getMagnetPrefab(), this.transform.parent.gameObject);
             manager.manageSources(source);
             manager.playSound(pickupSound);
-
-            Events.START_GAME -= disable;
+          //  manager.manageLight(gameObject,light);
+            Events.BEFORE_THE_GAME_BEGIN -= disable;
             Events.STOP_GAME -= enable;
+            manager.execClickEvent(gameObject);
             Destroy(this.gameObject);
 
         }

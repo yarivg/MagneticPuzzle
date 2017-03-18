@@ -7,7 +7,7 @@ public class RemoveBorders : MonoBehaviour {
 	void Awake()
     {
         Events.STOP_GAME += addBorders;
-        Events.START_GAME += removeBorders;
+        Events.BEFORE_THE_GAME_BEGIN += removeBorders;
     }
 
     private void manageBorders(bool add)

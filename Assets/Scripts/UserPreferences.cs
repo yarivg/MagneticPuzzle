@@ -9,7 +9,7 @@ public class UserPreferences : Singleton<UserPreferences>
     protected UserPreferences() { }
     public bool PlaySounds = true;
     public string LastScene { get; set; }
-    private float volumeVal = 0.1f;
+    private float volumeVal = 1f;
     private AudioSource[] allAudioSources;
     private Dictionary<string, string> game_dict;
 

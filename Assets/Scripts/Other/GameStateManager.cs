@@ -8,13 +8,13 @@ public class GameStateManager : MonoBehaviour {
     public int levelInput;
     public static int level = 1;
     public static bool switchLevel;
-    public static gameStates gameState = gameStates.PlaceMagnets;
     public static BaseClicker keys;
+    public static gameStates gameState;
 
     void Awake()
     {
-        Debug.Log(UserPreferences.Instance);
 
+        gameState = gameStates.PlaceMagnets;
         switch (Application.platform)
         {
             case RuntimePlatform.Android:
@@ -27,8 +27,6 @@ public class GameStateManager : MonoBehaviour {
                 keys = new ComputerClicker();
                 break;
         }
-
-        
         // If the user enter input , use his input 
         // Important to use this for menu
         level = levelInput == 0 ? level : levelInput;
@@ -37,15 +35,14 @@ public class GameStateManager : MonoBehaviour {
     public static void loadScene()
     {
         Events.restartEvents();
-        SceneManager.LoadScene("level" + GameStateManager.level);
+        Debug.Log(UserPreferences.Instance.GetValue("Difficulty") + "-level" + GameStateManager.level);
+        SceneManager.LoadScene(UserPreferences.Instance.GetValue("Difficulty") + "-level" + GameStateManager.level);
     }
 
     private void Update()
     {
         if (keys != null && UserPreferences.Instance.LastScene != SceneManager.GetActiveScene().name && keys.is_back_button_pressed())
         {
-            Debug.Log(string.Format("Last: {0}, Current: {1}", UserPreferences.Instance.LastScene, SceneManager.GetActiveScene().name));
-
             Events.BACK_BUTTON_PRESSED();
         }
     }

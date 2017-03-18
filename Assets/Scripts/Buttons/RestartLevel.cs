@@ -7,7 +7,7 @@ public class RestartLevel : MonoBehaviour
 
     void Awake()
     {
-        Events.START_GAME += enable;
+        Events.BEFORE_THE_GAME_BEGIN += enable;
         Events.STOP_GAME += disable;
         this.gameObject.SetActive(false);
 
@@ -15,7 +15,7 @@ public class RestartLevel : MonoBehaviour
 
     void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown((int)Mouseclicks.leftClick))
+        if (GameStateManager.keys.select(gameObject))
         {
             GameStateManager.switchLevel = false;
             GameStateManager.loadScene();

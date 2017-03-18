@@ -72,6 +72,7 @@ public class SceneLoader : MonoBehaviour {
         StartCoroutine(FadeOut());
         yield return new WaitForSeconds(Time * 3 / 4);
         UserPreferences.Instance.LastScene = SceneManager.GetActiveScene().name;
+        Events.BACK_BUTTON_PRESSED -= PreviousScene;
         SceneManager.LoadScene(sceneName);
     }
 
