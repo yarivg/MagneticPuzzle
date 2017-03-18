@@ -36,9 +36,10 @@ public class ClickOnSquare : MonoBehaviour
             SquareCreator.createSquare(this.transform.localPosition, this.transform.lossyScale,manager.getMagnetPrefab(), this.transform.parent.gameObject);
             manager.manageSources(source);
             manager.playSound(pickupSound);
-            manager.manageLight(gameObject,light);
+          //  manager.manageLight(gameObject,light);
             Events.BEFORE_THE_GAME_BEGIN -= disable;
             Events.STOP_GAME -= enable;
+            manager.execClickEvent(gameObject);
             Destroy(this.gameObject);
 
         }

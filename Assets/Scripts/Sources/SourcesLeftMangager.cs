@@ -11,7 +11,9 @@ public class SourcesLeftMangager : MonoBehaviour
 
     void Start()
     {
-        Events.BEFORE_THE_GAME_BEGIN += disableDad;
+        // Disable source object when game begin
+        Events.BEFORE_THE_GAME_BEGIN += disableParent;
+
         sources = new GameObject[numOfSourcesToPaint];
 
         for (int i = 0; i < numOfSourcesToPaint; i++)
@@ -41,7 +43,7 @@ public class SourcesLeftMangager : MonoBehaviour
         return numOfSourcesToPaint > 0;
     }
 
-    public void disableDad()
+    public void disableParent()
     {
         gameObject.transform.parent.gameObject.SetActive(false);
     }

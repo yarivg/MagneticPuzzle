@@ -9,9 +9,11 @@ public class GameStateManager : MonoBehaviour {
     public static int level = 1;
     public static bool switchLevel;
     public static BaseClicker keys;
+    public static gameStates gameState;
 
     void Start()
     {
+        gameState = gameStates.PlaceMagnets;
         switch (Application.platform)
         {
             case RuntimePlatform.Android:

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayLevel : MonoBehaviour {
 
+    public float wait;
+
     void Awake()
     {
-        Events.BEFORE_THE_GAME_BEGIN += movePlay;
-        Events.START_GAME += disable;
+        Events.BEFORE_THE_GAME_BEGIN += disable;
         Events.STOP_GAME += enable;
     }
 
@@ -16,33 +17,36 @@ public class PlayLevel : MonoBehaviour {
 
         if (GameStateManager.keys.select(gameObject))
         {
+            GameStateManager.gameState = gameStates.Play;
             if (Events.BEFORE_THE_GAME_BEGIN != null)
                 Events.BEFORE_THE_GAME_BEGIN();
-            StartCoroutine(startGameWithWait(2));
+            StartCoroutine(startGameWithWait());
             
 
         }
     }
 
-    void movePlay()
-    {
-        this.gameObject.transform.GetComponent<Transform>().position = new Vector3(1000, 1000, 1000);
-    }
-
     void disable()
     {
-        this.gameObject.SetActive(false);
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        //this.gameObject.SetActive(false);
     }
 
     void enable()
     {
-        this.gameObject.SetActive(true);
+        gameObject.GetComponent<MeshCollider>().enabled = true;
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        //  this.gameObject.SetActive(true);
     }
 
-    IEnumerator startGameWithWait(float waitTime)
+
+    IEnumerator startGameWithWait()
     {
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(wait);
+
         if (Events.START_GAME != null)
             Events.START_GAME();
+        
     }
 }

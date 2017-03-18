@@ -26,7 +26,7 @@ public class BallMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-    //    DetectIfLost();
+        DetectIfLost();
     }
 
     private void DetectIfLost()
