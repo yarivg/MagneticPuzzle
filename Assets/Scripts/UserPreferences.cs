@@ -9,7 +9,7 @@ public class UserPreferences : Singleton<UserPreferences>
     protected UserPreferences() { }
     public bool PlaySounds = true;
     public string LastScene { get; set; }
-    private float volumeVal = 0.05f;
+    private float volumeVal = 0.1f;
     private AudioSource[] allAudioSources;
     private Dictionary<string, string> game_dict;
 
@@ -51,15 +51,5 @@ public class UserPreferences : Singleton<UserPreferences>
     public string GetValue(string key)
     {
         return game_dict.ContainsKey(key) ? this.game_dict[key] : null;
-    }
-
-    public void WaitForIt(float Time)
-    {
-        StartCoroutine(Wait(Time));
-    }
-
-    private IEnumerator Wait(float Time)
-    {
-        yield return new WaitForSeconds(Time);
     }
 }

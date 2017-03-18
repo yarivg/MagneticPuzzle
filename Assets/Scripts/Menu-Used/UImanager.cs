@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UImanager : MonoBehaviour {
     public GameObject canvas;
@@ -11,7 +12,6 @@ public class UImanager : MonoBehaviour {
             canvas = GameObject.Find("Canvas");
         }
 
-        canvas.SetActive(true);
         StartCoroutine(SceneLoader.FadeIn(canvas));
     }
 }

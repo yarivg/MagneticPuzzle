@@ -38,6 +38,11 @@ public class SceneLoader : MonoBehaviour {
         can_change_screen = true;
     }
 
+    private IEnumerator WaitForIt(float Time)
+    {
+        yield return new WaitForSeconds(Time);
+    }
+
     private void PreviousScene()
     {
         if(can_change_screen)
@@ -58,22 +63,18 @@ public class SceneLoader : MonoBehaviour {
             }
         }
 
-        SceneLoader.WaitForIt(electricitySound.clip.length, sceneName);
+        StartCoroutine(WaitForIt(electricitySound.clip.length, sceneName));
     }
 
-    private static void WaitForIt(float Time, string sceneName)
+    private IEnumerator WaitForIt(float Time, string sceneName)
     {
-        UserPreferences.Instance.WaitForIt(Time / 4);
-        FadeOut();
-        UserPreferences.Instance.WaitForIt(Time * 3 / 4);
+        yield return new WaitForSeconds(Time / 4);
+        StartCoroutine(FadeOut());
+        yield return new WaitForSeconds(Time * 3 / 4);
         UserPreferences.Instance.LastScene = SceneManager.GetActiveScene().name;
-        
         SceneManager.LoadScene(sceneName);
     }
-    private void Update()
-    {
-        Debug.Log(can_change_screen);
-    }
+
     public static IEnumerator FadeIn(GameObject canvas)
     {
         Transform[] children = canvas.GetComponentsInChildren<Transform>();

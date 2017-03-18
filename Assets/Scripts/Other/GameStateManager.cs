@@ -14,7 +14,6 @@ public class GameStateManager : MonoBehaviour {
     void Awake()
     {
         Debug.Log(UserPreferences.Instance);
-        Camera.main.aspect = 480f / 800f;
 
         switch (Application.platform)
         {
