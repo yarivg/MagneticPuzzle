@@ -75,6 +75,6 @@ public class NightLight : BaseLight
     public void destroyMagnetLight(GameObject square)
     {
         string PathToCreateMagnet = LightObjPath + gameStates.Play;
-        GameObject.Destroy(GameObject.Find(PathToCreateMagnet + "light" + square.name));
+        GameObject.Destroy(GameObject.Find(PathToCreateMagnet + "/light" + square.name).gameObject);
     }
 }

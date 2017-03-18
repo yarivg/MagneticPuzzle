@@ -11,8 +11,9 @@ public class GameStateManager : MonoBehaviour {
     public static BaseClicker keys;
     public static gameStates gameState;
 
-    void Start()
+    void Awake()
     {
+
         gameState = gameStates.PlaceMagnets;
         switch (Application.platform)
         {
@@ -34,6 +35,15 @@ public class GameStateManager : MonoBehaviour {
     public static void loadScene()
     {
         Events.restartEvents();
-        SceneManager.LoadScene("level" + GameStateManager.level);
+        Debug.Log(UserPreferences.Instance.GetValue("Difficulty") + "-level" + GameStateManager.level);
+        SceneManager.LoadScene(UserPreferences.Instance.GetValue("Difficulty") + "-level" + GameStateManager.level);
+    }
+
+    private void Update()
+    {
+        if (keys != null && UserPreferences.Instance.LastScene != SceneManager.GetActiveScene().name && keys.is_back_button_pressed())
+        {
+            Events.BACK_BUTTON_PRESSED();
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class GameObjectExtention {
 
-    public static void setMatirial(this GameObject gameObject,Materials material)
+    public static void setMaterial(this GameObject gameObject,Materials material)
     {
         gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load(material.ToString(), typeof(Material));
     }
@@ -22,5 +22,20 @@ public static class GameObjectExtention {
     public static void playSound(this GameObject gameObject)
     {
         gameObject.GetComponent<AudioSource>().Play();
+    }
+
+    /// <summary>
+    /// Gets or add a component. Usage example:
+    /// BoxCollider boxCollider = transform.GetOrAddComponent<BoxCollider>();
+    /// </summary>
+    public static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component
+    {
+        T result = gameObject.GetComponent<T>();
+        if (result == null)
+        {
+            result = gameObject.AddComponent<T>();
+        }
+
+        return result;
     }
 }

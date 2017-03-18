@@ -4,6 +4,7 @@ using UnityEngine;
 
 public delegate void ChangeGameState();
 public delegate void ChangeSquareState(GameObject square);
+public delegate void DeviceButtonPressed();
 
 public static class Events
 {
@@ -12,8 +13,7 @@ public static class Events
     public static ChangeGameState BEFORE_THE_GAME_BEGIN;
     public static ChangeSquareState CLICK_ON_EMPTY_SQUARE;
     public static ChangeSquareState CLICK_ON_MAGNETIC_SQUARE;
-
-
+    public static DeviceButtonPressed BACK_BUTTON_PRESSED;
 
     public static void restartEvents()
     {
@@ -22,7 +22,7 @@ public static class Events
         BEFORE_THE_GAME_BEGIN = null;
         CLICK_ON_MAGNETIC_SQUARE = null;
         CLICK_ON_EMPTY_SQUARE = null;
-
+        BACK_BUTTON_PRESSED = null;
     }
 }
 
