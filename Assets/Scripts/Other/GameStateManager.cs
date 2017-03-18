@@ -11,8 +11,10 @@ public class GameStateManager : MonoBehaviour {
     public static gameStates gameState = gameStates.PlaceMagnets;
     public static BaseClicker keys;
 
-    void Start()
+    void Awake()
     {
+        Debug.Log(UserPreferences.Instance);
+
         switch (Application.platform)
         {
             case RuntimePlatform.Android:
@@ -25,6 +27,8 @@ public class GameStateManager : MonoBehaviour {
                 keys = new ComputerClicker();
                 break;
         }
+
+        
         // If the user enter input , use his input 
         // Important to use this for menu
         level = levelInput == 0 ? level : levelInput;
@@ -34,5 +38,15 @@ public class GameStateManager : MonoBehaviour {
     {
         Events.restartEvents();
         SceneManager.LoadScene("level" + GameStateManager.level);
+    }
+
+    private void Update()
+    {
+        if (keys != null && UserPreferences.Instance.LastScene != SceneManager.GetActiveScene().name && keys.is_back_button_pressed())
+        {
+            Debug.Log(string.Format("Last: {0}, Current: {1}", UserPreferences.Instance.LastScene, SceneManager.GetActiveScene().name));
+
+            Events.BACK_BUTTON_PRESSED();
+        }
     }
 }

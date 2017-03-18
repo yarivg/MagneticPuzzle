@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void ChangeGameState();
+public delegate void DeviceButtonPressed();
 
 public static class Events
 {
     public static ChangeGameState START_GAME;
     public static ChangeGameState STOP_GAME;
+    public static DeviceButtonPressed BACK_BUTTON_PRESSED;
 
     public static void restartEvents()
     {
         STOP_GAME = null;
         START_GAME = null;
+        BACK_BUTTON_PRESSED = null;
     }
 }
 
@@ -52,12 +55,6 @@ public enum Materials
     playButtonRestart,
     squareAvailable,
     blueCircle
-}
-
-public enum SCREEN_STATE
-{
-    PORTARAIT,
-    LANDSPACE
 }
 
 #endregion
