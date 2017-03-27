@@ -11,7 +11,7 @@ public class ClickOnSquare : MonoBehaviour
     private SourcesLeftMangager source;
     void Start()
     {
-        source = GameObject.Find("UiManager").transform.Find("LevelUI/MagnetsLeft").GetComponent<SourcesLeftMangager>();
+        source = GameObject.Find("UIManager").transform.Find("Canvas/SourceLeftText/SourceManager").GetComponent<SourcesLeftMangager>();
         pickupSound = GameObject.FindGameObjectWithTag(Tags.Pickup.ToString());
 
         if (gameObject.tag == Tags.Floor.ToString())

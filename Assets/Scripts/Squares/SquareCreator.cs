@@ -37,6 +37,7 @@ public class SquareCreator : MonoBehaviour
                 for (int zIndex = (int)area.start.zAxis; zIndex <= area.end.zAxis; zIndex++)
                 {
                     Vector3 squarePosition = new Vector3(xIndex, 0, zIndex);
+                    //Vector3 squarePosition = new Vector3(xIndex * transform.localScale.x, 0, zIndex * transform.localScale.z);
                     createSquare(squarePosition, controlableSquare.transform.localScale, controlableSquare, this.gameObject.transform.Find("CtrlSquares").gameObject);
                 }
 
