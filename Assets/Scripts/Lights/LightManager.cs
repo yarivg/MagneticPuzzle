@@ -12,10 +12,10 @@ public class LightManager : MonoBehaviour
     void Start()
     {
         // Create the ligths for every scene
-        allLights = new List<BaseLight>{ new NightLight()};
+        allLights = new List<BaseLight>{ new NightLight(), new dayLight()};
     }
 
-    void changeLight(int addValue)
+    public void changeLight(int addValue)
     {
         int lightTypeCnt = Enum.GetNames(typeof(LightType)).Length;
 
@@ -43,5 +43,6 @@ public class LightManager : MonoBehaviour
         }
 
     }
+
 
 }

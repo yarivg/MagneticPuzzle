@@ -8,7 +8,7 @@ public class PlayLevel : MonoBehaviour {
 
     void Awake()
     {
-        Events.BEFORE_THE_GAME_BEGIN += disable;
+      //  Events.BEFORE_THE_GAME_BEGIN += disable;
         Events.STOP_GAME += enable;
     }
 
@@ -17,13 +17,22 @@ public class PlayLevel : MonoBehaviour {
 
         if (GameStateManager.keys.select(gameObject))
         {
-            GameStateManager.gameState = gameStates.Play;
-            if (Events.BEFORE_THE_GAME_BEGIN != null)
-                Events.BEFORE_THE_GAME_BEGIN();
-            StartCoroutine(startGameWithWait());
-            
-
+            startGame();
         }
+    }
+
+    public void startGame()
+    {
+        GameStateManager.gameState = gameStates.Play;
+        if (Events.BEFORE_THE_GAME_BEGIN != null)
+            Events.BEFORE_THE_GAME_BEGIN();
+        StartCoroutine(startGameWithWait());
+    }
+
+    public void restartGame()
+    {
+       GameStateManager.switchLevel = false;
+       GameStateManager.loadScene();
     }
 
     void disable()

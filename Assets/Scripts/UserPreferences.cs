@@ -35,11 +35,24 @@ public class UserPreferences : Singleton<UserPreferences>
         }
     }
 
+    public float getVolume()
+    {
+        return volumeVal;
+    }
+
     public void ChangeVolume()
     {
         PlaySounds = !PlaySounds;
 
         AudioListener.volume = PlaySounds ? volumeVal : 0;
+        ChangeAllAudio(AudioListener.volume);
+    }
+
+    public void ChangeVolume(float volume)
+    {
+        PlaySounds = !PlaySounds;
+
+        AudioListener.volume = volume;
         ChangeAllAudio(AudioListener.volume);
     }
 

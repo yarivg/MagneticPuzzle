@@ -66,7 +66,8 @@ public enum Materials
 
 public enum LightType
 {
-    nightLight
+    nightLight,
+    dayLight
 }
 
 #endregion
@@ -152,6 +153,22 @@ public struct TransformByValue
         this.scale = scale;
     }
 }
+
+
+public struct DrawMagnetsIconData
+{
+    public Vector2 magnetStartPosition;
+    public Vector2 diffrenceBetweenMagnetsm;
+    public int numOfMagnetsInRow;
+
+    public DrawMagnetsIconData(Vector2 magnetStartPosition, Vector2 diffrenceBetweenMagnetsm, int numOfMagnetsInRow)
+    {
+        this.magnetStartPosition = magnetStartPosition;
+        this.diffrenceBetweenMagnetsm = diffrenceBetweenMagnetsm;
+        this.numOfMagnetsInRow = numOfMagnetsInRow;
+    }
+}
+
 
 
 #endregion

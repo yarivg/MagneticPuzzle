@@ -35,8 +35,9 @@ public class GameStateManager : MonoBehaviour {
     public static void loadScene()
     {
         Events.restartEvents();
-        Debug.Log(UserPreferences.Instance.GetValue("Difficulty") + "-level" + GameStateManager.level);
-        SceneManager.LoadScene(UserPreferences.Instance.GetValue("Difficulty") + "-level" + GameStateManager.level);
+        // **** DELETE **** 
+        SceneManager.LoadScene("LevelDesignTemplate");
+       // SceneManager.LoadScene(UserPreferences.Instance.GetValue("Difficulty") + "-level" + GameStateManager.level);
     }
 
     private void Update()

@@ -77,4 +77,18 @@ public class NightLight : BaseLight
         string PathToCreateMagnet = LightObjPath + gameStates.Play;
         GameObject.Destroy(GameObject.Find(PathToCreateMagnet + "/light" + square.name).gameObject);
     }
+
+    public void changeLightColor(GameObject square)
+    {
+        GameObject.Find(LightObjPath + "Play/" + "light" + square.name).GetComponent<Light>().color = new Color(50, 50, 50);
+    }
+}
+
+public class dayLight : BaseLight
+{
+    public dayLight()
+    {
+        light = LightType.dayLight;
+        LightObjPath += "DayLights/";
+    }
 }
