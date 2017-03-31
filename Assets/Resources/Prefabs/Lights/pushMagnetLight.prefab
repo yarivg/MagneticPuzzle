@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 108831868550022204}
   - component: {fileID: 114854196197146494}
   m_Layer: 0
-  m_Name: pullMagnetLight
+  m_Name: pushMagnetLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ Light:
   m_Enabled: 0
   serializedVersion: 7
   m_Type: 0
-  m_Color: {r: 1, g: 0, b: 0.30882353, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_Intensity: 8
   m_Range: 7.6
   m_SpotAngle: 25.665768
