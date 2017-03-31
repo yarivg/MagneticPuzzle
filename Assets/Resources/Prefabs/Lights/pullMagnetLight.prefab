@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 108831868550022204}
   - component: {fileID: 114854196197146494}
   m_Layer: 0
-  m_Name: MagnetLight
+  m_Name: pullMagnetLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

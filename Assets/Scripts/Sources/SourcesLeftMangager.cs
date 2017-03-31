@@ -17,6 +17,7 @@ public class SourcesLeftMangager : MonoBehaviour
         sources = new GameObject[numOfSourcesToPaint];
 
 
+
         for (int i = 0; i < numOfSourcesToPaint; i++)
         {
 
