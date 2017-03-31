@@ -52,20 +52,36 @@ public abstract class BaseLight {
 
 public class NightLight : BaseLight
 {
-    public GameObject magnetLight;
+    public GameObject pullMagnetLight;
+    public GameObject pushMagnetLight;
     public NightLight()
     {
         light = LightType.nightLight;
         LightObjPath += "NightLights/";
-        magnetLight = (GameObject)Resources.Load(LightPrefabPath + "MagnetLight");
-        Events.CLICK_ON_EMPTY_SQUARE += addMagnetLight;
+        pullMagnetLight = (GameObject)Resources.Load(LightPrefabPath + "pullMagnetLight");
+        pushMagnetLight = (GameObject)Resources.Load(LightPrefabPath + "pushMagnetLight");
+
+        Events.CLICK_ON_EMPTY_SQUARE += addPullMagnetLight;
         Events.CLICK_ON_MAGNETIC_SQUARE += destroyMagnetLight;
+        Events.COLLISION_WITH_MAGNET += changeToPushMagnetLight;
     }
 
-    public void addMagnetLight(GameObject square)
+    public void addPullMagnetLight(GameObject square)
     {
         string PathToCreateMagnet = LightObjPath + gameStates.Play;
-        GameObject g = GameObject.Instantiate(magnetLight, GameObject.Find(PathToCreateMagnet).transform);
+        GameObject g = GameObject.Instantiate(pullMagnetLight, GameObject.Find(PathToCreateMagnet).transform);
+        g.name = "light" + square.name;
+        g.transform.localPosition = new Vector3(square.transform.localPosition.x,
+                                                5,
+                                                square.transform.localPosition.z);
+    }
+
+    public void changeToPushMagnetLight(GameObject square)
+    {
+        string PathToCreateMagnet = LightObjPath + gameStates.Play;
+        GameObject.Destroy(GameObject.Find(PathToCreateMagnet + "/light" + square.name));
+        GameObject g = GameObject.Instantiate(pushMagnetLight, GameObject.Find(PathToCreateMagnet).transform);
+        g.GetComponent<Light>().enabled = true;
         g.name = "light" + square.name;
         g.transform.localPosition = new Vector3(square.transform.localPosition.x,
                                                 5,

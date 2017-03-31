@@ -14,6 +14,7 @@ public static class Events
     public static ChangeSquareState CLICK_ON_EMPTY_SQUARE;
     public static ChangeSquareState CLICK_ON_MAGNETIC_SQUARE;
     public static DeviceButtonPressed BACK_BUTTON_PRESSED;
+    public static ChangeSquareState COLLISION_WITH_MAGNET;
 
     public static void restartEvents()
     {
@@ -68,6 +69,12 @@ public enum LightType
 {
     nightLight,
     dayLight
+}
+
+public enum InGameCameraType
+{
+    dayCamera,
+    nightCamera
 }
 
 #endregion

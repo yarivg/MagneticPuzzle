@@ -11,7 +11,7 @@ public class ClickOnSquare : MonoBehaviour
     private SourcesLeftMangager source;
     void Start()
     {
-        source = GameObject.Find("UIManager").transform.Find("Canvas/SourceLeftText/SourceManager").GetComponent<SourcesLeftMangager>();
+        source = FindObjectOfType<SourcesLeftMangager>();
         pickupSound = GameObject.FindGameObjectWithTag(Tags.Pickup.ToString());
 
         if (gameObject.tag == Tags.Floor.ToString())
@@ -36,9 +36,11 @@ public class ClickOnSquare : MonoBehaviour
             SquareCreator.createSquare(this.transform.localPosition, this.transform.lossyScale, manager.getMagnetPrefab(), this.transform.parent.gameObject);
             manager.manageSources(source);
             manager.playSound(pickupSound);
+            manager.execClickEvent(gameObject);
+
+
             Events.BEFORE_THE_GAME_BEGIN -= disable;
             Events.STOP_GAME -= enable;
-            manager.execClickEvent(gameObject);
             Destroy(this.gameObject);
 
         }

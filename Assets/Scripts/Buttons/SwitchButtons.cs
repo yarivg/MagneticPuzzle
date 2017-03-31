@@ -16,8 +16,6 @@ public class SwitchButtons : MonoBehaviour {
         gameObject.transform.FindChild("Play").GetComponent<Button>().enabled = false;
         gameObject.transform.FindChild("Restart").GetComponent<Image>().enabled = true;
         gameObject.transform.FindChild("Restart").GetComponent<Button>().enabled = true;
-
-
     }
 
 }

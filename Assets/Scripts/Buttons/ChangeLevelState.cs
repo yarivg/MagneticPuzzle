@@ -3,27 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayLevel : MonoBehaviour {
+public class ChangeLevelState : MonoBehaviour {
 
     public float wait;
     public GameObject playButton;
     public Sprite playImage;
     public Sprite restartImage;
 
-    void Awake()
-    {
+    //void Awake()
+   // {
       //  Events.BEFORE_THE_GAME_BEGIN += disable;
-        Events.STOP_GAME += enable;
-    }
+ //   }
 
-    void OnMouseOver()
-    {
+    // *** DO IT WITH UI FUNCTION ***
+    //void OnMouseOver()
+    //{
 
-        if (GameStateManager.keys.select(gameObject))
-        {
-            startGame();
-        }
-    }
+    //    if (GameStateManager.keys.select(gameObject))
+    //    {
+    //        startGame();
+    //    }
+    //}
+
+    //void disable()
+    //{
+    //    gameObject.GetComponent<BoxCollider>().enabled = false;
+    //    gameObject.GetComponent<MeshRenderer>().enabled = false;
+    //    //this.gameObject.SetActive(false);
+    //}
+
+    //void enable()
+    //{
+    //    gameObject.GetComponent<MeshCollider>().enabled = true;
+    //    gameObject.GetComponent<MeshRenderer>().enabled = true;
+    //    //  this.gameObject.SetActive(true);
+    //}
 
     public void startGame()
     {
@@ -47,21 +61,6 @@ public class PlayLevel : MonoBehaviour {
        GameStateManager.switchLevel = false;
        GameStateManager.loadScene();
     }
-
-    void disable()
-    {
-        gameObject.GetComponent<BoxCollider>().enabled = false;
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
-        //this.gameObject.SetActive(false);
-    }
-
-    void enable()
-    {
-        gameObject.GetComponent<MeshCollider>().enabled = true;
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
-        //  this.gameObject.SetActive(true);
-    }
-
 
     IEnumerator startGameWithWait()
     {

@@ -6,10 +6,8 @@ public class CameraController : MonoBehaviour
 {
     public GameObject player;
     private float camSpeed;
-    public Vector3 offset;
-
+    private Vector3 offset;
     public GameObject PlayCamera;
-
     private TransformByValue targetCamera;
 
     void Start()
@@ -30,9 +28,15 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        this.transform.position = Vector3.Lerp(this.transform.position, /*player.transform.position + */targetCamera.position, camSpeed);
-        gameObject.transform.eulerAngles = Vector3.Lerp(this.transform.eulerAngles, targetCamera.rotation, camSpeed);
-        this.GetComponent<Camera>().orthographicSize = Mathf.Lerp(this.GetComponent<Camera>().orthographicSize, targetCamera.scale, 0.01f);
+        if (GameStateManager.gameState == gameStates.Play)
+        {
+            this.transform.position = Vector3.Lerp(this.transform.position, targetCamera.position + player.transform.position, 0.2f);
+           // this.transform.position = new Vector3(player.transform.position.x + targetCamera.position.x,
+             //                                targetCamera.position.y,
+               //                              player.transform.position.z + targetCamera.position.z);
+             gameObject.transform.eulerAngles = Vector3.Lerp(this.transform.eulerAngles, targetCamera.rotation, camSpeed);
+            // this.GetComponent<Camera>().orthographicSize = Mathf.Lerp(this.GetComponent<Camera>().orthographicSize, targetCamera.scale, 0.01f);
+        }
     }
 
     void ChangeToPlayCamera()
