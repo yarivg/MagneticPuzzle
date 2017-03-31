@@ -7,12 +7,12 @@ public class SetSliderVolume : MonoBehaviour {
 
     void Start()
     {
-        gameObject.GetComponent<Slider>().value = UserPreferences.Instance.getVolume();
+        //gameObject.GetComponent<Slider>().value = UserPreferences.Instance.getVolume();
     }
 	
 	// Update is called once per frame
 	void LateUpdate () {
-        UserPreferences.Instance.ChangeVolume(gameObject.GetComponent<Slider>().value);
+        //UserPreferences.Instance.ChangeVolume(gameObject.GetComponent<Slider>().value);
 
     }
 }

@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public GameObject player;
     private float camSpeed;
-    private Vector3 offset;
+    public Vector3 offset;
 
     public GameObject PlayCamera;
 
@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
 
     void LateUpdate()
     {
-        this.transform.position = Vector3.Lerp(this.transform.position, player.transform.position + targetCamera.position, camSpeed);
+        this.transform.position = Vector3.Lerp(this.transform.position, /*player.transform.position + */targetCamera.position, camSpeed);
         gameObject.transform.eulerAngles = Vector3.Lerp(this.transform.eulerAngles, targetCamera.rotation, camSpeed);
         this.GetComponent<Camera>().orthographicSize = Mathf.Lerp(this.GetComponent<Camera>().orthographicSize, targetCamera.scale, 0.01f);
     }

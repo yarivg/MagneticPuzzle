@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayLevel : MonoBehaviour {
 
     public float wait;
+    public GameObject playButton;
+    public Sprite playImage;
+    public Sprite restartImage;
 
     void Awake()
     {
@@ -23,10 +27,19 @@ public class PlayLevel : MonoBehaviour {
 
     public void startGame()
     {
-        GameStateManager.gameState = gameStates.Play;
-        if (Events.BEFORE_THE_GAME_BEGIN != null)
-            Events.BEFORE_THE_GAME_BEGIN();
-        StartCoroutine(startGameWithWait());
+        if(GameStateManager.gameState != gameStates.Play)
+        {
+            playButton.GetComponent<Image>().sprite = restartImage;
+            GameStateManager.gameState = gameStates.Play;
+            if (Events.BEFORE_THE_GAME_BEGIN != null)
+                Events.BEFORE_THE_GAME_BEGIN();
+            StartCoroutine(startGameWithWait());
+        } else
+        {
+            GameStateManager.switchLevel = false;
+            GameStateManager.loadScene();
+        }
+
     }
 
     public void restartGame()

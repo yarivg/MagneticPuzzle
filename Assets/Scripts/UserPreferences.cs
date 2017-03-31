@@ -7,7 +7,26 @@ public class UserPreferences : Singleton<UserPreferences>
 {
 
     protected UserPreferences() { }
-    public bool PlaySounds = true;
+    public bool PlaySounds
+    {
+        get; private set;
+    }
+
+    public void ChangeSound()
+    {
+        PlaySounds = !PlaySounds;
+    }
+
+    public bool PlayMusic
+    {
+        get; private set;
+    }
+
+    public void ChangeMusic()
+    {
+        PlayMusic = !PlayMusic;
+    }
+
     public string LastScene { get; set; }
     private float volumeVal = 1f;
     private AudioSource[] allAudioSources;
@@ -15,46 +34,48 @@ public class UserPreferences : Singleton<UserPreferences>
 
     void Awake()
     {
-        allAudioSources = FindObjectsOfType<AudioSource>();
-        ChangeAllAudio(PlaySounds ? volumeVal : 0);
-
+        PlaySounds = true;
+        PlayMusic = true;
         LastScene = SceneManager.GetActiveScene().name;
         game_dict = new Dictionary<string, string>();
+        
+        //allAudioSources = FindObjectsOfType<AudioSource>();
+        //ChangeAllAudio(PlaySounds ? volumeVal : 0);
     }
 
-    void ChangeAllAudio(float volumeVal)
-    {
-        allAudioSources = FindObjectsOfType<AudioSource>();
+    //void ChangeAllAudio(float volumeVal)
+    //{
+    //    allAudioSources = FindObjectsOfType<AudioSource>();
 
-        foreach (AudioSource audio in allAudioSources)
-        {
-            if (audio != null)
-            {
-                audio.volume = volumeVal;
-            }
-        }
-    }
+    //    foreach (AudioSource audio in allAudioSources)
+    //    {
+    //        if (audio != null)
+    //        {
+    //            audio.volume = volumeVal;
+    //        }
+    //    }
+    //}
 
-    public float getVolume()
-    {
-        return volumeVal;
-    }
+    //public float getVolume()
+    //{
+    //    return volumeVal;
+    //}
 
-    public void ChangeVolume()
-    {
-        PlaySounds = !PlaySounds;
+    //public void ChangeVolume()
+    //{
+    //    PlaySounds = !PlaySounds;
 
-        AudioListener.volume = PlaySounds ? volumeVal : 0;
-        ChangeAllAudio(AudioListener.volume);
-    }
+    //    //AudioListener.volume = PlaySounds ? volumeVal : 0;
+    //    //ChangeAllAudio(AudioListener.volume);
+    //}
+    
+    //public void ChangeVolume(float volume)
+    //{
+    //    PlaySounds = !PlaySounds;
 
-    public void ChangeVolume(float volume)
-    {
-        PlaySounds = !PlaySounds;
-
-        AudioListener.volume = volume;
-        ChangeAllAudio(AudioListener.volume);
-    }
+    //    //AudioListener.volume = volume;
+    //    //ChangeAllAudio(AudioListener.volume);
+    //}
 
     public void AddKeyValuePair(string key, string value)
     {
