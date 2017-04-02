@@ -125,9 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wait: 0.5
-  playButton: {fileID: 0}
-  playImage: {fileID: 0}
-  restartImage: {fileID: 0}
 --- !u!114 &57319209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1443,6 +1440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1332626080}
   - component: {fileID: 1332626079}
+  - component: {fileID: 1332626081}
   m_Layer: 0
   m_Name: Global
   m_TagString: Untagged
@@ -1475,6 +1473,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1332626081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1332626078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1013338ab63aa24680836381046bf7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1503076813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,7 +1836,28 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1259304367306284, guid: 561d99d73fd2c70449a86bb28abe1845, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655840909223718, guid: 561d99d73fd2c70449a86bb28abe1845, type: 2}
+      propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551454194071530, guid: 561d99d73fd2c70449a86bb28abe1845, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410151738240012, guid: 561d99d73fd2c70449a86bb28abe1845, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1424938780570182, guid: 561d99d73fd2c70449a86bb28abe1845, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 81398974327255454, guid: 561d99d73fd2c70449a86bb28abe1845,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 561d99d73fd2c70449a86bb28abe1845, type: 2}
@@ -2124,7 +2154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1972529227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2136,7 +2166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c15170f7f368a1448dcd860f04d6896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 2111683267}
 --- !u!81 &1972529228
 AudioListener:
   m_ObjectHideFlags: 0
