@@ -177,5 +177,19 @@ public struct DrawMagnetsIconData
 }
 
 
+public class LostByFallData
+{
+    public GameObject ball;
+    public int frameWithSlowSpeed;
+    public Vector3 prevPosition;
+
+    public LostByFallData(GameObject ball)
+    {
+        this.ball = ball;
+        this.frameWithSlowSpeed = 0;
+        this.prevPosition = new Vector3();
+    }
+}
+
 
 #endregion

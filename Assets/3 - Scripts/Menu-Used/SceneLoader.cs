@@ -65,8 +65,9 @@ public class SceneLoader : MonoBehaviour
                 electricitySound.Play();
             }
         }
-
-        StartCoroutine(WaitForIt(electricitySound.clip.length, sceneName));
+        // if electricty is null this cause to exception..
+        // StartCoroutine(WaitForIt(electricitySound.clip.length, sceneName));
+        StartCoroutine(WaitForIt(0.5f, sceneName));
     }
 
     private IEnumerator WaitForIt(float Time, string sceneName)

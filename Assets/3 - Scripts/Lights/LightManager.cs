@@ -27,22 +27,4 @@ public class LightManager : MonoBehaviour
         allLights[(int)lightTyp].turnOn();
 
     }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            Debug.Log("Up");
-            changeLight(1);
-        }
-
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            Debug.Log("Down");
-            changeLight(-1);
-        }
-
-    }
-
-
 }

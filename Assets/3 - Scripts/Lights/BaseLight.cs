@@ -59,7 +59,7 @@ public class NightLight : BaseLight
         light = LightType.nightLight;
         LightObjPath += "NightLights/";
         pullMagnetLight = (GameObject)Resources.Load(LightPrefabPath + "pullMagnetLight");
-        pushMagnetLight = (GameObject)Resources.Load(LightPrefabPath + "pushMagnetLight");
+        pushMagnetLight = (GameObject)Resources.Load(LightPrefabPath + "pushMagnetLight") ;
 
         Events.CLICK_ON_EMPTY_SQUARE += addPullMagnetLight;
         Events.CLICK_ON_MAGNETIC_SQUARE += destroyMagnetLight;
@@ -71,9 +71,12 @@ public class NightLight : BaseLight
         string PathToCreateMagnet = LightObjPath + gameStates.Play;
         GameObject g = GameObject.Instantiate(pullMagnetLight, GameObject.Find(PathToCreateMagnet).transform);
         g.name = "light" + square.name;
-        g.transform.localPosition = new Vector3(square.transform.localPosition.x,
-                                                5,
-                                                square.transform.localPosition.z);
+    //    g.transform.localPosition = new Vector3(square.transform.localPosition.x,
+  //                                              5,
+//                                                square.transform.localPosition.z);
+
+        Debug.Log("local:"+g.transform.localPosition);
+        Debug.Log("global:" + g.transform.position);
     }
 
     public void changeToPushMagnetLight(GameObject square)

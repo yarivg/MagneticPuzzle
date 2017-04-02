@@ -13,5 +13,6 @@ public class UImanager : MonoBehaviour {
         }
 
         StartCoroutine(SceneLoader.FadeIn(canvas));
+        
     }
 }
