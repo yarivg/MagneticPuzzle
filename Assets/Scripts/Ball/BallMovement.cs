@@ -11,7 +11,7 @@ public class BallMovement : MonoBehaviour
     private const float MIN_SPEED_TO_DIE = 0.35f;
     private const int MAX_FRAMES_WITH_SLOW_SPEED = 90;
     private const float LOST_VALUE_Y = -5;
-
+    private Vector3 startPos;
     private int framesWithSlowSpeed;
     private Vector3 prevPosition;
 
@@ -19,7 +19,9 @@ public class BallMovement : MonoBehaviour
     {
         framesWithSlowSpeed = 0;
         prevPosition = transform.position;
+        startPos = transform.position;
         Events.START_GAME += enableBallMovementAbillity;
+        Events.INIT_LEVEL += StopBallMovement;
     }
 
     void FixedUpdate()
@@ -34,18 +36,28 @@ public class BallMovement : MonoBehaviour
 
         framesWithSlowSpeed = speed < MIN_SPEED_TO_DIE ? framesWithSlowSpeed + 1 : 0;
 
-        if ((transform.position.y < LOST_VALUE_Y || framesWithSlowSpeed > MAX_FRAMES_WITH_SLOW_SPEED))
+        if (GameStateManager.gameState != gameStates.PlaceMagnets)
         {
+            if ((transform.position.y < LOST_VALUE_Y || framesWithSlowSpeed > MAX_FRAMES_WITH_SLOW_SPEED))
+            {
 
-            // *** Change it to restart function ***
-            GameStateManager.switchLevel = false;
-            GameStateManager.loadScene();
+                // *** Change it to restart function ***
+                //GameStateManager.switchLevel = false;
+                //GameStateManager.loadScene();
+                GameStateManager.resetScene();
+            }
         }
+    }
+
+    private void StopBallMovement()
+    {
+        transform.position = startPos;
+        gameObject.setKinematic(true);
     }
 
     void enableBallMovementAbillity()
     {
-        this.enabled = true;
-        this.gameObject.setKinematic(false);
+        enabled = true;
+        gameObject.setKinematic(false);
     }
 }

@@ -37,7 +37,22 @@ public class GameStateManager : MonoBehaviour {
         Events.restartEvents();
         string difficulty = UserPreferences.Instance.GetValue("Difficulty") != null ? UserPreferences.Instance.GetValue("Difficulty") : "Easy";
         Debug.Log(string.Format("Loading scene - {0}", difficulty + "-level" + level));
-        SceneManager.LoadScene(difficulty + "-level" + level);
+
+        // TODO - this line should be in production
+        //SceneManager.LoadScene(difficulty + "-level" + level);
+
+        // For debugging
+        SceneManager.LoadScene("LevelDesignTemplate");
+    }
+
+    public static void resetScene()
+    {
+        gameState = gameStates.PlaceMagnets;
+
+        // TODO - ResetSqaures and magnets
+        // Return ball to first position
+        Events.INIT_LEVEL();
+
     }
 
     private void Update()

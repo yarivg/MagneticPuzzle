@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,6 +39,15 @@ public class ChangeLevelState : MonoBehaviour {
     //    gameObject.GetComponent<MeshRenderer>().enabled = true;
     //    //  this.gameObject.SetActive(true);
     //}
+    void Start()
+    {
+        Events.INIT_LEVEL += DefaultView;
+    }
+
+    private void DefaultView()
+    {
+        playButton.GetComponent<Image>().sprite = playImage;
+    }
 
     public void startGame()
     {
@@ -47,20 +57,24 @@ public class ChangeLevelState : MonoBehaviour {
             GameStateManager.gameState = gameStates.Play;
             if (Events.BEFORE_THE_GAME_BEGIN != null)
                 Events.BEFORE_THE_GAME_BEGIN();
-            StartCoroutine(startGameWithWait());
+            //StartCoroutine(startGameWithWait());
+            if (Events.START_GAME != null)
+                Events.START_GAME();
         } else
         {
-            GameStateManager.switchLevel = false;
-            GameStateManager.loadScene();
+            GameStateManager.resetScene();
+            //playButton.GetComponent<Image>().sprite = playImage;
+            //restartGame();
         }
 
     }
 
-    public void restartGame()
-    {
-       GameStateManager.switchLevel = false;
-       GameStateManager.loadScene();
-    }
+    //public void restartGame()
+    //{
+    //    GameStateManager.gameState = gameStates.PlaceMagnets;
+    //    GameStateManager.switchLevel = false;
+    //    GameStateManager.resetScene();
+    //}
 
     IEnumerator startGameWithWait()
     {
@@ -68,6 +82,5 @@ public class ChangeLevelState : MonoBehaviour {
 
         if (Events.START_GAME != null)
             Events.START_GAME();
-        
     }
 }

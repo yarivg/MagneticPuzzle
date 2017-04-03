@@ -2,25 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManageSounds : MonoBehaviour {
+public class ManageSounds : ToggleManager {
 
     private List<AudioSource> mySounds;
-    public bool IsOn { get; set; }
 
-	// Use this for initialization
-	void Start () {
-        IsOn = true;
+    private new void OnEnable()
+    {
+        InitManager();
+    }
+
+    private void OnDisable()
+    {
+        mySounds.Clear();
+    }
+
+    private void InitManager()
+    {
+        base.OnEnable();
         mySounds = new List<AudioSource>();
 
-        foreach(Transform childTransfrorm in transform)
+        foreach (Transform childTransfrorm in transform)
         {
-            if(childTransfrorm.gameObject.GetComponent<AudioSource>() != null)
+            if (childTransfrorm.gameObject.GetComponent<AudioSource>() != null)
             {
                 mySounds.Add(childTransfrorm.gameObject.GetComponent<AudioSource>());
             }
         }
-	}
-	
+    }
+
     public void SetAudioActive(bool bIsActive)
     {
         IsOn = bIsActive;

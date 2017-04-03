@@ -452,8 +452,9 @@ PlayerSettings:
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudServicesEnabled:
+    UNet: 1
+  cloudProjectId: 47f3cf93-c275-4d0a-9a8e-e60bd7c859e2
+  projectName: MagneticPuzzle
+  organizationId: yarivgavri
   cloudEnabled: 0

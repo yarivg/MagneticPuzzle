@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1660633955472240}
+  m_IsPrefabParent: 1
+--- !u!1 &1660633955472240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4539435959120608}
+  - component: {fileID: 114513117049258726}
+  - component: {fileID: 114507889369635862}
+  - component: {fileID: 114036764274309130}
+  - component: {fileID: 114136799193227178}
+  - component: {fileID: 114742663868544612}
+  - component: {fileID: 114021514801815730}
+  m_Layer: 0
+  m_Name: IconMethods
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4539435959120608
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660633955472240}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114021514801815730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660633955472240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8237c88e16e853d42b83425d7ef3af05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114036764274309130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660633955472240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b1061a8c5b838a419e21e465180a086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114136799193227178
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660633955472240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec47d263e6a326c4a8d027205e282f89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wait: 2.5
+  playButton: {fileID: 0}
+  playImage: {fileID: 21300000, guid: 213a57da2a3718745a733937dc92d93f, type: 3}
+  restartImage: {fileID: 21300000, guid: 6f0a3323cda1a3344babc981f35365fe, type: 3}
+--- !u!114 &114507889369635862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660633955472240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd42dda1e97ebe54eac0cb73cb4653df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundScrollTime: 2
+  scrollSound: {fileID: 0}
+  soundIsShow: 0
+--- !u!114 &114513117049258726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660633955472240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c095b0b10b884f44afc52cb44c001e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114742663868544612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1660633955472240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d1d1a78deedb34ea092a92be087319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundButton:
+    gameObject: {fileID: 0}
+    iconNameOn: sound-on-orange
+    iconNameOff: sound-off-orange
+    manager: {fileID: 0}
+  MusicButton:
+    gameObject: {fileID: 0}
+    iconNameOn: music-on-green
+    iconNameOff: music-off-green
+    manager: {fileID: 0}
+  LightButton:
+    gameObject: {fileID: 0}
+    iconNameOn: day-light
+    iconNameOff: night-light
+    manager: {fileID: 0}

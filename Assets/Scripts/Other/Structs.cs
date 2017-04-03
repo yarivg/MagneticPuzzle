@@ -9,6 +9,7 @@ public delegate void DeviceButtonPressed();
 public static class Events
 {
     public static ChangeGameState START_GAME;
+    public static ChangeGameState INIT_LEVEL;
     public static ChangeGameState STOP_GAME;
     public static ChangeGameState BEFORE_THE_GAME_BEGIN;
     public static ChangeSquareState CLICK_ON_EMPTY_SQUARE;
@@ -19,6 +20,7 @@ public static class Events
     public static void restartEvents()
     {
         STOP_GAME = null;
+        INIT_LEVEL = null;
         START_GAME = null;
         BEFORE_THE_GAME_BEGIN = null;
         CLICK_ON_MAGNETIC_SQUARE = null;
