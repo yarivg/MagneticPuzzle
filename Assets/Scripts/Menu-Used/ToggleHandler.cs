@@ -48,39 +48,32 @@ public class ToggleHandler : MonoBehaviour {
 
     public void ChangeSound()
     {
-        UserPreferences.Instance.ChangeSound();
-        ((ManageSounds)SoundButton.manager).SetAudioActive(UserPreferences.Instance.PlaySounds);
+        bool isActive = UserPreferences.Instance.ChangeSound();
+        ((ManageSounds)SoundButton.manager).SetAudioActive(isActive);
+        SoundButton.Load();
         //SoundButton.gameObject.GetComponent<Image>().sprite = (Sprite)Resources.Load("MenuIcons/" + GetIconToLoad(SoundButton), typeof(Sprite));
     }
     #endregion
 
     #region Music
-    //private void LoadMusic()
-    //{
-    //    MusicButton.
-    //}
-
     public void ChangeMusic()
     {
         Debug.Log("ChangeMusic");
-        UserPreferences.Instance.ChangeMusic();
-        ((ManageSounds)MusicButton.manager).SetAudioActive(UserPreferences.Instance.PlayMusic);
+        bool isActive = UserPreferences.Instance.ChangeMusic();
+        ((ManageSounds)MusicButton.manager).SetAudioActive(isActive);
+        MusicButton.Load();
         //MusicButton.gameObject.GetComponent<Image>().sprite = (Sprite)Resources.Load("MenuIcons/" + GetIconToLoad(), typeof(Sprite));
     }
     #endregion
 
 
     #region Light
-    private void LoadLight()
-    {
-        //LightButton.gameObject.GetComponent<Image>().sprite = (Sprite)Resources.Load("MenuIcons/" + GetIconToLoad(LightButton), typeof(Sprite));
-    }
-
     public void ChangeLight()
     {
         // -- TODO raz implementation later...(maybe add that in user-preferences as audio variables.
 
         LightButton.manager.ChangeToggle();
+        LightButton.Load();
         //LightButton.gameObject.GetComponent<Image>().sprite = (Sprite)Resources.Load("MenuIcons/" + GetIconToLoad(LightButton), typeof(Sprite));
     }
     #endregion

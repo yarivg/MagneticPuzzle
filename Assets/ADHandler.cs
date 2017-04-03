@@ -3,25 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-//#if UNITY_ADS
-//using UnityEngine.Advertisements; // only compile Ads code on supported platforms
-//#endif
-
 public class ADHandler : MonoBehaviour {
 
 	public void GetMagentByViewingAd()
     {
-//#if UNITY_ADS
+#if UNITY_ADS
         if (!Advertisement.isShowing)
         {
             Advertisement.Show();
         }
-//#endif
+#endif
     }
 
     public void ShowDefaultAd()
     {
-//#if UNITY_ADS
+#if UNITY_ADS
         if (!Advertisement.IsReady())
         {
             Debug.Log("Ads not ready for default zone");
@@ -29,35 +25,34 @@ public class ADHandler : MonoBehaviour {
         }
 
         Advertisement.Show();
-//#endif
+#endif
     }
 
     public void ShowRewardedAd()
     {
         const string RewardedZoneId = "rewardedVideo";
 
-//#if UNITY_ADS
+#if UNITY_ADS
         if (!Advertisement.IsReady(RewardedZoneId))
         {
             Debug.Log(string.Format("Ads not ready for zone '{0}'", RewardedZoneId));
             return;
         }
 
-        var options = new ShowOptions { resultCallback = HandleShowResult };
+        var options = new ShowOptions { resultCallback = ResultCallback };
         Advertisement.Show(RewardedZoneId, options);
-//#endif
+#endif
     }
-
-//#if UNITY_ADS
-    private void HandleShowResult(ShowResult result)
+#if UNITY_ADS
+    private void ResultCallback(ShowResult result)
     {
         switch (result)
         {
             case ShowResult.Finished:
                 Debug.Log("The ad was successfully shown.");
-                //
-                // YOUR CODE TO REWARD THE GAMER
-                // Give coins etc.
+                
+                 //YOUR CODE TO REWARD THE GAMER
+                 //Give coins etc.
                 break;
             case ShowResult.Skipped:
                 Debug.Log("The ad was skipped before reaching the end.");
@@ -67,5 +62,5 @@ public class ADHandler : MonoBehaviour {
                 break;
         }
     }
-//#endif
+#endif
 }

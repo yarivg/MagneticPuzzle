@@ -19,19 +19,23 @@ public class ManageSounds : ToggleManager {
     private void InitManager()
     {
         base.OnEnable();
-        mySounds = new List<AudioSource>();
+        mySounds = new List<AudioSource>(GetComponents<AudioSource>());
+        Debug.Log(mySounds.Count);
+        //mySounds = new List<AudioSource>();
 
-        foreach (Transform childTransfrorm in transform)
-        {
-            if (childTransfrorm.gameObject.GetComponent<AudioSource>() != null)
-            {
-                mySounds.Add(childTransfrorm.gameObject.GetComponent<AudioSource>());
-            }
-        }
+        //foreach (Transform childTransfrorm in transform)
+        //{
+        //    if (childTransfrorm.gameObject.GetComponent<AudioSource>() != null)
+        //    {
+        //        mySounds.Add(childTransfrorm.gameObject.GetComponent<AudioSource>());
+        //    }
+        //}
     }
 
     public void SetAudioActive(bool bIsActive)
     {
+        Debug.Log(gameObject.name);
+        Debug.Log(bIsActive);
         IsOn = bIsActive;
         mySounds.ForEach((sound) => {
             if(bIsActive)

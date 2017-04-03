@@ -12,9 +12,10 @@ public class UserPreferences : Singleton<UserPreferences>
         get; private set;
     }
 
-    public void ChangeSound()
+    public bool ChangeSound()
     {
         PlaySounds = !PlaySounds;
+        return PlaySounds;
     }
 
     public bool PlayMusic
@@ -22,9 +23,10 @@ public class UserPreferences : Singleton<UserPreferences>
         get; private set;
     }
 
-    public void ChangeMusic()
+    public bool ChangeMusic()
     {
         PlayMusic = !PlayMusic;
+        return PlayMusic;
     }
 
     public string LastScene { get; set; }
