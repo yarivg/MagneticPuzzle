@@ -118,9 +118,10 @@ public class CustomTeleporter : MonoBehaviour
 					teleportSound.Play();
 
                     // delay
-                    GameStateManager.switchLevel = true;
-                    GameStateManager.level++;
-                    GameStateManager.loadScene();
+                    // **** CHANGE IT TO GENERIC FUNCTION *****
+                   // GameStateManager.switchLevel = true;
+                   // GameStateManager.level++;
+                 //   GameStateManager.loadScene();
                 }
 			}
 		}

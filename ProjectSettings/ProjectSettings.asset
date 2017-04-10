@@ -6,7 +6,7 @@ PlayerSettings:
   serializedVersion: 10
   productGUID: 891998575d385134ba26aeb7bd7683fd
   AndroidProfiler: 0
-  defaultScreenOrientation: 4
+  defaultScreenOrientation: 2
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
@@ -118,7 +118,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.threeradical.radicalrealms
+  bundleIdentifier: com.unity3d.mobileTest
   bundleVersion: 1.0
   preloadedAssets: []
   metroInputSource: 0
@@ -452,8 +452,9 @@ PlayerSettings:
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudServicesEnabled:
+    UNet: 1
+  cloudProjectId: 47f3cf93-c275-4d0a-9a8e-e60bd7c859e2
+  projectName: MagneticPuzzle
+  organizationId: yarivgavri
   cloudEnabled: 0
