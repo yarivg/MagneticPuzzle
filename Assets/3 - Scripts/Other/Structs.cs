@@ -184,19 +184,6 @@ public struct TransformByValue
 }
 
 
-public struct DrawMagnetsIconData
-{
-    public Vector2 magnetStartPosition;
-    public Vector2 diffrenceBetweenMagnetsm;
-    public int numOfMagnetsInRow;
-
-    public DrawMagnetsIconData(Vector2 magnetStartPosition, Vector2 diffrenceBetweenMagnetsm, int numOfMagnetsInRow)
-    {
-        this.magnetStartPosition = magnetStartPosition;
-        this.diffrenceBetweenMagnetsm = diffrenceBetweenMagnetsm;
-        this.numOfMagnetsInRow = numOfMagnetsInRow;
-    }
-}
 
 [System.Serializable]
 public struct InLevelData

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public abstract class ClickableSquareHandler
 {
-    public abstract bool isSquareAvailableAndClicked(SourcesLeftMangager sources,GameObject square);
-    public abstract void manageSources(SourcesLeftMangager sources);
+    public abstract bool isSquareAvailableAndClicked(SourcesLeftManager sources,GameObject square);
+    public abstract void manageSources(SourcesLeftManager sources);
     public abstract GameObject getMagnetPrefab();
     public abstract void manageLight(GameObject square,GameObject light);
     public abstract void execClickEvent(GameObject gameObject);
@@ -18,12 +18,12 @@ public abstract class ClickableSquareHandler
 
 public class ClickOnEmpty : ClickableSquareHandler
 {
-    public override bool isSquareAvailableAndClicked(SourcesLeftMangager sources, GameObject square)
+    public override bool isSquareAvailableAndClicked(SourcesLeftManager sources, GameObject square)
     {
         return GM.keys.select(square) && sources.remainMagnets();
     }
 
-    public override void manageSources(SourcesLeftMangager sources)
+    public override void manageSources(SourcesLeftManager sources)
     {
         sources.DecreaseSource();
     }
@@ -54,12 +54,12 @@ public class ClickOnEmpty : ClickableSquareHandler
 
 public class ClickOnMagnetic : ClickableSquareHandler
 {
-    public override bool isSquareAvailableAndClicked(SourcesLeftMangager sources, GameObject square)
+    public override bool isSquareAvailableAndClicked(SourcesLeftManager sources, GameObject square)
     {
         return GM.keys.deselect(square);
     }
 
-    public override void manageSources(SourcesLeftMangager sources)
+    public override void manageSources(SourcesLeftManager sources)
     {
        
         sources.IncreaseSource();

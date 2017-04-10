@@ -92,40 +92,6 @@ public class UserPreferences : Singleton<UserPreferences>
        return userSeriazibleData.generalInfo[infoName];
     }
 
-    //void ChangeAllAudio(float volumeVal)
-    //{
-    //    allAudioSources = FindObjectsOfType<AudioSource>();
-
-    //    foreach (AudioSource audio in allAudioSources)
-    //    {
-    //        if (audio != null)
-    //        {
-    //            audio.volume = volumeVal;
-    //        }
-    //    }
-    //}
-
-    //public float getVolume()
-    //{
-    //    return volumeVal;
-    //}
-
-    //public void ChangeVolume()
-    //{
-    //    PlaySounds = !PlaySounds;
-
-    //    //AudioListener.volume = PlaySounds ? volumeVal : 0;
-    //    //ChangeAllAudio(AudioListener.volume);
-    //}
-
-    //public void ChangeVolume(float volume)
-    //{
-    //    PlaySounds = !PlaySounds;
-
-    //    //AudioListener.volume = volume;
-    //    //ChangeAllAudio(AudioListener.volume);
-    //}
-
     public void AddKeyValuePair(string key, string value)
     {
         this.game_dict[key] = value;

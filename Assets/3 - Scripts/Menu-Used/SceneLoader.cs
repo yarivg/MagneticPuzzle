@@ -178,9 +178,4 @@ public class SceneLoader : MonoBehaviour
 
         }
     }
-
-    public void stam()
-    {
-        Debug.Log("touch me");
-    }
 }

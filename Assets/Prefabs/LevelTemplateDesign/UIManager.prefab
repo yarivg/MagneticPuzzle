@@ -251,7 +251,6 @@ GameObject:
   - component: {fileID: 114038325765892542}
   - component: {fileID: 114313271891421116}
   - component: {fileID: 114939415519676846}
-  - component: {fileID: 114775753739698286}
   - component: {fileID: 114742074897098878}
   m_Layer: 0
   m_Name: IconMethods
@@ -1617,17 +1616,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pref: 0
   isPref: 0
---- !u!114 &114775753739698286
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1663120645507822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1013338ab63aa24680836381046bf7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114840989472953232
 MonoBehaviour:
   m_ObjectHideFlags: 1

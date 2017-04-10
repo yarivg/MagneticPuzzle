@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SourcesLeftMangager : MonoBehaviour
+public class SourcesLeftManager : MonoBehaviour
 {
     public int nOpened;
     public Text strOpened;
@@ -36,11 +36,4 @@ public class SourcesLeftMangager : MonoBehaviour
         return nOpened > 0;
     }
 
-    //private Vector2 findCenterMagnet(int numOfMagnets, int rowLength)
-    //{
-    //    int y = numOfMagnets / rowLength / 2;
-    //    int x = Mathf.Min(numOfMagnets/2 , rowLength / 2); 
-
-    //    return new Vector2(x,y);
-    //}
 }
