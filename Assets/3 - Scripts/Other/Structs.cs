@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public delegate void DeviceButtonPressed();
 public static class Events
 {
     public static ChangeGameState START_GAME;
+    public static ChangeGameState INIT_LEVEL;
     public static ChangeGameState STOP_GAME;
     public static ChangeGameState BEFORE_THE_GAME_BEGIN;
     public static ChangeSquareState CLICK_ON_EMPTY_SQUARE;
@@ -19,6 +21,7 @@ public static class Events
     public static void restartEvents()
     {
         STOP_GAME = null;
+        INIT_LEVEL = null;
         START_GAME = null;
         BEFORE_THE_GAME_BEGIN = null;
         CLICK_ON_MAGNETIC_SQUARE = null;
@@ -75,6 +78,25 @@ public enum InGameCameraType
 {
     dayCamera,
     nightCamera
+}
+[System.Serializable]
+public enum Preferences
+{
+    Sound,
+    Music
+}
+
+public enum GeneralInfo
+{
+    money , 
+    rewards , 
+    achivements,
+    last_played_scene
+}
+
+public enum Levels
+{
+
 }
 
 #endregion
@@ -176,6 +198,67 @@ public struct DrawMagnetsIconData
     }
 }
 
+[System.Serializable]
+public struct InLevelData
+{
+    public string levelName;
+    public bool isFirstLoad;
+    public gameStates gameState;
+
+    public InLevelData(string levelName , bool isFirstLoad , gameStates gameState)
+    {
+        this.levelName = levelName;
+        this.isFirstLoad = isFirstLoad;
+        this.gameState = gameState;
+    }
+/*
+    public LevelData(string levelName)
+    {
+        this.levelName = levelName;
+        this.isFirstLoad = true;
+        this.gameState
+    } 
+    */
+}
+
+
+public struct LevelMetadata
+{
+    bool isLock;
+    bool isPass;
+    int starsPoint;
+
+}
+[System.Serializable]
+public class  UserSeriazibleData
+{
+    
+    public Dictionary<Preferences, bool> userPrefernce;
+    public Dictionary<GeneralInfo, string> generalInfo;
+    public Dictionary<Levels, LevelMetadata> levelData;
+
+    public UserSeriazibleData()
+    {
+        userPrefernce = new Dictionary<Preferences, bool>();
+        generalInfo = new Dictionary<GeneralInfo, string>();
+        levelData = new Dictionary<Levels, LevelMetadata>();
+
+        foreach(Preferences p in Enum.GetValues(typeof(Preferences)))
+        {
+            userPrefernce.Add(p, false);
+        }
+
+        foreach (GeneralInfo g in Enum.GetValues(typeof(GeneralInfo)))
+        {
+            generalInfo.Add(g, "");
+        }
+
+        foreach (Levels l in Enum.GetValues(typeof(Levels)))
+        {
+           // levelData.Add(l, new LevelMetadata());
+        }
+    }
+}
 
 public class LostByFallData
 {

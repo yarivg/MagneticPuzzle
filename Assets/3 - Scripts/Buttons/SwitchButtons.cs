@@ -5,17 +5,23 @@ using UnityEngine.UI;
 
 public class SwitchButtons : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-        Events.BEFORE_THE_GAME_BEGIN += onPlay;
-	}
+    public Preferences pref;
+    public bool isPref = true;
 
-    void onPlay()
+    void Start()
     {
-        gameObject.transform.FindChild("Play").GetComponent<Image>().enabled = false;
-        gameObject.transform.FindChild("Play").GetComponent<Button>().enabled = false;
-        gameObject.transform.FindChild("Restart").GetComponent<Image>().enabled = true;
-        gameObject.transform.FindChild("Restart").GetComponent<Button>().enabled = true;
+        if(!UserPreferences.Instance.getPreference(pref) && isPref)
+        {
+            switchButtons();
+        }
+    }
+
+    public void switchButtons()
+    {
+        foreach (Transform child in gameObject.transform)
+        {
+            child.gameObject.SetActive(!child.gameObject.activeSelf);
+        }
     }
 
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public abstract class BaseLight {
-    protected string LightObjPath = "CurLevel/Lights/";
+    protected string LightObjPath = "HUD/Lights/";
     protected string LightPrefabPath = "Prefabs/Lights/";
     protected LightType light;
 
@@ -20,17 +20,18 @@ public abstract class BaseLight {
         foreach(Transform child in GameObject.Find(LightObjPath + gs.ToString()).transform)
         {
             child.GetComponent<Light>().enabled = turnOn;
+            
         } 
     }
 
     public void turnOff()
     {
-        TurnAllLightInPath(GameStateManager.gameState,false);
+        TurnAllLightInPath(GM.levelDetails.gameState,false);
     }
 
     public void turnOn()
     {
-        TurnAllLightInPath(GameStateManager.gameState, true);
+        TurnAllLightInPath(GM.levelDetails.gameState, true);
     }
 
     private void OnPlay()
@@ -71,9 +72,10 @@ public class NightLight : BaseLight
         string PathToCreateMagnet = LightObjPath + gameStates.Play;
         GameObject g = GameObject.Instantiate(pullMagnetLight, GameObject.Find(PathToCreateMagnet).transform);
         g.name = "light" + square.name;
-    //    g.transform.localPosition = new Vector3(square.transform.localPosition.x,
-  //                                              5,
-//                                                square.transform.localPosition.z);
+        g.transform.localPosition = new Vector3(square.transform.localPosition.x,
+                                                  5,
+                                                square.transform.localPosition.z);
+
 
         Debug.Log("local:"+g.transform.localPosition);
         Debug.Log("global:" + g.transform.position);

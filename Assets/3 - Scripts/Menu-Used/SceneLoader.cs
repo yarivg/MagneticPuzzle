@@ -20,7 +20,7 @@ public class SceneLoader : MonoBehaviour
     {
         get
         {
-            GameObject go = GameObject.FindObjectOfType<GameStateManager>().gameObject;
+            GameObject go = GameObject.FindObjectOfType<GM>().gameObject;
             AudioSource sound = go.GetOrAddComponent<AudioSource>();
             sound.clip = (AudioClip)Resources.Load("Sounds/" + "electricity", typeof(AudioClip));
 

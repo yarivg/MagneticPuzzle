@@ -118,7 +118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62137475ed7787744a5badbbf1235821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelInput: 0
+  levelDetailsInput:
+    levelName: 
+    isFirstLoad: 0
+    gameState: 0
 --- !u!4 &139765658
 Transform:
   m_ObjectHideFlags: 0
@@ -613,7 +616,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5775c25868129bb489f106949f9ffef7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5613990bf0568464090489d9fb63c6f3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

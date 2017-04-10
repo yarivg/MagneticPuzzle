@@ -20,7 +20,7 @@ public class ClickOnEmpty : ClickableSquareHandler
 {
     public override bool isSquareAvailableAndClicked(SourcesLeftMangager sources, GameObject square)
     {
-        return GameStateManager.keys.select(square) && sources.remainMagnets();
+        return GM.keys.select(square) && sources.remainMagnets();
     }
 
     public override void manageSources(SourcesLeftMangager sources)
@@ -56,7 +56,7 @@ public class ClickOnMagnetic : ClickableSquareHandler
 {
     public override bool isSquareAvailableAndClicked(SourcesLeftMangager sources, GameObject square)
     {
-        return GameStateManager.keys.deselect(square);
+        return GM.keys.deselect(square);
     }
 
     public override void manageSources(SourcesLeftMangager sources)

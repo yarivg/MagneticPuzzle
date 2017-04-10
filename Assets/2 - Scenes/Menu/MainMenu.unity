@@ -355,14 +355,21 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 741248424}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23d1d1a78deedb34ea092a92be087319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundObject: {fileID: 2084244811}
-  soundOnName: sound-on
-  soundOffName: sound-off
+  SoundButton:
+    gameObject: {fileID: 0}
+    iconNameOn: 
+    iconNameOff: 
+    manager: {fileID: 0}
+  MusicButton:
+    gameObject: {fileID: 0}
+    iconNameOn: 
+    iconNameOff: 
+    manager: {fileID: 0}
 --- !u!1 &913932704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,7 +1039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2084244812
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1240,4 +1247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62137475ed7787744a5badbbf1235821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelInput: 0
+  levelDetailsInput:
+    levelName: 
+    isFirstLoad: 0
+    gameState: 0

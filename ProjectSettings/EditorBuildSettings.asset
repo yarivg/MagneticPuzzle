@@ -6,22 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu/MainMenu.unity
+    path: Assets/2 - Scenes/Menu/MainMenu.unity
   - enabled: 1
-    path: Assets/Scenes/Menu/DifficultyPicker.unity
+    path: Assets/2 - Scenes/Menu/DifficultyPicker.unity
   - enabled: 1
-    path: Assets/Scenes/Menu/Information.unity
+    path: Assets/2 - Scenes/Menu/InfoScenes/Information.unity
   - enabled: 1
-    path: Assets/Scenes/Menu/DifferentLevels/LevelsMenu.unity
+    path: Assets/2 - Scenes/Menu/LevelsMenu.unity
   - enabled: 1
-    path: Assets/Scenes/Menu/InfoScenes/About.unity
+    path: Assets/2 - Scenes/Menu/InfoScenes/About.unity
   - enabled: 1
-    path: Assets/Scenes/Menu/InfoScenes/Rules.unity
+    path: Assets/2 - Scenes/Menu/InfoScenes/Rules.unity
   - enabled: 0
     path: Assets/Scenes/level1.unity
   - enabled: 0
     path: Assets/Scenes/level2.unity
   - enabled: 1
-    path: Assets/Scenes/Levels/Easy-Level1.unity
+    path: Assets/2 - Scenes/Levels/Easy-Level1.unity
   - enabled: 1
-    path: Assets/Scenes/Easy-Level2.unity
+    path: Assets/2 - Scenes/Levels/Easy-Level2.unity
+  - enabled: 1
+    path: Assets/2 - Scenes/LevelDesignTemplate.unity
