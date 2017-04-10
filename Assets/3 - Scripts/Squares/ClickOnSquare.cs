@@ -8,10 +8,10 @@ public class ClickOnSquare : MonoBehaviour
     private GameObject Magnet;
     private GameObject pickupSound;
     public ClickableSquareHandler manager;
-    private SourcesLeftMangager source;
+    private SourcesLeftManager source;
     void Start()
     {
-        source = FindObjectOfType<SourcesLeftMangager>();
+        source = FindObjectOfType<SourcesLeftManager>();
         pickupSound = GameObject.FindGameObjectWithTag(Tags.Pickup.ToString());
 
         if (gameObject.tag == Tags.Floor.ToString())
