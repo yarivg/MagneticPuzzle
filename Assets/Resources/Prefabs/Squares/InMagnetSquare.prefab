@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114622497271019782}
   - component: {fileID: 114463780435215666}
   - component: {fileID: 114768908990974428}
+  - component: {fileID: 114988576264292396}
   m_Layer: 0
   m_Name: InMagnetSquare
   m_TagString: MagneticFloor
@@ -120,7 +121,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e5955f02c292a9f4084ac6ef0de80656, type: 2}
+  - {fileID: 2100000, guid: c94507da8e181c64e85e0e2665a197a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,7 +152,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 30ac9cddd42c14e49a5fb75ddd65b411, type: 2}
+  - {fileID: 2100000, guid: 4d06146ce74af904e8aa68cc9dd93fa3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -182,7 +183,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 16aeaa3cda15ffe45b8b6eb496361793, type: 2}
+  - {fileID: 2100000, guid: d12f09073af86e840bfd533c00812e07, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -274,3 +275,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Magnet: {fileID: 1343671213657528, guid: 0b25371633cf8ea479905e74cd2d3939, type: 2}
+--- !u!114 &114988576264292396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1343671213657528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2baff0f12f09c704cb9e1552c8221688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateToObj: {fileID: 0}
+  rotateObj: {fileID: 1830898365771182}
+  q2: {x: 0, y: 0, z: 0, w: 0}
