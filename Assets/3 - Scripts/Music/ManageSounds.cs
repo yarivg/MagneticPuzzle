@@ -1,40 +1,49 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ManageSounds : MonoBehaviour
 {
     private List<AudioSource> goSounds;
-    private bool bIsActive;
     public Preferences pref;
+    private bool bIsActive;
 
-    private void OnEnable()
+    void Start()
     {
-        InitManager();
+       goSounds = transform.GetComponentsInChildren<AudioSource>().ToList();
+       bIsActive = UserPreferences.Instance.getPreference(pref);
+       SetAudio(bIsActive);
+
     }
 
-    private void OnDisable()
-    {
-        goSounds.Clear();
-    }
+    //private void OnEnable()
+    //{
+    //    InitManager();
+    //}
 
-    private void InitManager()
-    {
-        goSounds = new List<AudioSource>(GetComponents<AudioSource>());
-        Debug.Log(goSounds.Count);
+    //private void OnDisable()
+    //{
+    //    goSounds.Clear();
+    //}
 
-        // Setting audio sources active/inactive
-        bIsActive = UserPreferences.Instance.getPreference(pref);
-        SetAudio(bIsActive);
-        //mySounds = new List<AudioSource>();
+    //private void InitManager()
+    //{
+    //    goSounds = new List<AudioSource>(GetComponents<AudioSource>());
+    //    Debug.Log(goSounds.Count);
 
-        //foreach (Transform childTransfrorm in transform)
-        //{
-        //    if (childTransfrorm.gameObject.GetComponent<AudioSource>() != null)
-        //    {
-        //        mySounds.Add(childTransfrorm.gameObject.GetComponent<AudioSource>());
-        //    }
-        //}
-    }
+    //    // Setting audio sources active/inactive
+    //    bIsActive = UserPreferences.Instance.getPreference(pref);
+    //    SetAudio(bIsActive);
+    //    //mySounds = new List<AudioSource>();
+
+    //    //foreach (Transform childTransfrorm in transform)
+    //    //{
+    //    //    if (childTransfrorm.gameObject.GetComponent<AudioSource>() != null)
+    //    //    {
+    //    //        mySounds.Add(childTransfrorm.gameObject.GetComponent<AudioSource>());
+    //    //    }
+    //    //}
+    //}
 
     public void ChangeAudioActive()
     {
@@ -57,5 +66,7 @@ public class ManageSounds : MonoBehaviour
             }
 
         });
+        Debug.Log("audio " + isSoundActive);
+        UserPreferences.Instance.setPreference(pref, isSoundActive);
     }
 }
