@@ -77,8 +77,8 @@ public class NightLight : BaseLight
                                                 square.transform.localPosition.z);
 
 
-        Debug.Log("local:"+g.transform.localPosition);
-        Debug.Log("global:" + g.transform.position);
+        //Debug.Log("local:"+g.transform.localPosition);
+        //Debug.Log("global:" + g.transform.position);
     }
 
     public void changeToPushMagnetLight(GameObject square)
