@@ -91,7 +91,8 @@ public enum GeneralInfo
     money , 
     rewards , 
     achivements,
-    last_played_scene
+    last_played_scene,
+    difficulty
 }
 
 public enum Levels
@@ -211,9 +212,9 @@ public struct InLevelData
 
 public struct LevelMetadata
 {
-    bool isLock;
-    bool isPass;
-    int starsPoint;
+    public bool isLock;
+    public bool isPass;
+    public int starsPoint;
 
 }
 [System.Serializable]
