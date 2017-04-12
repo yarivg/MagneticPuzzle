@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Fading {
+public class Fading : MonoBehaviour {
 
     private static float alpha_decrememnt_interval = 0.002f;
     private static float alpha_incrememnt_interval = 0.001f;
@@ -15,8 +15,13 @@ public class Fading {
     private static Transform[] fadeObjects;
 
 
+    // Replace can_change_scene , check if we do fade-out
+    public static bool notDuringFade;
+
+
     public static IEnumerator FadeIn(GameObject canvas)
     {
+        notDuringFade = true;
         Transform[] children = canvas.GetComponentsInChildren<Transform>();
 
         // Get only children with zero alpha
@@ -45,7 +50,7 @@ public class Fading {
         // ** If fading all ui **
         //GameObject canvas = FindObjectOfType<UImanager>().transform.FindChild("Canvas").gameObject;
         //Transform[] children = canvas.GetComponentsInChildren<Transform>();
-
+        notDuringFade = false;
         Transform[] children = fadeObjects;
 
         float alpha = 1;
@@ -68,7 +73,7 @@ public class Fading {
 
     public static IEnumerator FadeIn(GameObject gameObject, float maxAlpha, float increment, float waitTime)
     {
-
+        notDuringFade = true;
         float alpha = gameObject.GetComponent<Image>().color.a;
         while (alpha < maxAlpha)
         {
@@ -76,12 +81,11 @@ public class Fading {
             alpha += increment;
             yield return new WaitForSeconds(waitTime);
         }
-
     }
 
     public static IEnumerator FadeOut(GameObject gameObject, float decrement, float waitTime)
     {
-
+        notDuringFade = false;
         float alpha = gameObject.GetComponent<Image>().color.a; ;
         // Add for scenes that not load with fade in (levels) and there is not children to fade out
         while (alpha > 0)

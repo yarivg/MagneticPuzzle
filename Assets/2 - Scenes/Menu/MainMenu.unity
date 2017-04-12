@@ -235,9 +235,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 741248426}
-  - component: {fileID: 741248425}
   - component: {fileID: 741248427}
   - component: {fileID: 741248428}
+  - component: {fileID: 741248429}
   m_Layer: 0
   m_Name: IconMethods
   m_TagString: Untagged
@@ -245,17 +245,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &741248425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 741248424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c095b0b10b884f44afc52cb44c001e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &741248426
 Transform:
   m_ObjectHideFlags: 0
@@ -360,16 +349,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d1d1a78deedb34ea092a92be087319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundButton:
-    gameObject: {fileID: 0}
-    iconNameOn: 
-    iconNameOff: 
-    manager: {fileID: 0}
-  MusicButton:
-    gameObject: {fileID: 0}
-    iconNameOn: 
-    iconNameOff: 
-    manager: {fileID: 0}
+--- !u!114 &741248429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 741248424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f622e7f5d906db54f87636808041df7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &913932704
 GameObject:
   m_ObjectHideFlags: 0
@@ -682,8 +672,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 741248425}
-        m_MethodName: ChangeScene
+      - m_Target: {fileID: 741248429}
+        m_MethodName: changeScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -912,8 +902,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 741248425}
-        m_MethodName: ChangeScene
+      - m_Target: {fileID: 741248429}
+        m_MethodName: changeScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

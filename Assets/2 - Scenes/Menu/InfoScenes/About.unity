@@ -115,7 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 77071122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c095b0b10b884f44afc52cb44c001e1, type: 3}
+  m_Script: {fileID: 11500000, guid: f622e7f5d906db54f87636808041df7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &77071124
@@ -590,6 +590,11 @@ Prefab:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114872561558918652, guid: 6491492662a6227488d4d975d0d8dd0c,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 65849944686207998, guid: 6491492662a6227488d4d975d0d8dd0c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6491492662a6227488d4d975d0d8dd0c, type: 2}
@@ -1045,8 +1050,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 77071123}
-        m_MethodName: ChangeScene
-        m_Mode: 5
+        m_MethodName: execLastSceneEvent
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

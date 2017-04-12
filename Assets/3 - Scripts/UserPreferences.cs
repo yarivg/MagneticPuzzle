@@ -7,45 +7,46 @@ public class UserPreferences : Singleton<UserPreferences>
 {
 
 
-    protected UserPreferences() { }
-    public bool PlaySounds
-    {
-        get; private set;
-    }
+    //protected UserPreferences() { }
+    //public bool PlaySounds
+    //{
+    //    get; private set;
+    //}
 
-    public bool ChangeSound()
-    {
-        PlaySounds = !PlaySounds;
-        return PlaySounds;
-    }
+    //public bool ChangeSound()
+    //{
+    //    PlaySounds = !PlaySounds;
+    //    return PlaySounds;
+    //}
 
-    public bool PlayMusic
-    {
-        get; private set;
-    }
+    //public bool PlayMusic
+    //{
+    //    get; private set;
+    //}
 
-    public bool ChangeMusic()
-    {
-        PlayMusic = !PlayMusic;
-        return PlayMusic;
-    }
+    //public bool ChangeMusic()
+    //{
+    //    PlayMusic = !PlayMusic;
+    //    return PlayMusic;
+    //}
 
-    public string LastScene { get; set; }
-    private float volumeVal = 1f;
-    private AudioSource[] allAudioSources;
+    //public string LastScene { get; set; }
+    //private float volumeVal = 1f;
+    //private AudioSource[] allAudioSources;
 
     private UserSeriazibleData userSeriazibleData;
     private Serializblility<UserSeriazibleData> seriazible;
 
-    private Dictionary<string, string> game_dict;
+    private Dictionary<string, string> gameTempDict;
 
     void Awake()
     {
         userSeriazibleData = new UserSeriazibleData();
         seriazible = new Serializblility<UserSeriazibleData>(Application.persistentDataPath + "/savedGames.gd");
-        seriazible.Load(ref userSeriazibleData);
-        LastScene = SceneManager.GetActiveScene().name;
-        game_dict = new Dictionary<string, string>();
+        seriazible.Save(userSeriazibleData);
+       // seriazible.Load(ref userSeriazibleData);
+        //LastScene = SceneManager.GetActiveScene().name;
+        gameTempDict = new Dictionary<string, string>();
 
 
 
@@ -58,9 +59,9 @@ public class UserPreferences : Singleton<UserPreferences>
     
 
 
-    public void setLevel(Levels levelName , LevelMetadata value)
+    public void setLevel(LevelIdentifier levelName , LevelMetadata value)
     {
-        userSeriazibleData.levelData[levelName] = value;
+        userSeriazibleData.levelData[levelName.diff][levelName.levelNumber] = value;
         seriazible.Save(userSeriazibleData);
     }
 
@@ -77,9 +78,9 @@ public class UserPreferences : Singleton<UserPreferences>
         seriazible.Save(userSeriazibleData);
     }
 
-    public LevelMetadata getLevel(Levels levelName)
+    public LevelMetadata getLevel(LevelIdentifier levelName)
     {
-        return userSeriazibleData.levelData[levelName];
+        return userSeriazibleData.levelData[levelName.diff][levelName.levelNumber];
     }
 
     public bool getPreference(Preferences PreferenceName)
@@ -92,13 +93,13 @@ public class UserPreferences : Singleton<UserPreferences>
        return userSeriazibleData.generalInfo[infoName];
     }
 
-    public void AddKeyValuePair(string key, string value)
+    public void AddTempValue(string key, string value)
     {
-        this.game_dict[key] = value;
+        this.gameTempDict[key] = value;
     }
 
-    public string GetValue(string key)
+    public string GetTempInfo(string key)
     {
-        return game_dict.ContainsKey(key) ? this.game_dict[key] : null;
+        return gameTempDict.ContainsKey(key) ? this.gameTempDict[key] : null;
     }
 }

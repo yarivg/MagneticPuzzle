@@ -11,9 +11,9 @@ public class ManageDifficultyItems : MonoBehaviour {
 	void Start () {
         if (difficultyText == null) difficultyText = transform.FindChild("difficultyText").gameObject.GetComponent<Text>();
 
-        if(UserPreferences.Instance.GetValue("Difficulty") != null)
+        if(UserPreferences.Instance.GetTempInfo("Difficulty") != null)
         {
-            difficultyText.text = UserPreferences.Instance.GetValue("Difficulty");
+            difficultyText.text = UserPreferences.Instance.GetTempInfo("Difficulty");
 
             foreach (GameObject levelButton in levels)
             {

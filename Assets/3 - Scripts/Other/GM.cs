@@ -37,7 +37,7 @@ public class GM : MonoBehaviour {
     public static void loadLevel()
     {
         Events.restartEvents();
-        string difficulty = UserPreferences.Instance.GetValue("Difficulty") != null ? UserPreferences.Instance.GetValue("Difficulty") : "Easy";
+        string difficulty = UserPreferences.Instance.GetTempInfo("Difficulty") != null ? UserPreferences.Instance.GetTempInfo("Difficulty") : "Easy";
         //  Debug.Log(string.Format("Loading scene - {0}", difficulty + "-level" + level));
 
         // TODO - this line should be in production
@@ -65,7 +65,7 @@ public class GM : MonoBehaviour {
     // **** SHOULD NOT BE HERE ****
     private void Update()
     {
-        if (keys != null && UserPreferences.Instance.LastScene != SceneManager.GetActiveScene().name && keys.is_back_button_pressed())
+        if (keys != null && UserPreferences.Instance.GetTempInfo("lastScene") != SceneManager.GetActiveScene().name && keys.is_back_button_pressed())
         {
             Events.BACK_BUTTON_PRESSED();
         }
