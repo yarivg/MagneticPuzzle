@@ -213,7 +213,7 @@ public struct InLevelData
 }
 
 [Serializable]
-public struct LevelMetadata
+public class LevelMetadata
 {
     public bool isLock;
     public bool isPass;
@@ -224,6 +224,21 @@ public struct LevelMetadata
         this.isLock = isLock;
         this.isPass = isPass;
         this.starsPoint = starsPoint;
+    }
+
+    public void passLevel(LevelIdentifier name)
+    {
+        this.isPass = true;
+        LevelMetadata nextLevel;
+        nextLevel = UserPreferences.Instance.getLevel(new LevelIdentifier(name.diff, name.levelNumber + 1));
+
+        // Is it the last level in this difficulty
+        if(nextLevel != null)
+        {
+            nextLevel.isLock = false;
+            UserPreferences.Instance.setLevel(new LevelIdentifier(name.diff, name.levelNumber + 1), nextLevel);
+        }
+        
     }
 
 }
@@ -262,7 +277,6 @@ public class  UserSeriazibleData
                  {
                        isLock = true;
                      }
-                Debug.Log(isLock);
                 temp.Add(i, new LevelMetadata(isLock,false,0));
             }
             levelData.Add(d, temp);

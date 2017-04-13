@@ -6,58 +6,17 @@ using UnityEngine.SceneManagement;
 public class UserPreferences : Singleton<UserPreferences>
 {
 
-
-    //protected UserPreferences() { }
-    //public bool PlaySounds
-    //{
-    //    get; private set;
-    //}
-
-    //public bool ChangeSound()
-    //{
-    //    PlaySounds = !PlaySounds;
-    //    return PlaySounds;
-    //}
-
-    //public bool PlayMusic
-    //{
-    //    get; private set;
-    //}
-
-    //public bool ChangeMusic()
-    //{
-    //    PlayMusic = !PlayMusic;
-    //    return PlayMusic;
-    //}
-
-    //public string LastScene { get; set; }
-    //private float volumeVal = 1f;
-    //private AudioSource[] allAudioSources;
-
     private UserSeriazibleData userSeriazibleData;
     private Serializblility<UserSeriazibleData> seriazible;
-
     private Dictionary<string, string> gameTempDict;
 
     void Awake()
     {
         userSeriazibleData = new UserSeriazibleData();
         seriazible = new Serializblility<UserSeriazibleData>(Application.persistentDataPath + "/savedGames.gd");
-        seriazible.Save(userSeriazibleData);
-       // seriazible.Load(ref userSeriazibleData);
-        //LastScene = SceneManager.GetActiveScene().name;
+        seriazible.Load(ref userSeriazibleData);
         gameTempDict = new Dictionary<string, string>();
-
-
-
-        //  game_dict = new Dictionary<string, string>();
-
-        //allAudioSources = FindObjectsOfType<AudioSource>();
-        //ChangeAllAudio(PlaySounds ? volumeVal : 0);
     }
-
-    
-
 
     public void setLevel(LevelIdentifier levelName , LevelMetadata value)
     {
@@ -80,7 +39,11 @@ public class UserPreferences : Singleton<UserPreferences>
 
     public LevelMetadata getLevel(LevelIdentifier levelName)
     {
-        return userSeriazibleData.levelData[levelName.diff][levelName.levelNumber];
+        if(userSeriazibleData.levelData[levelName.diff].ContainsKey(levelName.levelNumber))
+        {
+            return userSeriazibleData.levelData[levelName.diff][levelName.levelNumber];
+        }
+        return null;
     }
 
     public bool getPreference(Preferences PreferenceName)

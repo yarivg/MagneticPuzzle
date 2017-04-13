@@ -236,7 +236,6 @@ GameObject:
   m_Component:
   - component: {fileID: 741248426}
   - component: {fileID: 741248427}
-  - component: {fileID: 741248428}
   - component: {fileID: 741248429}
   m_Layer: 0
   m_Name: IconMethods
@@ -338,17 +337,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &741248428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 741248424}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23d1d1a78deedb34ea092a92be087319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &741248429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1120,7 +1108,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 741248428}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeSound
         m_Mode: 1
         m_Arguments:

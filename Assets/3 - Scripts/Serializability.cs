@@ -30,5 +30,9 @@ public class Serializblility<T> {
             objToLoad = (T)bf.Deserialize(file);
             file.Close();
         }
+        else
+        {
+            Debug.Log("The file you try to load is not exist");
+        }
     }
 }

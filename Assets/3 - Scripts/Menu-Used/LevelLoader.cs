@@ -12,7 +12,7 @@ public class LevelLoader : SceneLoader {
 
 
 	// Use this for initialization
-	public override void Start () {
+	 void Start () {
         levelName = new LevelIdentifier((Difficulties)Enum.Parse(typeof(Difficulties), UserPreferences.Instance.GetTempInfo("Difficulty")),
                                         Int32.Parse(new String(name.Where(Char.IsDigit).ToArray())));
         metaData = UserPreferences.Instance.getLevel(levelName);
@@ -21,10 +21,12 @@ public class LevelLoader : SceneLoader {
 
     public override void changeScene(string sceneName)
     {                                                                                                                                                                                                                                                                                                                                                                         
-        Debug.Log("lock:"+ metaData.isLock);
         if(!metaData.isLock)
         {
+            Debug.Log("open level!");
             base.enableFade = false;
+
+            Debug.Log("not go to new scene now because the levels not fully design");
           //  base.changeScene(sceneName);
         }
         else
