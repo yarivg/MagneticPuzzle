@@ -247,11 +247,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4636381962415346}
   - component: {fileID: 114042228644189876}
-  - component: {fileID: 114083896747698910}
   - component: {fileID: 114038325765892542}
   - component: {fileID: 114313271891421116}
   - component: {fileID: 114939415519676846}
-  - component: {fileID: 114742074897098878}
+  - component: {fileID: 114286678396372930}
   m_Layer: 0
   m_Name: IconMethods
   m_TagString: Untagged
@@ -630,20 +629,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114083896747698910
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1663120645507822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd42dda1e97ebe54eac0cb73cb4653df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SoundScrollTime: 2
-  scrollSound: {fileID: 0}
-  soundIsShow: 0
 --- !u!114 &114108525628703568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -948,6 +933,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114286678396372930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1663120645507822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9286b1b9c353304998c01f2e4d6ea28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  androidGameId: 1286556
+  iosGameId: 1286557
+  testMode: 1
 --- !u!114 &114313271891421116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1251,7 +1250,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114742074897098878}
+      - m_Target: {fileID: 114286678396372930}
         m_MethodName: ShowRewardedAd
         m_Mode: 1
         m_Arguments:
@@ -1559,17 +1558,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114742074897098878
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1663120645507822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8237c88e16e853d42b83425d7ef3af05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114755059868968598
 MonoBehaviour:
   m_ObjectHideFlags: 1
