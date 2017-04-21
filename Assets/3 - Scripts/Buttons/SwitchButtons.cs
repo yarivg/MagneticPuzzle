@@ -12,7 +12,7 @@ public class SwitchButtons : MonoBehaviour {
     {
         if(!UserPreferences.Instance.getPreference(pref) && isPref)
         {
-            switchButtons();
+           switchButtons();
         }
     }
 

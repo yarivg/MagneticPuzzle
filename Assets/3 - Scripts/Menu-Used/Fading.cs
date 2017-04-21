@@ -22,7 +22,7 @@ public class Fading : MonoBehaviour {
     public static IEnumerator FadeIn(GameObject canvas)
     {
         notDuringFade = true;
-        Transform[] children = canvas.GetComponentsInChildren<Transform>();
+        Transform[] children = canvas.GetComponentsInChildren<Transform>(true);
 
         // Get only children with zero alpha
         List<Transform> fade_in_children = new List<Transform>(children);

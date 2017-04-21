@@ -15,40 +15,34 @@ public abstract class BaseLight {
         Events.STOP_GAME += onPlaceMagnets;
     }
 
-    private void TurnAllLightInPath(gameStates gs,bool turnOn)
-    {
-        foreach(Transform child in GameObject.Find(LightObjPath + gs.ToString()).transform)
-        {
-            child.GetComponent<Light>().enabled = turnOn;
-            
-        } 
-    }
-
+    // Enable/disable current object
     public void turnOff()
     {
-        TurnAllLightInPath(GM.levelDetails.gameState,false);
+        GameObject.Find(LightObjPath).SetActive(false);
     }
 
     public void turnOn()
     {
-        TurnAllLightInPath(GM.levelDetails.gameState, true);
+        GameObject.Find(LightObjPath).SetActive(true);
     }
 
+    // Enable and disable play/place magnets lights
     private void OnPlay()
     {
-        bool turnOnPlayLight = light == LightManager.lightTyp;
-        bool turnOnPlaceMagnetsLights = false;
-        TurnAllLightInPath(gameStates.Play, turnOnPlayLight);
-        TurnAllLightInPath(gameStates.PlaceMagnets, turnOnPlaceMagnetsLights);
+        Debug.Log("progress play lights..");
+        GameObject.Find(LightObjPath + gameStates.Play.ToString()).SetActive(true);
+        GameObject.Find(LightObjPath + gameStates.PlaceMagnets.ToString()).SetActive(false);
     }
 
     private void onPlaceMagnets()
     {
-        bool turnOnPlaceMagnetsLights = light == LightManager.lightTyp;
-        bool turnOnPlayLight = false;
-        TurnAllLightInPath(gameStates.Play, turnOnPlayLight);
-        TurnAllLightInPath(gameStates.PlaceMagnets, turnOnPlaceMagnetsLights);
+        GameObject.Find(LightObjPath + gameStates.Play.ToString()).SetActive(false);
+        GameObject.Find(LightObjPath + gameStates.PlaceMagnets.ToString()).SetActive(true);
+
     }
+
+
+
 }
 
 public class NightLight : BaseLight
@@ -65,11 +59,13 @@ public class NightLight : BaseLight
         Events.CLICK_ON_EMPTY_SQUARE += addPullMagnetLight;
         Events.CLICK_ON_MAGNETIC_SQUARE += destroyMagnetLight;
         Events.COLLISION_WITH_MAGNET += changeToPushMagnetLight;
+
+       
     }
 
     public void addPullMagnetLight(GameObject square)
     {
-        string PathToCreateMagnet = LightObjPath + gameStates.Play;
+        string PathToCreateMagnet = LightObjPath + "GenericLights";
         GameObject g = GameObject.Instantiate(pullMagnetLight, GameObject.Find(PathToCreateMagnet).transform);
         g.name = "light" + square.name;
         g.transform.localPosition = new Vector3(square.transform.localPosition.x,
@@ -83,7 +79,7 @@ public class NightLight : BaseLight
 
     public void changeToPushMagnetLight(GameObject square)
     {
-        string PathToCreateMagnet = LightObjPath + gameStates.Play;
+        string PathToCreateMagnet = LightObjPath + "GenericLights";
         GameObject.Destroy(GameObject.Find(PathToCreateMagnet + "/light" + square.name));
         GameObject g = GameObject.Instantiate(pushMagnetLight, GameObject.Find(PathToCreateMagnet).transform);
         g.GetComponent<Light>().enabled = true;
@@ -95,7 +91,7 @@ public class NightLight : BaseLight
 
     public void destroyMagnetLight(GameObject square)
     {
-        string PathToCreateMagnet = LightObjPath + gameStates.Play;
+        string PathToCreateMagnet = LightObjPath + "GenericLights";
         GameObject.Destroy(GameObject.Find(PathToCreateMagnet + "/light" + square.name).gameObject);
     }
 

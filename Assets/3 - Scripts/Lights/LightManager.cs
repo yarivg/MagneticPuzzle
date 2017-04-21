@@ -17,7 +17,11 @@ public class LightManager : MonoBehaviour
 
     public void changeLight(int addValue)
     {
+
         int lightTypeCnt = Enum.GetNames(typeof(LightType)).Length;
+
+        Debug.Log("changing the light:" + lightTyp);
+
 
         // Turn off curent light
         allLights[(int)lightTyp].turnOff();

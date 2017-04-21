@@ -9,11 +9,11 @@ public class ManageDifficultyItems : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        if (difficultyText == null) difficultyText = transform.FindChild("difficultyText").gameObject.GetComponent<Text>();
+       // if (difficultyText == null) difficultyText = transform.FindChild("difficultyText").gameObject.GetComponent<Text>();
 
         if(UserPreferences.Instance.GetTempInfo("Difficulty") != null)
         {
-            difficultyText.text = UserPreferences.Instance.GetTempInfo("Difficulty");
+          //  difficultyText.text = UserPreferences.Instance.GetTempInfo("Difficulty");
 
             foreach (GameObject levelButton in levels)
             {
