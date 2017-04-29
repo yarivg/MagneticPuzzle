@@ -45,10 +45,10 @@ public class GM : MonoBehaviour {
 
         // More easy.. TODO - this line should be in production
 
-        //  SceneManager.LoadScene(levelDetails.levelName);
+        SceneManager.LoadScene(levelDetails.levelName);
 
         // For debugging
-        SceneManager.LoadScene("LevelDesignTemplate");
+        //SceneManager.LoadScene("LevelDesignTemplate");
         
     }
 
