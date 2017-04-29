@@ -12,7 +12,7 @@ public class UImanager : MonoBehaviour {
             canvas = GameObject.Find("Canvas");
         }
 
-        StartCoroutine(SceneLoader.FadeIn(canvas));
+        StartCoroutine(Fading.FadeIn(canvas));
         
     }
 }

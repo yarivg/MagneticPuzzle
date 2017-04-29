@@ -27,6 +27,7 @@ public static class Events
         CLICK_ON_MAGNETIC_SQUARE = null;
         CLICK_ON_EMPTY_SQUARE = null;
         BACK_BUTTON_PRESSED = null;
+        COLLISION_WITH_MAGNET = null;
     }
 }
 
@@ -91,12 +92,15 @@ public enum GeneralInfo
     money , 
     rewards , 
     achivements,
-    last_played_scene
+    last_played_scene,
+    difficulty
 }
 
-public enum Levels
+public enum Difficulties
 {
-
+    Easy,
+    Medium,
+    Hard
 }
 
 #endregion
@@ -208,12 +212,34 @@ public struct InLevelData
     */
 }
 
-
-public struct LevelMetadata
+[Serializable]
+public class LevelMetadata
 {
-    bool isLock;
-    bool isPass;
-    int starsPoint;
+    public bool isLock;
+    public bool isPass;
+    public int starsPoint;
+
+    public LevelMetadata(bool isLock,bool isPass,int starsPoint)
+    {
+        this.isLock = isLock;
+        this.isPass = isPass;
+        this.starsPoint = starsPoint;
+    }
+
+    public void passLevel(LevelIdentifier name)
+    {
+        this.isPass = true;
+        LevelMetadata nextLevel;
+        nextLevel = UserPreferences.Instance.getLevel(new LevelIdentifier(name.diff, name.levelNumber + 1));
+
+        // Is it the last level in this difficulty
+        if(nextLevel != null)
+        {
+            nextLevel.isLock = false;
+            UserPreferences.Instance.setLevel(new LevelIdentifier(name.diff, name.levelNumber + 1), nextLevel);
+        }
+        
+    }
 
 }
 [System.Serializable]
@@ -222,13 +248,13 @@ public class  UserSeriazibleData
     
     public Dictionary<Preferences, bool> userPrefernce;
     public Dictionary<GeneralInfo, string> generalInfo;
-    public Dictionary<Levels, LevelMetadata> levelData;
+    public Dictionary<Difficulties,Dictionary<int,LevelMetadata>> levelData;
 
     public UserSeriazibleData()
     {
         userPrefernce = new Dictionary<Preferences, bool>();
         generalInfo = new Dictionary<GeneralInfo, string>();
-        levelData = new Dictionary<Levels, LevelMetadata>();
+        levelData = new Dictionary<Difficulties, Dictionary<int, LevelMetadata>>();
 
         foreach(Preferences p in Enum.GetValues(typeof(Preferences)))
         {
@@ -240,9 +266,20 @@ public class  UserSeriazibleData
             generalInfo.Add(g, "");
         }
 
-        foreach (Levels l in Enum.GetValues(typeof(Levels)))
+        foreach (Difficulties d in Enum.GetValues(typeof(Difficulties)))
         {
-           // levelData.Add(l, new LevelMetadata());
+            int LevelsPerDifficulty = 8;
+            Dictionary<int, LevelMetadata> temp = new Dictionary<int, LevelMetadata>();
+            for(int i = 1; i <= LevelsPerDifficulty; i++)
+            {
+                bool isLock = false;
+                if(i > 1)
+                 {
+                       isLock = true;
+                     }
+                temp.Add(i, new LevelMetadata(isLock,false,0));
+            }
+            levelData.Add(d, temp);
         }
     }
 }
@@ -258,6 +295,20 @@ public class LostByFallData
         this.ball = ball;
         this.frameWithSlowSpeed = 0;
         this.prevPosition = new Vector3();
+    }
+}
+
+public struct LevelIdentifier
+{
+    public Difficulties diff;
+    public int levelNumber;
+    public string levelName;
+
+    public LevelIdentifier(Difficulties diff , int levelNumber)
+    {
+        this.diff = diff;
+        this.levelNumber = levelNumber;
+        levelName = diff.ToString() + "-Level" + levelNumber;
     }
 }
 

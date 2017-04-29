@@ -211,7 +211,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1622735083}
-        m_MethodName: ChangeScene
+        m_MethodName: changeScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -385,7 +385,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1622735083}
-        m_MethodName: ChangeScene
+        m_MethodName: changeScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -585,8 +585,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1622735083}
-        m_MethodName: ChangeScene
-        m_Mode: 5
+        m_MethodName: PreviousScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -975,8 +975,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1622735084}
-  - component: {fileID: 1622735083}
   - component: {fileID: 1622735085}
+  - component: {fileID: 1622735083}
   m_Layer: 0
   m_Name: IconMethods
   m_TagString: Untagged
@@ -992,7 +992,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1622735082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c095b0b10b884f44afc52cb44c001e1, type: 3}
+  m_Script: {fileID: 11500000, guid: f622e7f5d906db54f87636808041df7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1622735084
@@ -1164,7 +1164,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1622735083}
-        m_MethodName: ChangeScene
+        m_MethodName: changeScene
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
