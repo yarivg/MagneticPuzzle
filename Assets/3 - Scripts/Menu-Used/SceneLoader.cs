@@ -48,9 +48,16 @@ public class SceneLoader : MonoBehaviour
         UserPreferences.Instance.AddTempValue("Difficulty", value);
     }
 
+    private string GetDifficulty()
+    {
+        return UserPreferences.Instance.GetTempInfo("Difficulty");
+    }
     public void GoToLevel(string levelVal)
     {
-        changeScene(UserPreferences.Instance.GetTempInfo("Difficulty") + "-Level" + levelVal);
+        if (GetDifficulty() != null)
+        {
+            changeScene(GetDifficulty() + "-Level" + levelVal);
+        }
     }
 
 
