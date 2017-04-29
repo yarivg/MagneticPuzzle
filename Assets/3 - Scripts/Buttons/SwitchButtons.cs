@@ -7,6 +7,8 @@ public class SwitchButtons : MonoBehaviour {
 
     public Preferences pref;
     public bool isPref = true;
+    public GameObject soundOn;
+    public GameObject soundOff;
 
     void Start()
     {
@@ -18,10 +20,8 @@ public class SwitchButtons : MonoBehaviour {
 
     public void switchButtons()
     {
-        foreach (Transform child in gameObject.transform)
-        {
-            child.gameObject.SetActive(!child.gameObject.activeSelf);
-        }
+        soundOn.gameObject.SetActive(!soundOn.gameObject.activeSelf);
+        soundOff.gameObject.SetActive(!soundOn.gameObject.activeSelf);
     }
 
 }

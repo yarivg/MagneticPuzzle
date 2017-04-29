@@ -11,6 +11,8 @@ public class UnityAds : MonoBehaviour
     [SerializeField]
     private bool testMode;
 
+    private SourcesLeftManager sourcesLeft;
+
     void Start()
     {
         string gameId = null;
@@ -20,6 +22,8 @@ public class UnityAds : MonoBehaviour
 #elif UNITY_IOS
         gameId = iosGameId;
 #endif
+
+        sourcesLeft = transform.parent.GetComponentInChildren<SourcesLeftManager>();
 
         if (Advertisement.isSupported && !Advertisement.isInitialized)
         {
@@ -42,9 +46,7 @@ public class UnityAds : MonoBehaviour
         {
             case ShowResult.Finished:
                 Debug.Log("The ad was successfully shown.");
-                //
-                // YOUR CODE TO REWARD THE GAMER
-                // Give coins etc.
+                sourcesLeft.IncreaseSource();
                 break;
             case ShowResult.Skipped:
                 Debug.Log("The ad was skipped before reaching the end.");
