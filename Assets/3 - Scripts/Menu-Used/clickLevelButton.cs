@@ -14,6 +14,6 @@ public class clickLevelButton : MonoBehaviour {
 
     public void LoadScene()
     {
-        SceneManager.LoadScene(UserPreferences.Instance.GetValue("Difficulty") + "-Level" + levelNumber);
+        SceneManager.LoadScene(UserPreferences.Instance.GetTempInfo("Difficulty") + "-Level" + levelNumber);
     }
 }

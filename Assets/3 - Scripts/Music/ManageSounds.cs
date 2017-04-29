@@ -14,36 +14,7 @@ public class ManageSounds : MonoBehaviour
        bIsActive = UserPreferences.Instance.getPreference(pref);
        SetAudio(bIsActive);
 
-    }
-
-    //private void OnEnable()
-    //{
-    //    InitManager();
-    //}
-
-    //private void OnDisable()
-    //{
-    //    goSounds.Clear();
-    //}
-
-    //private void InitManager()
-    //{
-    //    goSounds = new List<AudioSource>(GetComponents<AudioSource>());
-    //    Debug.Log(goSounds.Count);
-
-    //    // Setting audio sources active/inactive
-    //    bIsActive = UserPreferences.Instance.getPreference(pref);
-    //    SetAudio(bIsActive);
-    //    //mySounds = new List<AudioSource>();
-
-    //    //foreach (Transform childTransfrorm in transform)
-    //    //{
-    //    //    if (childTransfrorm.gameObject.GetComponent<AudioSource>() != null)
-    //    //    {
-    //    //        mySounds.Add(childTransfrorm.gameObject.GetComponent<AudioSource>());
-    //    //    }
-    //    //}
-    //}
+    } 
 
     public void ChangeAudioActive()
     {

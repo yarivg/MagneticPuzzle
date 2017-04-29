@@ -10,10 +10,13 @@ public class RotateObject : MonoBehaviour {
     void Start()
     {
         rotateToObj = GameObject.FindGameObjectWithTag(Tags.Ball.ToString());
+        var str = Mathf.Min(5 * Time.deltaTime, 1);
+        Quaternion q = Quaternion.Lerp(rotateObj.transform.rotation, Quaternion.LookRotation(new Vector3(rotateToObj.transform.position.x, 0, rotateToObj.transform.position.z) - new Vector3(rotateObj.transform.position.x, 0, rotateObj.transform.position.z)), str * 100);
+        rotateObj.transform.rotation = q;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
         var str = Mathf.Min(5 * Time.deltaTime, 1);
         Quaternion q = Quaternion.Lerp(rotateObj.transform.rotation,Quaternion.LookRotation(new Vector3(rotateToObj.transform.position.x,0,rotateToObj.transform.position.z) - new Vector3(rotateObj.transform.position.x, 0, rotateObj.transform.position.z)),str);

@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 64192365203005578}
   - component: {fileID: 23267180715611984}
   - component: {fileID: 114007411900611350}
+  - component: {fileID: 114804689988504256}
   m_Layer: 0
   m_Name: OutMagneticSquare
   m_TagString: Untagged
@@ -149,7 +150,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7cec916ef0d8e784388955359beb2925, type: 2}
+  - {fileID: 2100000, guid: 964670a2a4e38bb4a9b5a5d1d368d5d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -248,3 +249,17 @@ MonoBehaviour:
   maxRadius: 4
   isPulling: 0
   useDefaultValues: 1
+--- !u!114 &114804689988504256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1343671213657528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2baff0f12f09c704cb9e1552c8221688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateToObj: {fileID: 0}
+  rotateObj: {fileID: 1830898365771182}
+  q2: {x: 0, y: 0, z: 0, w: 0}
