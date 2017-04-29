@@ -16,28 +16,28 @@ public abstract class BaseLight {
     }
 
     // Enable/disable current object
-    public void turnOff()
+    public void turnOff(string pathInLight)
     {
-        GameObject.Find(LightObjPath).SetActive(false);
+        GameObject.Find(LightObjPath  + pathInLight).SetActive(false);
     }
 
-    public void turnOn()
+    public void turnOn(string pathInLight)
     {
-        GameObject.Find(LightObjPath).SetActive(true);
+        GameObject.Find(LightObjPath + pathInLight).SetActive(true);
     }
 
     // Enable and disable play/place magnets lights
     private void OnPlay()
     {
         Debug.Log("progress play lights..");
-        GameObject.Find(LightObjPath + gameStates.Play.ToString()).SetActive(true);
-        GameObject.Find(LightObjPath + gameStates.PlaceMagnets.ToString()).SetActive(false);
+        turnOn(gameStates.Play.ToString());
+        turnOff(gameStates.PlaceMagnets.ToString());
     }
 
     private void onPlaceMagnets()
     {
-        GameObject.Find(LightObjPath + gameStates.Play.ToString()).SetActive(false);
-        GameObject.Find(LightObjPath + gameStates.PlaceMagnets.ToString()).SetActive(true);
+        turnOn(gameStates.PlaceMagnets.ToString());
+        turnOff(gameStates.Play.ToString());
 
     }
 

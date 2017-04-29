@@ -24,11 +24,11 @@ public class LightManager : MonoBehaviour
 
 
         // Turn off curent light
-        allLights[(int)lightTyp].turnOff();
+        allLights[(int)lightTyp].turnOff("");
 
         // Turn on new light
         lightTyp = (LightType)((int)(lightTypeCnt + lightTyp + addValue) % lightTypeCnt);
-        allLights[(int)lightTyp].turnOn();
+        allLights[(int)lightTyp].turnOn("");
 
     }
 }
