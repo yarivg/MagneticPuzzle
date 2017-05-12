@@ -84,7 +84,8 @@ public enum InGameCameraType
 public enum Preferences
 {
     Sound,
-    Music
+    Music,
+    Light
 }
 
 public enum GeneralInfo

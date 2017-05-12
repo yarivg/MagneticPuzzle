@@ -6,13 +6,13 @@ public class ClickOnSquare : MonoBehaviour
 {
     public GameObject light;
     private GameObject Magnet;
-    private GameObject pickupSound;
+    private AudioSource pickupSound;
     public ClickableSquareHandler manager;
     private SourcesLeftManager source;
     void Start()
     {
         source = FindObjectOfType<SourcesLeftManager>();
-        pickupSound = GameObject.FindGameObjectWithTag(Tags.Pickup.ToString());
+        pickupSound = GameObject.FindGameObjectWithTag(Tags.Pickup.ToString()).GetComponent<AudioSource>();
 
         if (gameObject.tag == Tags.Floor.ToString())
         {

@@ -14,6 +14,9 @@ public class UserPreferences : Singleton<UserPreferences>
     {
         userSeriazibleData = new UserSeriazibleData();
         seriazible = new Serializblility<UserSeriazibleData>(Application.persistentDataPath + "/savedGames.gd");
+        // TODO: only for debug!
+        seriazible.Save(userSeriazibleData);
+
         seriazible.Load(ref userSeriazibleData);
         gameTempDict = new Dictionary<string, string>();
     }

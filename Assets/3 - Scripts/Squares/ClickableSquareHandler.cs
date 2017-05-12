@@ -10,9 +10,10 @@ public abstract class ClickableSquareHandler
     public abstract GameObject getMagnetPrefab();
     public abstract void manageLight(GameObject square,GameObject light);
     public abstract void execClickEvent(GameObject gameObject);
-    public void playSound(GameObject sound)
+
+    public void playSound(AudioSource sound)
     {
-        sound.playSound();
+        sound.Play();
     }
 }
 
