@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 222446444172588976}
   - component: {fileID: 114755059868968598}
   m_Layer: 5
-  m_Name: Text
+  m_Name: levelTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -368,6 +368,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4460025147483760}
+  - component: {fileID: 114065596684307540}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -610,6 +611,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggleOn: {fileID: 1863868020943892}
   toggleOff: {fileID: 1112619974390480}
+--- !u!114 &114065596684307540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1884820142855794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24aee5cbc70a4264c8d66471b313122d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelName: {fileID: 114755059868968598}
 --- !u!114 &114065952702009202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1283,8 +1296,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: ChangeScene
-        m_Mode: 5
+        m_MethodName: PreviousScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1379,7 +1392,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level 2
+  m_Text: 
 --- !u!114 &114761154835265644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1719,7 +1732,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 146.1, y: -80}
+  m_AnchoredPosition: {x: 38.2, y: -80}
   m_SizeDelta: {x: 524.5, y: 110.70001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224199901221621370

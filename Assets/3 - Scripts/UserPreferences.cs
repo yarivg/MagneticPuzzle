@@ -18,9 +18,11 @@ public class UserPreferences : Singleton<UserPreferences>
         gameTempDict = new Dictionary<string, string>();
     }
 
-    public void setLevel(LevelIdentifier levelName , LevelMetadata value)
+    public void passLevel(LevelIdentifier levelIdentifier)
     {
-        userSeriazibleData.levelData[levelName.diff][levelName.levelNumber] = value;
+        userSeriazibleData.levelData[levelIdentifier.diff][levelIdentifier.levelNumber].isPass = true;
+        // TODO: add logic
+        userSeriazibleData.levelData[levelIdentifier.diff][levelIdentifier.levelNumber + 1].isPass = true;
         seriazible.Save(userSeriazibleData);
     }
 
@@ -37,12 +39,13 @@ public class UserPreferences : Singleton<UserPreferences>
         seriazible.Save(userSeriazibleData);
     }
 
-    public LevelMetadata getLevel(LevelIdentifier levelName)
+    public LevelMetadata getLevel(LevelIdentifier levelIdentifier)
     {
-        if(userSeriazibleData.levelData[levelName.diff].ContainsKey(levelName.levelNumber))
+        if(userSeriazibleData.levelData[levelIdentifier.diff].ContainsKey(levelIdentifier.levelNumber))
         {
-            return userSeriazibleData.levelData[levelName.diff][levelName.levelNumber];
+            return userSeriazibleData.levelData[levelIdentifier.diff][levelIdentifier.levelNumber];
         }
+
         return null;
     }
 

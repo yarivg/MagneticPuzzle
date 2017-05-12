@@ -98,7 +98,7 @@ public enum GeneralInfo
     difficulty
 }
 
-public enum Difficulties
+public enum Difficulty
 {
     Easy,
     Medium,
@@ -191,21 +191,21 @@ public struct TransformByValue
 
 
 
-[System.Serializable]
-public struct InLevelData
-{
-    public int levelValue;
-    public string levelName;
-    public bool isFirstLoad;
-    public gameStates gameState;
+//[System.Serializable]
+//public struct InLevelData
+//{
+//    public int levelValue;
+//    public string levelName;
+//    public bool isFirstLoad;
+//    public gameStates gameState;
 
-    public InLevelData(int levelValue, string levelName , bool isFirstLoad , gameStates gameState)
-    {
-        this.levelValue = levelValue;
-        this.levelName = levelName;
-        this.isFirstLoad = isFirstLoad;
-        this.gameState = gameState;
-    }
+//    public InLevelData(int levelValue, string levelName , bool isFirstLoad , gameStates gameState)
+//    {
+//        this.levelValue = levelValue;
+//        this.levelName = levelName;
+//        this.isFirstLoad = isFirstLoad;
+//        this.gameState = gameState;
+//    }
 /*
     public LevelData(string levelName)
     {
@@ -214,7 +214,7 @@ public struct InLevelData
         this.gameState
     } 
     */
-}
+//}
 
 [Serializable]
 public class LevelMetadata
@@ -229,21 +229,21 @@ public class LevelMetadata
         this.isPass = isPass;
         this.starsPoint = starsPoint;
     }
+    //TODO: what??
+    //public void passLevel(LevelIdentifier name)
+    //{
+    //    this.isPass = true;
+    //    LevelMetadata nextLevel;
+    //    nextLevel = UserPreferences.Instance.getLevel(new LevelIdentifier(name.diff, name.levelNumber + 1));
 
-    public void passLevel(LevelIdentifier name)
-    {
-        this.isPass = true;
-        LevelMetadata nextLevel;
-        nextLevel = UserPreferences.Instance.getLevel(new LevelIdentifier(name.diff, name.levelNumber + 1));
-
-        // Is it the last level in this difficulty
-        if(nextLevel != null)
-        {
-            nextLevel.isLock = false;
-            UserPreferences.Instance.setLevel(new LevelIdentifier(name.diff, name.levelNumber + 1), nextLevel);
-        }
+    //    // Is it the last level in this difficulty
+    //    if(nextLevel != null)
+    //    {
+    //        nextLevel.isLock = false;
+    //        UserPreferences.Instance.setLevel(new LevelIdentifier(name.diff, name.levelNumber + 1), nextLevel);
+    //    }
         
-    }
+    //}
 
 }
 [System.Serializable]
@@ -252,13 +252,13 @@ public class  UserSeriazibleData
     
     public Dictionary<Preferences, bool> userPrefernce;
     public Dictionary<GeneralInfo, string> generalInfo;
-    public Dictionary<Difficulties,Dictionary<int,LevelMetadata>> levelData;
+    public Dictionary<Difficulty,Dictionary<int,LevelMetadata>> levelData;
 
     public UserSeriazibleData()
     {
         userPrefernce = new Dictionary<Preferences, bool>();
         generalInfo = new Dictionary<GeneralInfo, string>();
-        levelData = new Dictionary<Difficulties, Dictionary<int, LevelMetadata>>();
+        levelData = new Dictionary<Difficulty, Dictionary<int, LevelMetadata>>();
 
         foreach(Preferences p in Enum.GetValues(typeof(Preferences)))
         {
@@ -270,7 +270,7 @@ public class  UserSeriazibleData
             generalInfo.Add(g, "");
         }
 
-        foreach (Difficulties d in Enum.GetValues(typeof(Difficulties)))
+        foreach (Difficulty d in Enum.GetValues(typeof(Difficulty)))
         {
             int LevelsPerDifficulty = 8;
             Dictionary<int, LevelMetadata> temp = new Dictionary<int, LevelMetadata>();
@@ -302,19 +302,33 @@ public class LostByFallData
     }
 }
 
+[System.Serializable]
 public struct LevelIdentifier
 {
-    public Difficulties diff;
+    public Difficulty diff;
     public int levelNumber;
-    public string levelName;
 
-    public LevelIdentifier(Difficulties diff , int levelNumber)
+    public LevelIdentifier(Difficulty diff , int levelNumber)
     {
         this.diff = diff;
         this.levelNumber = levelNumber;
-        levelName = diff.ToString() + "-Level" + levelNumber;
     }
 }
 
+
+
+//public struct LevelIdentifier
+//{
+//    public Difficulties diff;
+//    public int levelNumber;
+//    public string levelName;
+
+//    public LevelIdentifier(Difficulties diff, int levelNumber)
+//    {
+//        this.diff = diff;
+//        this.levelNumber = levelNumber;
+//        levelName = diff.ToString() + "-Level" + levelNumber;
+//    }
+//}
 
 #endregion

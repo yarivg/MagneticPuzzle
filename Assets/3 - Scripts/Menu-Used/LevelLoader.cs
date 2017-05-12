@@ -11,7 +11,7 @@ public class LevelLoader : SceneLoader {
 	 void Start () {
         foreach (Transform button in gameObject.transform)
         {
-                LevelMetadata metaData = UserPreferences.Instance.getLevel(new LevelIdentifier((Difficulties)Enum.Parse(typeof(Difficulties), UserPreferences.Instance.GetTempInfo("Difficulty")),
+                LevelMetadata metaData = UserPreferences.Instance.getLevel(new LevelIdentifier((Difficulty)Enum.Parse(typeof(Difficulty), UserPreferences.Instance.GetTempInfo("Difficulty")),
                                                                            Int32.Parse(new String(button.name.Where(Char.IsDigit).ToArray()))));
                 setLevelPicture(button);
                 setBacckgroundImage(button, metaData);
@@ -24,7 +24,7 @@ public class LevelLoader : SceneLoader {
         {
             Debug.Log(sceneName);
             LevelMetadata metaData = UserPreferences.Instance.getLevel(new LevelIdentifier
-                 ((Difficulties)Enum.Parse(typeof(Difficulties), UserPreferences.Instance.GetTempInfo("Difficulty")),
+                 ((Difficulty)Enum.Parse(typeof(Difficulty), UserPreferences.Instance.GetTempInfo("Difficulty")),
                  Int32.Parse(new String(sceneName.Where(Char.IsDigit).ToArray()))));
 
 

@@ -7,10 +7,16 @@ public class ChangeLevelState : MonoBehaviour
 {
 
     public float wait;
+    private GM gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.FindGameObjectWithTag(Tags.God.ToString()).GetComponent<GM>();
+    }
 
     public void startGame()
     {
-        GM.levelDetails.gameState = gameStates.Play;
+        //gameManager.levelDetails.gameState = gameStates.Play;
         if (Events.BEFORE_THE_GAME_BEGIN != null)
             Events.BEFORE_THE_GAME_BEGIN();
         StartCoroutine(startGameWithWait());
@@ -18,8 +24,8 @@ public class ChangeLevelState : MonoBehaviour
 
     public void restartGame()
     {
-        GM.levelDetails.isFirstLoad = false;
-        GM.loadLevel();
+        //GM.levelDetails.isFirstLoad = false;
+        //GM.loadLevel();
     }
 
     private IEnumerator startGameWithWait()

@@ -239,31 +239,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114732219737204586, guid: 58570474dcd17a845859f2ea9ae1754b,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2124733267}
-    - target: {fileID: 114775063074317474, guid: 58570474dcd17a845859f2ea9ae1754b,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2124733265}
     - target: {fileID: 114507744509605736, guid: 58570474dcd17a845859f2ea9ae1754b,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2124733263}
+    - target: {fileID: 114775063074317474, guid: 58570474dcd17a845859f2ea9ae1754b,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2124733265}
     - target: {fileID: 114732219737204586, guid: 58570474dcd17a845859f2ea9ae1754b,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PreviousScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 114732219737204586, guid: 58570474dcd17a845859f2ea9ae1754b,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2124733267}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58570474dcd17a845859f2ea9ae1754b, type: 2}
   m_IsPrefabParent: 0
@@ -587,9 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62137475ed7787744a5badbbf1235821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelDetailsInput:
-    levelValue: 1
-    levelName: Easy-Level1
-    isFirstLoad: 1
-    gameState: 0
+  levelIdentifier:
+    diff: 0
+    levelNumber: 1
   _sceneLoader: {fileID: 2124733267}
