@@ -52,11 +52,12 @@ public class SceneLoader : MonoBehaviour
     {
         return UserPreferences.Instance.GetTempInfo("Difficulty");
     }
-    public void GoToLevel(string levelVal)
+
+    public void GoToLevel(int levelVal)
     {
         if (GetDifficulty() != null)
         {
-            changeScene(GetDifficulty() + "-Level" + levelVal);
+            changeScene(GetDifficulty() + "-Level" + levelVal.ToString());
         }
     }
 

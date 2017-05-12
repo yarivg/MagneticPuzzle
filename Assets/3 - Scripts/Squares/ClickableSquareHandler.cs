@@ -21,7 +21,17 @@ public class ClickOnEmpty : ClickableSquareHandler
 {
     public override bool isSquareAvailableAndClicked(SourcesLeftManager sources, GameObject square)
     {
-        return GM.keys.select(square) && sources.remainMagnets();
+        try
+        {
+            return GM.keys.select(square) && sources.remainMagnets();
+        } catch(Exception e)
+        {
+            Debug.Log("GM.keys: " + GM.keys);
+            Debug.Log("square: " + square);
+            Debug.Log("sources: " + sources);
+        }
+
+        return false;
     }
 
     public override void manageSources(SourcesLeftManager sources)

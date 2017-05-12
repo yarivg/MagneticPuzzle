@@ -54,7 +54,8 @@ public enum Tags
     Play,
     MagneticFloor,
     Floor,
-    Pickup
+    Pickup,
+    God
 }
 
 public enum Materials
@@ -193,12 +194,14 @@ public struct TransformByValue
 [System.Serializable]
 public struct InLevelData
 {
+    public int levelValue;
     public string levelName;
     public bool isFirstLoad;
     public gameStates gameState;
 
-    public InLevelData(string levelName , bool isFirstLoad , gameStates gameState)
+    public InLevelData(int levelValue, string levelName , bool isFirstLoad , gameStates gameState)
     {
+        this.levelValue = levelValue;
         this.levelName = levelName;
         this.isFirstLoad = isFirstLoad;
         this.gameState = gameState;

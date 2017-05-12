@@ -11,7 +11,7 @@ public class UnityAds : MonoBehaviour
     [SerializeField]
     private bool testMode;
 
-    private SourcesLeftManager sourcesLeft;
+    public SourcesLeftManager sourcesLeft;
 
     void Start()
     {
@@ -22,8 +22,6 @@ public class UnityAds : MonoBehaviour
 #elif UNITY_IOS
         gameId = iosGameId;
 #endif
-
-        sourcesLeft = transform.parent.GetComponentInChildren<SourcesLeftManager>();
 
         if (Advertisement.isSupported && !Advertisement.isInitialized)
         {

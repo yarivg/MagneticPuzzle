@@ -15,10 +15,13 @@ public class GM : MonoBehaviour {
     public InLevelData levelDetailsInput;
     public static InLevelData levelDetails;
     public static BaseClicker keys;
-    
+
+    public SceneLoader _sceneLoader;
+
     void Awake()
     {
-      
+        if (_sceneLoader == null) throw new System.Exception("Scene Loader is not referenced!");
+
         levelDetails = levelDetailsInput;
         switch (Application.platform)
         {
@@ -38,7 +41,6 @@ public class GM : MonoBehaviour {
     public static void loadLevel()
     {
         Events.restartEvents();
-        string difficulty = UserPreferences.Instance.GetTempInfo("Difficulty") != null ? UserPreferences.Instance.GetTempInfo("Difficulty") : "Easy";
         //  Debug.Log(string.Format("Loading scene - {0}", difficulty + "-level" + level));
 
         // TODO - this line should be in production
@@ -51,6 +53,14 @@ public class GM : MonoBehaviour {
         // For debugging
         //SceneManager.LoadScene("LevelDesignTemplate");
         
+    }
+
+    public void nextLevel()
+    {
+        //TODO: add logic when finish difficulty
+        _sceneLoader.GoToLevel(levelDetailsInput.levelValue + 1);
+
+        //TODO: update dictionary
     }
 
     // should not be here

@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+//using System;
+
 public class CustomTeleporter : MonoBehaviour
 {
 	//teleport instantly upon entering trigger?
@@ -42,10 +44,15 @@ public class CustomTeleporter : MonoBehaviour
 
     public string SceneToLoad;
 
+    private GameObject godManager;
+
 	void Start ()
 	{
 		//Set the countdown ready to the time you chose
 		curTeleportTime = teleportTime;
+        godManager = GameObject.FindGameObjectWithTag(Tags.God.ToString());
+
+        if(godManager == null) { throw new System.Exception("Teleporter couldn't find god manager by tag"); }
 	}
 
 
@@ -76,6 +83,8 @@ public class CustomTeleporter : MonoBehaviour
 				subject.transform.position = destinationPad[chosenPad].transform.position + new Vector3(0,teleportationHeightOffset,0);
 				//play teleport sound
 				teleportSound.Play();
+
+                LevelFinished();
 			}
 			else //if not random, teleport to the first one in the array list
 			{
@@ -85,7 +94,9 @@ public class CustomTeleporter : MonoBehaviour
 				subject.transform.position = destinationPad[0].transform.position + new Vector3(0,teleportationHeightOffset,0);
 				//play teleport sound
 				teleportSound.Play();
-			}
+
+                LevelFinished();
+            }
 		}
 		else if(delayedTeleport) //if its a delayed teleport
 		{
@@ -107,7 +118,9 @@ public class CustomTeleporter : MonoBehaviour
 					subject.transform.position = destinationPad[chosenPad].transform.position + new Vector3(0,teleportationHeightOffset,0);
 					//play teleport sound
 					teleportSound.Play();
-				}
+
+                    LevelFinished();
+                }
 				else //if not random, teleport to the first one in the array list
 				{
 					//set arrived to true in that array, so it doesnt teleport the subject back
@@ -116,12 +129,13 @@ public class CustomTeleporter : MonoBehaviour
 					//subject.transform.position = destinationPad[0].transform.position + new Vector3(0,teleportationHeightOffset,0);
 					//play teleport sound
 					teleportSound.Play();
+                    LevelFinished();
 
                     // delay
                     // **** CHANGE IT TO GENERIC FUNCTION *****
-                   // GameStateManager.switchLevel = true;
-                   // GameStateManager.level++;
-                 //   GameStateManager.loadScene();
+                    // GameStateManager.switchLevel = true;
+                    // GameStateManager.level++;
+                    //   GameStateManager.loadScene();
                 }
 			}
 		}
@@ -151,7 +165,8 @@ public class CustomTeleporter : MonoBehaviour
 							subject.transform.position = destinationPad[chosenPad].transform.position + new Vector3(0,teleportationHeightOffset,0);
 							//play teleport sound
 							teleportSound.Play();
-						}
+                            LevelFinished();
+                        }
 						else //if not random, teleport to the first one in the array list
 						{
 							//set arrived to true in that array, so it doesnt teleport the subject back
@@ -160,8 +175,9 @@ public class CustomTeleporter : MonoBehaviour
 							subject.transform.position = destinationPad[0].transform.position + new Vector3(0,teleportationHeightOffset,0);
 							//play teleport sound
 							teleportSound.Play();
+                            LevelFinished();
 
-						}
+                        }
 					}
 				}
 				//if you chose button + random teleport, teleport to random pad from array, on button down
@@ -175,21 +191,28 @@ public class CustomTeleporter : MonoBehaviour
 					subject.transform.position = destinationPad[chosenPad].transform.position + new Vector3(0,teleportationHeightOffset,0);
 					//play teleport sound
 					teleportSound.Play();
-				}
+                    LevelFinished();
+                }
 				else
-				{
+				{   
 					//set arrived to true in that array, so it doesnt teleport the subject back
 					destinationPad[0].GetComponent<CustomTeleporter>().arrived = true;
 					//teleport
 					subject.transform.position = destinationPad[0].transform.position + new Vector3(0,teleportationHeightOffset,0);
 					//play teleport sound
 					teleportSound.Play();
+                    LevelFinished();
 				}
 			}
 		}
 	}
 
-	void OnTriggerEnter(Collider trig)
+    private void LevelFinished()
+    {
+        godManager.GetComponent<GM>().nextLevel();
+    }
+
+    void OnTriggerEnter(Collider trig)
 	{
 		//when an object enters the trigger
 		//if you set a tag in the inspector, check if an object has that tag
