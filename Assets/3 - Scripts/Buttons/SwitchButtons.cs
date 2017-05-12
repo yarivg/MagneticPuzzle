@@ -5,23 +5,18 @@ using UnityEngine.UI;
 
 public class SwitchButtons : MonoBehaviour {
 
-    public Preferences pref;
-    public bool isPref = true;
-    public GameObject soundOn;
-    public GameObject soundOff;
-
-    void Start()
+    public GameObject toggleOn;
+    public GameObject toggleOff;
+    
+    public void setToggle(bool isOn)
     {
-        if(!UserPreferences.Instance.getPreference(pref) && isPref)
-        {
-           switchButtons();
-        }
+        toggleOn.gameObject.SetActive(isOn);
+        toggleOff.gameObject.SetActive(!isOn);
     }
 
-    public void switchButtons()
+    public void changeToggle()
     {
-        soundOn.gameObject.SetActive(!soundOn.gameObject.activeSelf);
-        soundOff.gameObject.SetActive(!soundOn.gameObject.activeSelf);
+        toggleOn.gameObject.SetActive(!toggleOn.activeSelf);
+        toggleOff.gameObject.SetActive(!toggleOff.activeSelf);
     }
-
 }
