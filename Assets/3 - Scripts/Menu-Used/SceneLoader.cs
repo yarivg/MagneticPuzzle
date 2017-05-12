@@ -25,12 +25,22 @@ public class SceneLoader : MonoBehaviour
     {
         if (Fading.notDuringFade)
         {
-            changeScene(SceneLoader.scenesHirarchi[SceneManager.GetActiveScene().name]);
+            Debug.Log("in");
+
+            if (SceneLoader.scenesHirarchi.ContainsKey(SceneManager.GetActiveScene().name))
+            {
+                changeScene(SceneLoader.scenesHirarchi[SceneManager.GetActiveScene().name]);
+            }
+            else
+            {
+                changeScene("LevelsMenu");
+            }
         }
     }
 
     public virtual void changeScene(string sceneName)
     {
+        Events.restartEvents();
         float waitTime = enableFade == true ? 0.5f : 0;
         StartCoroutine(WaitForIt(waitTime, sceneName));
     }
@@ -41,6 +51,7 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(Fading.FadeOut());
         yield return new WaitForSeconds(Time * 3 / 4);
         SceneManager.LoadScene(sceneName);
+        Fading.notDuringFade = true;
     }
 
     public void SetDifficulty(string value)

@@ -33,8 +33,8 @@ public class LevelLoader : SceneLoader {
                 Debug.Log("open level!");
                 base.enableFade = false;
 
-                Debug.Log("not go to new scene now because the levels not fully design");
-                //  base.changeScene(sceneName);
+//                Debug.Log("not go to new scene now because the levels not fully design");
+                  base.changeScene(sceneName);
             }
             else
             {

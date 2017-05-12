@@ -277,7 +277,7 @@ public class  UserSeriazibleData
             for(int i = 1; i <= LevelsPerDifficulty; i++)
             {
                 bool isLock = false;
-                if(i > 1)
+                if(i > 2)
                  {
                        isLock = true;
                      }
