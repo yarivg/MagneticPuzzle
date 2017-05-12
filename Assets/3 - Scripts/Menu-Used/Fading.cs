@@ -16,7 +16,7 @@ public class Fading : MonoBehaviour {
 
 
     // Replace can_change_scene , check if we do fade-out
-    public static bool notDuringFade;
+    public static bool notDuringFade = true;
 
 
     public static IEnumerator FadeIn(GameObject canvas)
@@ -69,6 +69,7 @@ public class Fading : MonoBehaviour {
                 yield return new WaitForSeconds(alpha_decrememnt_interval);
             }
         }
+        notDuringFade = true;
     }
 
     public static IEnumerator FadeIn(GameObject gameObject, float maxAlpha, float increment, float waitTime)
@@ -95,6 +96,7 @@ public class Fading : MonoBehaviour {
             yield return new WaitForSeconds(waitTime);
 
         }
+        notDuringFade = true;
     }
 
     private static void AssignAlpha(GameObject go, float alpha)
