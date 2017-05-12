@@ -25,11 +25,9 @@ public class SceneLoader : MonoBehaviour
     {
         if (Fading.notDuringFade)
         {
-            Debug.Log("in");
-
-            if (SceneLoader.scenesHirarchi.ContainsKey(SceneManager.GetActiveScene().name))
+            if (scenesHirarchi.ContainsKey(SceneManager.GetActiveScene().name))
             {
-                changeScene(SceneLoader.scenesHirarchi[SceneManager.GetActiveScene().name]);
+                changeScene(scenesHirarchi[SceneManager.GetActiveScene().name]);
             }
             else
             {
