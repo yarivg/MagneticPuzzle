@@ -152,12 +152,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1296351585367536, guid: 58570474dcd17a845859f2ea9ae1754b,
     type: 2}
   m_PrefabInternal: {fileID: 2051190768}
---- !u!4 &666975567 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4460025147483760, guid: 58570474dcd17a845859f2ea9ae1754b,
-    type: 2}
-  m_PrefabInternal: {fileID: 2051190768}
---- !u!1001 &717457088
+--- !u!1001 &555618848
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -199,6 +194,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86f64f8c54a1d5745a247070621f5a14, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &666975567 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4460025147483760, guid: 58570474dcd17a845859f2ea9ae1754b,
+    type: 2}
+  m_PrefabInternal: {fileID: 2051190768}
 --- !u!1 &743229395 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1530577534041034, guid: f286707a667aa4547831635013100e42,
@@ -275,7 +275,7 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 4348538708789930, guid: 86f64f8c54a1d5745a247070621f5a14,
     type: 2}
-  m_PrefabInternal: {fileID: 717457088}
+  m_PrefabInternal: {fileID: 555618848}
 --- !u!1001 &1603445135
 Prefab:
   m_ObjectHideFlags: 0
@@ -318,12 +318,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c99a0d34b5bcee142992d87d64623550, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1756127398 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114312154502001128, guid: 86f64f8c54a1d5745a247070621f5a14,
-    type: 2}
-  m_PrefabInternal: {fileID: 717457088}
-  m_Script: {fileID: 11500000, guid: e7a4199b03708044881f561943f892fe, type: 3}
 --- !u!4 &1926479439 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4694188576838406, guid: c99a0d34b5bcee142992d87d64623550,
@@ -334,12 +328,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1161304770685144, guid: 58570474dcd17a845859f2ea9ae1754b,
     type: 2}
   m_PrefabInternal: {fileID: 2051190768}
---- !u!114 &2034799644 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114441498170292456, guid: 86f64f8c54a1d5745a247070621f5a14,
-    type: 2}
-  m_PrefabInternal: {fileID: 717457088}
-  m_Script: {fileID: 11500000, guid: e7a4199b03708044881f561943f892fe, type: 3}
 --- !u!1 &2039271717
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,22 +405,22 @@ Prefab:
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2034799644}
+      objectReference: {fileID: 0}
     - target: {fileID: 114552207866764988, guid: 58570474dcd17a845859f2ea9ae1754b,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1756127398}
+      objectReference: {fileID: 0}
     - target: {fileID: 114108525628703568, guid: 58570474dcd17a845859f2ea9ae1754b,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1756127398}
+      objectReference: {fileID: 0}
     - target: {fileID: 114574000224317206, guid: 58570474dcd17a845859f2ea9ae1754b,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2034799644}
+      objectReference: {fileID: 0}
     - target: {fileID: 114755059868968598, guid: 58570474dcd17a845859f2ea9ae1754b,
         type: 2}
       propertyPath: m_Text
