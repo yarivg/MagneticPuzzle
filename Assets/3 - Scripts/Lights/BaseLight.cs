@@ -54,7 +54,7 @@ public class NightLight : BaseLight
         light = LightType.nightLight;
         LightObjPath += "NightLights/";
         pullMagnetLight = (GameObject)Resources.Load(LightPrefabPath + "pullMagnetLight");
-        pushMagnetLight = (GameObject)Resources.Load(LightPrefabPath + "pushMagnetLight") ;
+        pushMagnetLight = (GameObject)Resources.Load(LightPrefabPath + "pushMagnetLight");
 
         Events.CLICK_ON_EMPTY_SQUARE += addPullMagnetLight;
         Events.CLICK_ON_MAGNETIC_SQUARE += destroyMagnetLight;

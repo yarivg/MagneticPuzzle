@@ -11,32 +11,35 @@ public class LevelLoader : SceneLoader {
 	 void Start () {
         foreach (Transform button in gameObject.transform)
         {
-            LevelMetadata metaData = UserPreferences.Instance.getLevel(new LevelIdentifier((Difficulties)Enum.Parse(typeof(Difficulties), UserPreferences.Instance.GetTempInfo("Difficulty")),
-                                                                       Int32.Parse(new String(button.name.Where(Char.IsDigit).ToArray()))));
-            setLevelPicture(button);
-            setBacckgroundImage(button, metaData);
-            setStateIcon(button, metaData);
+                LevelMetadata metaData = UserPreferences.Instance.getLevel(new LevelIdentifier((Difficulties)Enum.Parse(typeof(Difficulties), UserPreferences.Instance.GetTempInfo("Difficulty")),
+                                                                           Int32.Parse(new String(button.name.Where(Char.IsDigit).ToArray()))));
+                setLevelPicture(button);
+                setBacckgroundImage(button, metaData);
+                setStateIcon(button, metaData);
         }
 	}
 
     public override void changeScene(string sceneName)
     {
-       LevelMetadata metaData = UserPreferences.Instance.getLevel(new LevelIdentifier
-            ((Difficulties)Enum.Parse(typeof(Difficulties), UserPreferences.Instance.GetTempInfo("Difficulty")),
-            Int32.Parse(new String(name.Where(Char.IsDigit).ToArray()))));
-
-
-        if (!metaData.isLock)
         {
-            Debug.Log("open level!");
-            base.enableFade = false;
+            Debug.Log(sceneName);
+            LevelMetadata metaData = UserPreferences.Instance.getLevel(new LevelIdentifier
+                 ((Difficulties)Enum.Parse(typeof(Difficulties), UserPreferences.Instance.GetTempInfo("Difficulty")),
+                 Int32.Parse(new String(sceneName.Where(Char.IsDigit).ToArray()))));
 
-            Debug.Log("not go to new scene now because the levels not fully design");
-          //  base.changeScene(sceneName);
-        }
-        else
-        {
-            Debug.Log("the level lock");
+
+            if (!metaData.isLock)
+            {
+                Debug.Log("open level!");
+                base.enableFade = false;
+
+                Debug.Log("not go to new scene now because the levels not fully design");
+                //  base.changeScene(sceneName);
+            }
+            else
+            {
+                Debug.Log("the level lock");
+            }
         }
     }
 

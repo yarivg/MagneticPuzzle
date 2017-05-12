@@ -13,7 +13,7 @@ public class ManageDifficultyItems : MonoBehaviour {
 
         if(UserPreferences.Instance.GetTempInfo("Difficulty") != null)
         {
-          //  difficultyText.text = UserPreferences.Instance.GetTempInfo("Difficulty");
+            difficultyText.text = UserPreferences.Instance.GetTempInfo("Difficulty");
 
             foreach (GameObject levelButton in levels)
             {
