@@ -45,6 +45,7 @@ public class SceneLoader : MonoBehaviour
 
     private IEnumerator WaitForIt(float Time, string sceneName)
     {
+    
         yield return new WaitForSeconds(Time / 4);
         StartCoroutine(Fading.FadeOut());
         yield return new WaitForSeconds(Time * 3 / 4);

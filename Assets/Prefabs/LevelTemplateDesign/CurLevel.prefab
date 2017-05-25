@@ -230,7 +230,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1955914707590566}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4295565332530796}
@@ -685,20 +685,14 @@ MonoBehaviour:
       xAxis: 1
       zAxis: 2
     endPoint:
-      xAxis: 4
+      xAxis: 6
       zAxis: 2
   - startPoint:
       xAxis: 1
       zAxis: 2
     endPoint:
       xAxis: 1
-      zAxis: 9
-  - startPoint:
-      xAxis: 1
-      zAxis: 9
-    endPoint:
-      xAxis: 4
-      zAxis: 9
+      zAxis: 5
 --- !u!114 &114267103526682050
 MonoBehaviour:
   m_ObjectHideFlags: 1

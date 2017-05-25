@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ChangeLevelState : MonoBehaviour
@@ -24,8 +25,8 @@ public class ChangeLevelState : MonoBehaviour
 
     public void restartGame()
     {
-        //GM.levelDetails.isFirstLoad = false;
-        //GM.loadLevel();
+        SceneLoader _sceneLoader = GameObject.FindObjectOfType<SceneLoader>();
+        _sceneLoader.changeScene(SceneManager.GetActiveScene().name);
     }
 
     private IEnumerator startGameWithWait()

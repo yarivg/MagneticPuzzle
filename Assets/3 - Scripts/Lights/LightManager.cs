@@ -18,16 +18,23 @@ public class LightManager : MonoBehaviour
     public void changeLight(int addValue)
     {
 
+        // Use this function before start call..
+        if(allLights == null)
+        {
+            allLights = new List<BaseLight> { new NightLight(), new dayLight() };
+        }
+
         int lightTypeCnt = Enum.GetNames(typeof(LightType)).Length;
 
         Debug.Log("changing the light:" + lightTyp);
 
 
         // Turn off curent light
-        allLights[(int)lightTyp].turnOff("");
+        Debug.Log(allLights);
+         allLights[(int)lightTyp].turnOff("");
 
         // Turn on new light
-        lightTyp = (LightType)((int)(lightTypeCnt + lightTyp + addValue) % lightTypeCnt);
+        lightTyp = (LightType)((int)(addValue)); //(LightType)((int)(lightTypeCnt + lightTyp + addValue) % lightTypeCnt);
         allLights[(int)lightTyp].turnOn("");
 
     }

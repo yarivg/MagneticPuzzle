@@ -14,6 +14,7 @@ public class UserPreferences : Singleton<UserPreferences>
     {
         userSeriazibleData = new UserSeriazibleData();
         seriazible = new Serializblility<UserSeriazibleData>(Application.persistentDataPath + "/savedGames.gd");
+        seriazible.Save(userSeriazibleData);
         seriazible.Load(ref userSeriazibleData);
         gameTempDict = new Dictionary<string, string>();
     }
@@ -22,7 +23,7 @@ public class UserPreferences : Singleton<UserPreferences>
     {
         userSeriazibleData.levelData[levelIdentifier.diff][levelIdentifier.levelNumber].isPass = true;
         // TODO: add logic
-        userSeriazibleData.levelData[levelIdentifier.diff][levelIdentifier.levelNumber + 1].isPass = true;
+        userSeriazibleData.levelData[levelIdentifier.diff][levelIdentifier.levelNumber + 1].isLock = false;
         seriazible.Save(userSeriazibleData);
     }
 

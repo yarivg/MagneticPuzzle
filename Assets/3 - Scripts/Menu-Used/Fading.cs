@@ -54,7 +54,6 @@ public class Fading : MonoBehaviour {
         Transform[] children = fadeObjects;
 
         float alpha = 1;
-
         // Add for scenes that not load with fade in (levels) and there is not children to fade out
         if (children != null)
         {

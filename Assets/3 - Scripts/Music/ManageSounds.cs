@@ -7,14 +7,28 @@ public class ManageSounds : MonoBehaviour
     private List<AudioSource> goSounds;
     private UserPreferences _uPreference;
     public SwitchButtons switchButton;
-    private AudioManager audioManager;
+    private PreferencesManager audioManager;
     public Preferences pref;
     private bool bIsActive;
 
     void Start()
     {
         _uPreference = UserPreferences.Instance;
-        audioManager = new AudioManager();
+
+        switch (pref)
+        {
+            case Preferences.Light:
+                audioManager = new LightPrefManager();
+                break;
+            case Preferences.Music:
+                audioManager = new AudioManager();
+                break;
+            case Preferences.Sound:
+                audioManager = new AudioManager();
+                break;
+        }
+        Debug.Log("manage sounds");
+        // audioManager = new AudioManager();
 
         goSounds = transform.GetComponentsInChildren<AudioSource>().ToList();
         bIsActive = _uPreference.getPreference(pref);
@@ -31,7 +45,7 @@ public class ManageSounds : MonoBehaviour
 
     public void SetAudio()
     {
-        audioManager.setAudio(goSounds, bIsActive);
+        audioManager.setPreferences( gameObject,bIsActive);
         switchButton.setToggle(bIsActive);
         _uPreference.setPreference(pref, bIsActive);
     }
