@@ -55,7 +55,9 @@ public enum Tags
     MagneticFloor,
     Floor,
     Pickup,
-    God
+    God,
+    Music,
+    Sound
 }
 
 public enum Materials
@@ -91,8 +93,8 @@ public enum Preferences
 
 public enum GeneralInfo
 {
-    money , 
-    rewards , 
+    money,
+    rewards,
     achivements,
     last_played_scene,
     difficulty
@@ -181,7 +183,7 @@ public struct TransformByValue
     public Vector3 rotation;
     public float scale;
 
-    public TransformByValue(Vector3 position,Vector3 rotation,float scale) 
+    public TransformByValue(Vector3 position, Vector3 rotation, float scale)
     {
         this.position = position;
         this.rotation = rotation;
@@ -223,7 +225,7 @@ public class LevelMetadata
     public bool isPass;
     public int starsPoint;
 
-    public LevelMetadata(bool isLock,bool isPass,int starsPoint)
+    public LevelMetadata(bool isLock, bool isPass, int starsPoint)
     {
         this.isLock = isLock;
         this.isPass = isPass;
@@ -242,17 +244,17 @@ public class LevelMetadata
     //        nextLevel.isLock = false;
     //        UserPreferences.Instance.setLevel(new LevelIdentifier(name.diff, name.levelNumber + 1), nextLevel);
     //    }
-        
+
     //}
 
 }
 [System.Serializable]
-public class  UserSeriazibleData
+public class UserSeriazibleData
 {
-    
+
     public Dictionary<Preferences, bool> userPrefernce;
     public Dictionary<GeneralInfo, string> generalInfo;
-    public Dictionary<Difficulty,Dictionary<int,LevelMetadata>> levelData;
+    public Dictionary<Difficulty, Dictionary<int, LevelMetadata>> levelData;
 
     public UserSeriazibleData()
     {
@@ -260,7 +262,7 @@ public class  UserSeriazibleData
         generalInfo = new Dictionary<GeneralInfo, string>();
         levelData = new Dictionary<Difficulty, Dictionary<int, LevelMetadata>>();
 
-        foreach(Preferences p in Enum.GetValues(typeof(Preferences)))
+        foreach (Preferences p in Enum.GetValues(typeof(Preferences)))
         {
             userPrefernce.Add(p, false);
         }
@@ -274,14 +276,14 @@ public class  UserSeriazibleData
         {
             int LevelsPerDifficulty = 8;
             Dictionary<int, LevelMetadata> temp = new Dictionary<int, LevelMetadata>();
-            for(int i = 1; i <= LevelsPerDifficulty; i++)
+            for (int i = 1; i <= LevelsPerDifficulty; i++)
             {
                 bool isLock = false;
-                if(i > 2)
-                 {
-                       isLock = true;
-                     }
-                temp.Add(i, new LevelMetadata(isLock,false,0));
+                if (i > 1)
+                {
+                    isLock = true;
+                }
+                temp.Add(i, new LevelMetadata(isLock, false, 0));
             }
             levelData.Add(d, temp);
         }
@@ -308,7 +310,7 @@ public struct LevelIdentifier
     public Difficulty diff;
     public int levelNumber;
 
-    public LevelIdentifier(Difficulty diff , int levelNumber)
+    public LevelIdentifier(Difficulty diff, int levelNumber)
     {
         this.diff = diff;
         this.levelNumber = levelNumber;

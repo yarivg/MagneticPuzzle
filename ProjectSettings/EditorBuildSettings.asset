@@ -24,6 +24,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/2 - Scenes/Levels/Easy-Level1.unity
   - enabled: 1
-    path: Assets/2 - Scenes/Levels/Easy-Level2.unity
+    path: Assets/2 - Scenes/Levels/Easy-Level6.unity
   - enabled: 1
     path: Assets/2 - Scenes/LevelDesignTemplate.unity
+  - enabled: 1
+    path: Assets/2 - Scenes/Levels/Easy-Level2.unity
+  - enabled: 1
+    path: Assets/2 - Scenes/Levels/Easy-Level3.unity
+  - enabled: 1
+    path: Assets/2 - Scenes/Levels/Easy-Level4.unity
+  - enabled: 1
+    path: Assets/2 - Scenes/Levels/Easy-Level5.unity

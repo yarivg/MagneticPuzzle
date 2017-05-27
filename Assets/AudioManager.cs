@@ -1,23 +1,48 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class AudioManager {
+public abstract class PreferencesManager
+{
+    public abstract void setPreference(bool bIsActive);
+}
 
-    public void setAudio(List<AudioSource> goSounds, bool bIsActive)
+public class LightPrefManager : PreferencesManager
+{
+    public override void setPreference(bool bIsActive)
     {
-        goSounds.ForEach((sound) => {
-            if (bIsActive)
-            {
-                sound.UnPause();
-                sound.volume = 1;
-            }
-            else
-            {
-                sound.Pause();
-                sound.volume = 0;
-            }
+        LightManager _lightManager = GameObject.FindObjectOfType<LightManager>();
+        _lightManager.changeLight(Convert.ToInt32(bIsActive));
+    }
+}
 
+
+
+public class AudioManager : PreferencesManager
+{
+    Tags tag;
+
+    public AudioManager(Preferences pref)
+    {
+        if (pref == Preferences.Music)
+        {
+            tag = Tags.Music;
+        }
+        if (pref == Preferences.Sound)
+        {
+            tag = Tags.Sound;
+        }
+    }
+
+    public override void setPreference(bool bIsActive)
+    {
+        Debug.Log(tag);
+        List<AudioSource> goSounds = GameObject.FindGameObjectWithTag(tag.ToString()).GetComponentsInChildren<AudioSource>().ToList();
+        goSounds.ForEach((sound) =>
+        {
+            sound.setAudio(bIsActive);
         });
     }
 }

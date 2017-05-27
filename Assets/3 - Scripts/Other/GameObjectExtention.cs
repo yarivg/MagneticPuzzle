@@ -38,4 +38,20 @@ public static class GameObjectExtention {
 
         return result;
     }
+
+
+    public static void setAudio(this AudioSource audioSource, bool activity)
+    {
+        if (activity)
+        {
+            audioSource.UnPause();
+            audioSource.volume = 1;
+        }
+        else
+        {
+            audioSource.Pause();
+            audioSource.volume = 0;
+        }
+    }
+
 }

@@ -51,6 +51,7 @@ public class LostByFall : Lost {
         // Write to log / db
 
         // Restart Game
-        
+        ChangeLevelState _levelState = GameObject.FindObjectOfType<ChangeLevelState>();
+        _levelState.restartGame();
     }
 }
