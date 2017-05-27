@@ -17,6 +17,8 @@ TagManager:
   - Pickup
   - Teleporter
   - God
+  - Music
+  - Sound
   layers:
   - Default
   - TransparentFX

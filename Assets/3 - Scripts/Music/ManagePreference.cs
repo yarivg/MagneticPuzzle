@@ -2,51 +2,55 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ManageSounds : MonoBehaviour
+public class ManagePreference : MonoBehaviour
 {
-    private List<AudioSource> goSounds;
-    private UserPreferences _uPreference;
     public SwitchButtons switchButton;
-    private PreferencesManager audioManager;
     public Preferences pref;
+    private UserPreferences _uPreference;
+    private PreferencesManager preferenceManager;
     private bool bIsActive;
 
     void Start()
     {
+        validation();
         _uPreference = UserPreferences.Instance;
 
         switch (pref)
         {
             case Preferences.Light:
-                audioManager = new LightPrefManager();
+                preferenceManager = new LightPrefManager();
                 break;
             case Preferences.Music:
-                audioManager = new AudioManager();
+                preferenceManager = new AudioManager(pref);
                 break;
             case Preferences.Sound:
-                audioManager = new AudioManager();
+                preferenceManager = new AudioManager(pref);
                 break;
         }
-        Debug.Log("manage sounds");
-        // audioManager = new AudioManager();
-
-        goSounds = transform.GetComponentsInChildren<AudioSource>().ToList();
         bIsActive = _uPreference.getPreference(pref);
-
         switchButton.setToggle(bIsActive);
-        SetAudio();
+        setPreference();
     }
 
-    public void ChangeAudioActive()
+    public void ChangePreferenceActive()
     {
         bIsActive = !bIsActive;
-        SetAudio();
+        setPreference();
     }
 
-    public void SetAudio()
+    public void setPreference()
     {
-        audioManager.setPreferences( gameObject,bIsActive);
+        preferenceManager.setPreference(bIsActive);
         switchButton.setToggle(bIsActive);
         _uPreference.setPreference(pref, bIsActive);
     }
+
+    public void validation()
+    {
+        if (switchButton == null)
+        {
+            throw new System.Exception("The object switch button is null!");
+        }
+    }
+
 }

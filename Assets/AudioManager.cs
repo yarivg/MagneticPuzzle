@@ -6,12 +6,12 @@ using UnityEngine;
 
 public abstract class PreferencesManager
 {
-    public abstract void setPreferences(GameObject g, bool bIsActive);
+    public abstract void setPreference(bool bIsActive);
 }
 
 public class LightPrefManager : PreferencesManager
 {
-    public override void setPreferences(GameObject g, bool bIsActive)
+    public override void setPreference(bool bIsActive)
     {
         LightManager _lightManager = GameObject.FindObjectOfType<LightManager>();
         _lightManager.changeLight(Convert.ToInt32(bIsActive));
@@ -19,48 +19,30 @@ public class LightPrefManager : PreferencesManager
 }
 
 
+
 public class AudioManager : PreferencesManager
 {
+    Tags tag;
 
-    public override void setPreferences(GameObject g, bool bIsActive)
+    public AudioManager(Preferences pref)
     {
-        List<AudioSource> goSounds = g.transform.GetComponentsInChildren<AudioSource>().ToList();
+        if (pref == Preferences.Music)
+        {
+            tag = Tags.Music;
+        }
+        if (pref == Preferences.Sound)
+        {
+            tag = Tags.Sound;
+        }
+    }
+
+    public override void setPreference(bool bIsActive)
+    {
+        Debug.Log(tag);
+        List<AudioSource> goSounds = GameObject.FindGameObjectWithTag(tag.ToString()).GetComponentsInChildren<AudioSource>().ToList();
         goSounds.ForEach((sound) =>
         {
-            if (bIsActive)
-            {
-                sound.UnPause();
-                sound.volume = 1;
-            }
-            else
-            {
-                sound.Pause();
-                sound.volume = 0;
-            }
-
+            sound.setAudio(bIsActive);
         });
     }
 }
-
-
-//public class AudioManager
-//{
-
-//    public void setAudio(List<AudioSource> goSounds, bool bIsActive)
-//    {
-//        goSounds.ForEach((sound) =>
-//        {
-//            if (bIsActive)
-//            {
-//                sound.UnPause();
-//                sound.volume = 1;
-//            }
-//            else
-//            {
-//                sound.Pause();
-//                sound.volume = 0;
-//            }
-
-//        });
-//    }
-//}

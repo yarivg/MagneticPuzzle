@@ -55,7 +55,9 @@ public enum Tags
     MagneticFloor,
     Floor,
     Pickup,
-    God
+    God,
+    Music,
+    Sound
 }
 
 public enum Materials
