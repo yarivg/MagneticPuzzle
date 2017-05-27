@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,11 +20,14 @@ public abstract class BaseLight {
     public void turnOff(string pathInLight)
     {
         GameObject.Find(LightObjPath  + pathInLight).SetActive(false);
+       // GameObject.Find(LightObjPath + pathInLight).GetComponentsInChildren<Light>().ToList().ForEach(x =>  { x.enabled = false; });
+
     }
 
     public void turnOn(string pathInLight)
     {
         GameObject.Find(LightObjPath + pathInLight).SetActive(true);
+      //  GameObject.Find(LightObjPath + pathInLight).GetComponentsInChildren<Light>().ToList().ForEach(x => { x.enabled = true; });
     }
 
     // Enable and disable play/place magnets lights
@@ -65,6 +69,7 @@ public class NightLight : BaseLight
 
     public void addPullMagnetLight(GameObject square)
     {
+        Debug.Log("add pull magnet light");
         string PathToCreateMagnet = LightObjPath + "GenericLights";
         GameObject g = GameObject.Instantiate(pullMagnetLight, GameObject.Find(PathToCreateMagnet).transform);
         g.name = "light" + square.name;

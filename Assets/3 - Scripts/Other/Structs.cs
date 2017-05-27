@@ -20,12 +20,12 @@ public static class Events
 
     public static void restartEvents()
     {
-        STOP_GAME = null;
-        INIT_LEVEL = null;
         START_GAME = null;
+        INIT_LEVEL = null;
+        STOP_GAME = null;
         BEFORE_THE_GAME_BEGIN = null;
-        CLICK_ON_MAGNETIC_SQUARE = null;
         CLICK_ON_EMPTY_SQUARE = null;
+        CLICK_ON_MAGNETIC_SQUARE = null;
         BACK_BUTTON_PRESSED = null;
         COLLISION_WITH_MAGNET = null;
     }

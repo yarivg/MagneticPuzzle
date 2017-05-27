@@ -3184,6 +3184,10 @@ Prefab:
       propertyPath: followObj
       value: 
       objectReference: {fileID: 877315297}
+    - target: {fileID: 4491271226539236, guid: da265cef4e4b6e447ba64e77828421cb, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.29
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114459068833984670, guid: da265cef4e4b6e447ba64e77828421cb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: da265cef4e4b6e447ba64e77828421cb, type: 2}

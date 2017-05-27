@@ -7,19 +7,21 @@ using UnityEngine.Events;
 public class LightManager : MonoBehaviour
 {
     public static LightType lightTyp;
-    public static List<BaseLight> allLights;
+    public List<BaseLight> allLights;
 
     void Start()
     {
-        // Create the ligths for every scene
-    //    allLights = new List<BaseLight>{ new NightLight(), new dayLight()};
+        if (allLights == null)
+        {
+            allLights = new List<BaseLight> { new NightLight(), new dayLight() };
+        }
     }
 
     public void changeLight(int addValue)
     {
 
         // Use this function before start call..
-        if(allLights == null)
+        if (allLights == null)
         {
             allLights = new List<BaseLight> { new NightLight(), new dayLight() };
         }
