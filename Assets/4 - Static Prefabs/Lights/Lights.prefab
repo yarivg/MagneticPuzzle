@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4006983231605920}
   - component: {fileID: 108746689446788270}
   - component: {fileID: 114974848890818900}
-  - component: {fileID: 114459068833984670}
   m_Layer: 0
   m_Name: Player Light
   m_TagString: Untagged
@@ -538,17 +537,6 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1708664048774914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114459068833984670
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1080855721068774}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
