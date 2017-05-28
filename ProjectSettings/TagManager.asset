@@ -18,7 +18,10 @@ TagManager:
   - Teleporter
   - God
   - Music
+  - Lightning
+  - Electricity
   - Sound
+  - Piano
   layers:
   - Default
   - TransparentFX

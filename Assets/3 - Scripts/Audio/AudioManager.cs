@@ -38,7 +38,6 @@ public class AudioManager : PreferencesManager
 
     public override void setPreference(bool bIsActive)
     {
-        Debug.Log(tag);
         List<AudioSource> goSounds = GameObject.FindGameObjectWithTag(tag.ToString()).GetComponentsInChildren<AudioSource>().ToList();
         goSounds.ForEach((sound) =>
         {

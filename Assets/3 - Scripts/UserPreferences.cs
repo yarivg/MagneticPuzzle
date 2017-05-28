@@ -17,6 +17,9 @@ public class UserPreferences : Singleton<UserPreferences>
        // seriazible.Save(userSeriazibleData);
         seriazible.Load(ref userSeriazibleData);
         gameTempDict = new Dictionary<string, string>();
+
+        AudioSingleton.IsMusicEnabled = getPreference(Preferences.Music);
+        AudioSingleton.IsSoundEnabled = getPreference(Preferences.Sound);
     }
 
     public void passLevel(LevelIdentifier levelIdentifier)

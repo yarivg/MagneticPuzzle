@@ -54,10 +54,15 @@ public enum Tags
     Play,
     MagneticFloor,
     Floor,
-    Pickup,
     God,
+
+    // Sounds
     Music,
-    Sound
+    Sound,
+    Electricity,
+    Pickup,
+    Lightning,
+    Piano
 }
 
 public enum Materials
@@ -89,6 +94,12 @@ public enum Preferences
     Sound,
     Music,
     Light
+}
+
+public enum Audio
+{
+    Sound,
+    Music
 }
 
 public enum GeneralInfo

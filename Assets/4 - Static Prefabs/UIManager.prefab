@@ -240,7 +240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1565667947004114
 GameObject:
   m_ObjectHideFlags: 1
@@ -309,7 +309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1759757699137532
 GameObject:
   m_ObjectHideFlags: 1
@@ -353,6 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4761201586617982}
   - component: {fileID: 114036512414956002}
+  - component: {fileID: 114377300160622254}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -922,6 +923,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114377300160622254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1767978770743408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451a01f0eaf1989418a9369ba4b959d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114402861869197478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1483,8 +1495,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6fc652edff829e48ab54d68ee807f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggleOn: {fileID: 1559702777819514}
-  toggleOff: {fileID: 1696257108410846}
+  toggleOn: {fileID: 1696257108410846}
+  toggleOff: {fileID: 1559702777819514}
 --- !u!114 &114990216776556626
 MonoBehaviour:
   m_ObjectHideFlags: 1
