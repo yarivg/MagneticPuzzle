@@ -1437,7 +1437,15 @@ Prefab:
       objectReference: {fileID: 1073914135}
     - target: {fileID: 4491271226539236, guid: da265cef4e4b6e447ba64e77828421cb, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.29
+      value: 4.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491271226539236, guid: da265cef4e4b6e447ba64e77828421cb, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 4.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491271226539236, guid: da265cef4e4b6e447ba64e77828421cb, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.98
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114459068833984670, guid: da265cef4e4b6e447ba64e77828421cb, type: 2}
