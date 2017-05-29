@@ -349,7 +349,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 405715791
+  randomSeed: -346617852
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3051,7 +3051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceFactor: 400
-  maxRadius: 3
+  maxRadius: 1
   isPulling: 1
   useDefaultValues: 0
 --- !u!23 &50719689
