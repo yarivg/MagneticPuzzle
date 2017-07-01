@@ -84,6 +84,7 @@ public class LostByRestart : Lost
     {
         restartButton = GameObject.FindGameObjectWithTag(Tags.UI.ToString()).FindObject(Tags.RestartButton.ToString()).GetComponent<Button>();
         restartButton.onClick.AddListener(() => { executeInLost(); });
+        Debug.Log(restartButton);
         Debug.Log("click:"+restartButton.onClick.GetPersistentEventCount());
     }
 

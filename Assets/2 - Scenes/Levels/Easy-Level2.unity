@@ -4091,31 +4091,21 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2124733265}
-    - target: {fileID: 114370130301939678, guid: 9067d6bef1caf064c9284140179fba94,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: startGame
-      objectReference: {fileID: 0}
     - target: {fileID: 114597341236780228, guid: 9067d6bef1caf064c9284140179fba94,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2124733265}
-    - target: {fileID: 114597341236780228, guid: 9067d6bef1caf064c9284140179fba94,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: restartGame
-      objectReference: {fileID: 0}
     - target: {fileID: 114700301132640278, guid: 9067d6bef1caf064c9284140179fba94,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2124733267}
-    - target: {fileID: 114700301132640278, guid: 9067d6bef1caf064c9284140179fba94,
+    - target: {fileID: 114649497694102912, guid: 9067d6bef1caf064c9284140179fba94,
         type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PreviousScene
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2124733265}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9067d6bef1caf064c9284140179fba94, type: 2}
   m_IsPrefabParent: 0
@@ -4225,8 +4215,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73bf45730d544ef48b2b5a8b24bb3e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlableSquare: {fileID: 1343671213657528, guid: e8b556e2668de1f4aa5015ecaa0e5ee6,
-    type: 2}
   drawFieldSquare: {fileID: 1343671213657528, guid: 2092347e54d278148b80e5ad6b4371a0,
     type: 2}
   allSquares:
