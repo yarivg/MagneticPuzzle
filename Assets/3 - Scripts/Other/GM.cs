@@ -17,23 +17,39 @@ public class GM : MonoBehaviour {
 
     private UserPreferences _userPref;
     public SceneLoader _sceneLoader;
+    public static bool DEBUG_MODE = false;
 
     void Awake()
     {
         _userPref = UserPreferences.Instance;
         if (_sceneLoader == null) throw new System.Exception("Scene Loader is not referenced!");
-        
+
+        string keysType;
         switch (Application.platform)
         {
             case RuntimePlatform.Android:
                 keys = new AndroidClicker();
+                keysType = "Android";
                 break;
             case RuntimePlatform.WindowsPlayer:
                 keys = new ComputerClicker();
+                keysType = "Windows";
                 break;
             case RuntimePlatform.WindowsEditor:
                 keys = new ComputerClicker();
+                keysType = "Windows";
                 break;
+            default:
+                keysType = null;
+                break;
+        }
+        if(DEBUG_MODE)
+        {
+            Debug.Log("The game keys created for:" + keysType);
+            if(keysType == null)
+            {
+                throw new Exception("Keys not initalize!");
+            }
         }
     }
 
@@ -59,6 +75,11 @@ public class GM : MonoBehaviour {
     {
         string levelVal = (levelIdentifier.levelNumber + 1).ToString();
         
+        if(DEBUG_MODE)
+        {
+            Debug.Log("Pass level " + levelVal + " and go to next level" + GetDifficulty() + "-Level" + levelVal);
+        }
+
         //TODO: update dictionary
         _userPref.passLevel(levelIdentifier);
         //TODO: add logic when finish difficulty
@@ -68,7 +89,12 @@ public class GM : MonoBehaviour {
     // should not be here
     public static void resetLevel()
     {
-       // levelDetails.gameState = gameStates.PlaceMagnets;
+        if (DEBUG_MODE)
+        {
+            Debug.Log("Restart current level..");
+        }
+
+        // levelDetails.gameState = gameStates.PlaceMagnets;
 
         // TODO - ResetSqaures and magnets
         // Return ball to first position
@@ -78,6 +104,19 @@ public class GM : MonoBehaviour {
 
     private string GetDifficulty()
     {
+        string difficulty = UserPreferences.Instance.GetTempInfo("Difficulty");
+     //   if (DEBUG_MODE)
+        {
+            Debug.Log("Current difficulty:" + difficulty);
+
+            if(difficulty == null)
+            {
+                Debug.LogWarning("Difficulty is null!");
+                return "Easy";
+            }
+        }
+
+
         return UserPreferences.Instance.GetTempInfo("Difficulty");
     }
 }

@@ -26,6 +26,10 @@ public class ManagePreference : MonoBehaviour
             case Preferences.Sound:
                 preferenceManager = new AudioManager(pref);
                 break;
+            case Preferences.SaveMagnets:
+                preferenceManager = new SaveMagnetStatePrefManager();
+                break;
+
         }
         bIsActive = _uPreference.getPreference(pref);
         switchButton.setToggle(bIsActive);

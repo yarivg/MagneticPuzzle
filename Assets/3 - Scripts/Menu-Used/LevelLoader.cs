@@ -62,12 +62,12 @@ public class LevelLoader : SceneLoader {
         {
             whatToLoad = "lock-level";
         }
-            button.FindChild("stateImage").GetComponent<Image>().sprite = (Sprite)Resources.Load("Levels/StateImages/" + whatToLoad,typeof(Sprite));
+            button.Find("stateImage").GetComponent<Image>().sprite = (Sprite)Resources.Load("Levels/StateImages/" + whatToLoad,typeof(Sprite));
     }
 
     void setLevelPicture(Transform button)
     {
-        button.FindChild("Image").GetComponent<Image>().sprite = (Sprite)Resources.Load(
+        button.Find("Image").GetComponent<Image>().sprite = (Sprite)Resources.Load(
                                         "Levels/" + UserPreferences.Instance.GetTempInfo("Difficulty") + "/" + button.name, typeof(Sprite));
     }
 }

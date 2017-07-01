@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 //using System;
 
 public class CustomTeleporter : MonoBehaviour
@@ -16,7 +17,7 @@ public class CustomTeleporter : MonoBehaviour
 	//teleport delayed?
 	public bool delayedTeleport;
 	//time it takes to teleport, if not instant
-	public float teleportTime = 3;
+	public float teleportTime = 2;
 	//only allow specific tag object? if left empty, any object can teleport
 	public string objectTag = "if empty, any object will tp";
 	//one or more destination pads
@@ -41,7 +42,7 @@ public class CustomTeleporter : MonoBehaviour
 	//simple enable/disable function in case you want the teleport not working at some point
 	//without disabling the entire script, so receiving objects still works
 	public bool teleportPadOn = true;
-
+    public bool levelFinish = false;
     public string SceneToLoad;
 
     private GameObject godManager;
@@ -62,7 +63,7 @@ public class CustomTeleporter : MonoBehaviour
 		if(inside)
 		{
 			//if that object hasnt just arrived from another pad, teleport it
-			if(!arrived && teleportPadOn)
+			if(!arrived && !levelFinish && teleportPadOn)
 			Teleport();
 		}
 	}
@@ -84,7 +85,7 @@ public class CustomTeleporter : MonoBehaviour
 				//play teleport sound
 				teleportSound.Play();
 
-                LevelFinished();
+                StartCoroutine(LevelFinished());
 			}
 			else //if not random, teleport to the first one in the array list
 			{
@@ -95,13 +96,13 @@ public class CustomTeleporter : MonoBehaviour
 				//play teleport sound
 				teleportSound.Play();
 
-                LevelFinished();
+                StartCoroutine(LevelFinished());
             }
 		}
 		else if(delayedTeleport) //if its a delayed teleport
 		{
 			//start the countdown
-			curTeleportTime-=1 * Time.deltaTime;
+			curTeleportTime-=1f * Time.deltaTime;
 			//if the countdown reaches zero
 			if(curTeleportTime <= 0)
 			{
@@ -119,17 +120,18 @@ public class CustomTeleporter : MonoBehaviour
 					//play teleport sound
 					teleportSound.Play();
 
-                    LevelFinished();
+                    StartCoroutine(LevelFinished());
                 }
 				else //if not random, teleport to the first one in the array list
 				{
-					//set arrived to true in that array, so it doesnt teleport the subject back
-				//	destinationPad[0].GetComponent<CustomTeleporter>().arrived = true;
-					//teleport
-					//subject.transform.position = destinationPad[0].transform.position + new Vector3(0,teleportationHeightOffset,0);
-					//play teleport sound
-					teleportSound.Play();
-                    LevelFinished();
+                    //set arrived to true in that array, so it doesnt teleport the subject back
+                    //	destinationPad[0].GetComponent<CustomTeleporter>().arrived = true;
+                    //teleport
+                    //subject.transform.position = destinationPad[0].transform.position + new Vector3(0,teleportationHeightOffset,0);
+                    //play teleport sound
+                    teleportSound.Play();
+                    levelFinish = true;
+                    StartCoroutine(LevelFinished());
 
                     // delay
                     // **** CHANGE IT TO GENERIC FUNCTION *****
@@ -165,7 +167,7 @@ public class CustomTeleporter : MonoBehaviour
 							subject.transform.position = destinationPad[chosenPad].transform.position + new Vector3(0,teleportationHeightOffset,0);
 							//play teleport sound
 							teleportSound.Play();
-                            LevelFinished();
+                            StartCoroutine(LevelFinished());
                         }
 						else //if not random, teleport to the first one in the array list
 						{
@@ -175,7 +177,7 @@ public class CustomTeleporter : MonoBehaviour
 							subject.transform.position = destinationPad[0].transform.position + new Vector3(0,teleportationHeightOffset,0);
 							//play teleport sound
 							teleportSound.Play();
-                            LevelFinished();
+                            StartCoroutine(LevelFinished());
 
                         }
 					}
@@ -191,7 +193,7 @@ public class CustomTeleporter : MonoBehaviour
 					subject.transform.position = destinationPad[chosenPad].transform.position + new Vector3(0,teleportationHeightOffset,0);
 					//play teleport sound
 					teleportSound.Play();
-                    LevelFinished();
+                    StartCoroutine(LevelFinished());
                 }
 				else
 				{   
@@ -201,16 +203,30 @@ public class CustomTeleporter : MonoBehaviour
 					subject.transform.position = destinationPad[0].transform.position + new Vector3(0,teleportationHeightOffset,0);
 					//play teleport sound
 					teleportSound.Play();
-                    LevelFinished();
+                    StartCoroutine(LevelFinished());
 				}
 			}
 		}
 	}
 
-    private void LevelFinished()
+    private IEnumerator LevelFinished()
     {
+        GameObject passLevelScreen = GameObject.FindGameObjectWithTag(Tags.PassLevelScreen.ToString());
+        Debug.Log("start fading..");
+        GameObject canvas = passLevelScreen.transform.parent.gameObject;
+        StartCoroutine(Fading.FadeOut(canvas));
+        GameObject.FindGameObjectWithTag(Tags.claps.ToString()).GetComponent<AudioSource>().Play();
+         StartCoroutine(Fading.FadeIn(passLevelScreen,1, 0.005f, 0.01f));
+
+
+        yield return new WaitForSeconds(1.5f);
+      StartCoroutine(GameObject.FindGameObjectWithTag(Tags.claps.ToString()).GetComponent<AudioSource>().stopSoundByLessVolume());
+        yield return new WaitForSeconds(1.5f);
+
         godManager.GetComponent<GM>().nextLevel();
     }
+
+
 
     void OnTriggerEnter(Collider trig)
 	{

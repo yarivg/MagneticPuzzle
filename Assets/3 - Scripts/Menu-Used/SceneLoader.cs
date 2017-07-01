@@ -39,7 +39,7 @@ public class SceneLoader : MonoBehaviour
     public virtual void changeScene(string sceneName)
     {
         Events.restartEvents();
-        float waitTime = enableFade == true ? 0.5f : 0;
+        float waitTime = 0.5f;
         StartCoroutine(WaitForIt(waitTime, sceneName));
     }
 
@@ -47,7 +47,11 @@ public class SceneLoader : MonoBehaviour
     {
     
         yield return new WaitForSeconds(Time / 4);
-        StartCoroutine(Fading.FadeOut());
+        StartCoroutine(Fading.FadeOut(null));
+        if (GameObject.FindGameObjectWithTag(Tags.PassLevelScreen.ToString()) != null && sceneName != "DifficultyPicker")
+        {
+            StartCoroutine(Fading.FadeIn(GameObject.FindGameObjectWithTag(Tags.PassLevelScreen.ToString()),1, 0.05f, 0.01f));
+        }
         yield return new WaitForSeconds(Time * 3 / 4);
         SceneManager.LoadScene(sceneName);
         Fading.notDuringFade = true;

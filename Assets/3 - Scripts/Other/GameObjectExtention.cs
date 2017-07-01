@@ -54,4 +54,29 @@ public static class GameObjectExtention {
         }
     }
 
+    public static IEnumerator stopSoundByLessVolume(this AudioSource sound)
+    {
+        while (sound.volume > 0)
+        {
+            sound.volume -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        sound.Stop();
+        sound.volume = 1;
+    }
+
+    public static GameObject FindObject(this GameObject parent, string tag)
+    {
+        Transform[] trs = parent.GetComponentsInChildren<Transform>(true);
+        foreach (Transform t in trs)
+        {
+            if (t.tag == tag)
+            {
+                return t.gameObject;
+            }
+        }
+        return null;
+    }
+
+
 }

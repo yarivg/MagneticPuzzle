@@ -22,8 +22,9 @@ public class AudioSingleton : MonoBehaviour {
         } else {
             instance = this;
         }
+        Debug.Log(instance);
 
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     public static void PlayAudioSource(AudioSource aSource, Audio audioType)

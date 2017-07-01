@@ -13,7 +13,10 @@ public class BallMovement : MonoBehaviour
     }
 
     void enableBallMovementAbillity()
-    {
-        this.gameObject.setKinematic(false);
+    { try
+        {
+            this.gameObject.setKinematic(false);
+        }
+        catch { }
     }
 }

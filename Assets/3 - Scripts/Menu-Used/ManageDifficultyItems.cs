@@ -17,7 +17,7 @@ public class ManageDifficultyItems : MonoBehaviour {
 
             foreach (GameObject levelButton in levels)
             {
-                levelButton.transform.FindChild("Image").GetComponent<Image>().sprite = (Sprite)Resources.Load(
+                levelButton.transform.Find("Image").GetComponent<Image>().sprite = (Sprite)Resources.Load(
                                                         "Levels/" + difficultyText.text + "/" + levelButton.name, typeof(Sprite));
             }
         }

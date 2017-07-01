@@ -8,17 +8,19 @@ public class LostManager : MonoBehaviour {
 
     void Start()
     {
-        losts = new Lost[] { new LostByFall(GameObject.FindGameObjectsWithTag(Tags.Ball.ToString())) };
+        losts = new Lost[] { new LostByFall(GameObject.FindGameObjectsWithTag(Tags.Ball.ToString())),new LostByRestart() };
         this.enabled = false;
 
         Events.START_GAME += enable;
+
+
     }
 	
     void Update()
     {
-        foreach ( Lost loose in losts)
+        foreach (Lost loose in losts)
         {
-            if ( loose.isLost())
+            if (loose.isLost())
             {
                 loose.executeInLost();
             }

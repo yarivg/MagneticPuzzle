@@ -13,11 +13,18 @@ public class LightPrefManager : PreferencesManager
 {
     public override void setPreference(bool bIsActive)
     {
-        LightManager _lightManager = GameObject.FindObjectOfType<LightManager>();
-        _lightManager.changeLight(Convert.ToInt32(bIsActive));
+      //  LightManager _lightManager = GameObject.FindObjectOfType<LightManager>();
+     //   _lightManager.changeLight(Convert.ToInt32(bIsActive));
     }
 }
 
+public class SaveMagnetStatePrefManager : PreferencesManager
+{
+    public override void setPreference(bool bIsActive)
+    {
+        Lost.saveMagnetPositions = bIsActive;
+    }
+}
 
 
 public class AudioManager : PreferencesManager

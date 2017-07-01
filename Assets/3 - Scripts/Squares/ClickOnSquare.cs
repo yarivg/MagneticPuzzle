@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ClickOnSquare : MonoBehaviour
 {
-    public GameObject light;
-    private GameObject Magnet;
     private AudioSource pickupSound;
     public ClickableSquareHandler manager;
     private SourcesLeftManager source;
@@ -31,20 +29,44 @@ public class ClickOnSquare : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (manager.isSquareAvailableAndClicked(source, this.gameObject))
+        bool isSquareCreated = false;
+        if(GM.keys.select(this.gameObject))
         {
-            
-            SquareCreator.createSquare(this.transform.localPosition, this.transform.lossyScale, manager.getMagnetPrefab(), this.transform.parent.gameObject);
-            manager.manageSources(source);
-            manager.playSound(pickupSound);
-            manager.execClickEvent(gameObject);
-
-
-            Events.BEFORE_THE_GAME_BEGIN -= disable;
-            Events.STOP_GAME -= enable;
-            Destroy(this.gameObject);
-
+            if(gameObject.tag == Tags.MagneticFloor.ToString())
+            {
+                isSquareCreated = SquareHandler.Instance.createRegularSquare(this.transform.localPosition, true, true);
+            }
+            if (gameObject.tag == Tags.Floor.ToString())
+            {
+                isSquareCreated = SquareHandler.Instance.createInMagnetSquare(this.transform.localPosition, true, true);
+            }
+            if (isSquareCreated)
+            {
+                    Events.BEFORE_THE_GAME_BEGIN -= disable;
+                    Events.STOP_GAME -= enable;
+                Destroy(this.gameObject);
+            }
         }
+
+        //if (manager.isSquareAvailableAndClicked(source, this.gameObject))
+        //{
+        //    Debug.Log(this.transform.localPosition);
+        //    SquareCreator.createSquare(this.transform.localPosition, this.transform.lossyScale, manager.getMagnetPrefab(), this.transform.parent.gameObject);
+        //    manager.manageSources(source);
+        //    manager.playSound(pickupSound);
+        //    manager.execClickEvent(gameObject);
+
+
+        //    Events.BEFORE_THE_GAME_BEGIN -= disable;
+        //    Events.STOP_GAME -= enable;
+        //    Destroy(this.gameObject);
+
+        //}
+    }
+
+    void createMagnetSquare()
+    {
+
     }
 
     void enable()

@@ -13,6 +13,11 @@ public class UImanager : MonoBehaviour {
         }
 
         StartCoroutine(Fading.FadeIn(canvas));
+
+        if(GameObject.FindGameObjectWithTag(Tags.PassLevelScreen.ToString()) != null)
+        {
+            StartCoroutine(Fading.FadeOut(GameObject.FindGameObjectWithTag(Tags.PassLevelScreen.ToString()), 0.01f, 0.005f));
+        }
         
     }
 }

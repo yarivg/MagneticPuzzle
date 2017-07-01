@@ -2,9 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Lost
 {
+    public static bool saveMagnetPositions = true;
+    public static List<Vector3> MagnetsPositions = new List<Vector3>();
+
     public abstract bool isLost();
     public abstract void executeInLost();
 }
@@ -21,16 +25,22 @@ public class LostByFall : Lost {
 
     public LostByFall(GameObject[] balls)
     {
+        Debug.Log("ball lost " + balls.Length);
+
         lostData = new List<LostByFallData>();
         foreach (GameObject ball in balls)
         {
             lostData.Add(new LostByFallData(ball));
         }
+
+        MagnetsPositions = new List<Vector3>();
+
     }
 
     public override bool isLost()
     {
-        for(int i = 0; i < lostData.Count;i++) 
+
+        for (int i = 0; i < lostData.Count;i++) 
         {
             LostByFallData data = lostData[i];
             float speed = (data.ball.transform.position - data.prevPosition).magnitude / Time.deltaTime;
@@ -46,12 +56,62 @@ public class LostByFall : Lost {
 
     public override void executeInLost()
     {
-        Debug.Log("lost");
+        Debug.Log("ball lost");
+        if (saveMagnetPositions)
+        {
+            foreach (Transform square in GameObject.FindGameObjectWithTag(Tags.SquareManager.ToString()).transform)
+            {
+                if (square.tag == Tags.MagneticFloor.ToString())
+                {
+                    MagnetsPositions.Add(square.localPosition);
+                }
+            }
+        }
 
         // Write to log / db
 
         // Restart Game
         ChangeLevelState _levelState = GameObject.FindObjectOfType<ChangeLevelState>();
         _levelState.restartGame();
+    }
+}
+
+public class LostByRestart : Lost
+{
+    public Button restartButton;
+
+    public LostByRestart()
+    {
+        restartButton = GameObject.FindGameObjectWithTag(Tags.UI.ToString()).FindObject(Tags.RestartButton.ToString()).GetComponent<Button>();
+        restartButton.onClick.AddListener(() => { executeInLost(); });
+        Debug.Log("click:"+restartButton.onClick.GetPersistentEventCount());
+    }
+
+    public override void executeInLost()
+    {
+        Debug.Log("lost by reset");
+        if (saveMagnetPositions)
+        {
+            Debug.Log("save magnets positions..");
+            foreach (Transform square in GameObject.FindGameObjectWithTag(Tags.SquareManager.ToString()).transform)
+            {
+                if (square.tag == Tags.MagneticFloor.ToString())
+                {
+                    MagnetsPositions.Add(square.localPosition);
+                }
+            }
+            Debug.Log("magnet squares number:" + MagnetsPositions.Count);
+        }
+
+        // Write to log / db
+
+        // Restart Game
+        ChangeLevelState _levelState = GameObject.FindObjectOfType<ChangeLevelState>();
+        _levelState.restartGame();
+    }
+
+    public override bool isLost()
+    {
+        return false;
     }
 }

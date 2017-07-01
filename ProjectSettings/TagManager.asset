@@ -22,6 +22,12 @@ TagManager:
   - Electricity
   - Sound
   - Piano
+  - PassLevelScreen
+  - claps
+  - Maze
+  - enemyBall
+  - RestartButton
+  - UI
   layers:
   - Default
   - TransparentFX

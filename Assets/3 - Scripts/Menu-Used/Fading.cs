@@ -18,24 +18,25 @@ public class Fading : MonoBehaviour {
     // Replace can_change_scene , check if we do fade-out
     public static bool notDuringFade = true;
 
+    public static void setFadeObjects(GameObject canvas , float colorValue)
+    {
+        Transform[] children = canvas.GetComponentsInChildren<Transform>(true);
+        List<Transform> fade_in_children = new List<Transform>(children);
+        var result = fade_in_children.Where(
+    (child) => (child.gameObject.GetComponent<Text>() != null && child.gameObject.GetComponent<Text>().color.a == colorValue) ||
+               (child.gameObject.GetComponent<Image>() != null && child.gameObject.GetComponent<Image>().color.a == colorValue)).ToArray();
+        fadeObjects = result;
+    }
+
 
     public static IEnumerator FadeIn(GameObject canvas)
     {
         notDuringFade = true;
-        Transform[] children = canvas.GetComponentsInChildren<Transform>(true);
-
-        // Get only children with zero alpha
-        List<Transform> fade_in_children = new List<Transform>(children);
-        var result = fade_in_children.Where(
-            (child) => (child.gameObject.GetComponent<Text>() != null && child.gameObject.GetComponent<Text>().color.a == 0) ||
-                       (child.gameObject.GetComponent<Image>() != null && child.gameObject.GetComponent<Image>().color.a == 0)).ToArray();
-        fadeObjects = result;
-
+        setFadeObjects(canvas,0);
         float alpha = 0;
-
         while (alpha < 1)
         {
-            foreach (Transform t in result)
+            foreach (Transform t in fadeObjects)
             {
                 AssignAlpha(t.gameObject, alpha);
             }
@@ -45,23 +46,31 @@ public class Fading : MonoBehaviour {
         }
     }
 
-    public static IEnumerator FadeOut()
+    public static IEnumerator FadeOut(GameObject canvas)
     {
         // ** If fading all ui **
         //GameObject canvas = FindObjectOfType<UImanager>().transform.FindChild("Canvas").gameObject;
         //Transform[] children = canvas.GetComponentsInChildren<Transform>();
         notDuringFade = false;
-        Transform[] children = fadeObjects;
+        if (canvas != null)
+        {
+            setFadeObjects(canvas,1);
+            Debug.Log("fade:"+fadeObjects.Length);
+        }
+
 
         float alpha = 1;
+        int counter = 0;
         // Add for scenes that not load with fade in (levels) and there is not children to fade out
-        if (children != null)
+        if (fadeObjects != null)
         {
             while (alpha > 0)
             {
-                foreach (Transform t in children)
+                foreach (Transform t in fadeObjects)
                 {
+
                     if (t != null) AssignAlpha(t.gameObject, alpha);
+                    counter++;
                 }
 
                 alpha -= alpha_decrement_value;
@@ -75,17 +84,21 @@ public class Fading : MonoBehaviour {
     {
         notDuringFade = true;
         float alpha = gameObject.GetComponent<Image>().color.a;
-        while (alpha < maxAlpha)
+        while (alpha  < maxAlpha)
         {
             AssignAlpha(gameObject, alpha);
             alpha += increment;
             yield return new WaitForSeconds(waitTime);
+
         }
+        AssignAlpha(gameObject, maxAlpha);
+
     }
 
     public static IEnumerator FadeOut(GameObject gameObject, float decrement, float waitTime)
     {
         notDuringFade = false;
+        Debug.Log(gameObject.GetComponent<Image>());
         float alpha = gameObject.GetComponent<Image>().color.a; ;
         // Add for scenes that not load with fade in (levels) and there is not children to fade out
         while (alpha > 0)

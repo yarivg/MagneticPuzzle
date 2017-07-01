@@ -20,10 +20,11 @@ public class CollisionWithMagnet : MonoBehaviour
     {
         if (isGameRunning)
         {
-            SquareCreator.createSquare(this.transform.localPosition, this.transform.lossyScale, Magnet, this.transform.parent.gameObject);
+            Debug.Log("local position:" + this.transform.localPosition);
+            SquareHandler.Instance.createOutMagnetSquare(this.transform.localPosition, false, true);
             Events.START_GAME -= enable;
             Events.STOP_GAME -= disable;
-            Events.COLLISION_WITH_MAGNET(this.gameObject);
+           // Events.COLLISION_WITH_MAGNET(this.gameObject);
             Destroy(this.gameObject);
         }
     }

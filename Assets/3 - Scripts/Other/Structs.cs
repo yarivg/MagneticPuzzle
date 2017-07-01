@@ -62,7 +62,12 @@ public enum Tags
     Electricity,
     Pickup,
     Lightning,
-    Piano
+    Piano,
+    PassLevelScreen,
+    claps,
+    SquareManager,
+    RestartButton,
+    UI
 }
 
 public enum Materials
@@ -93,7 +98,8 @@ public enum Preferences
 {
     Sound,
     Music,
-    Light
+    Light,
+    SaveMagnets
 }
 
 public enum Audio

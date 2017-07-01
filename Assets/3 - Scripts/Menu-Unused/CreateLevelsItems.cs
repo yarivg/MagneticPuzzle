@@ -72,12 +72,12 @@ public class CreateLevelsItems : MonoBehaviour {
         GameObject goLevel = Instantiate(levelButtonPrefab, transform);
 
         goLevel.name = "Button" + levelIndex;
-        goLevel.transform.FindChild("Image")
+        goLevel.transform.Find("Image")
                .GetComponent<Image>().sprite = (Sprite)Resources.Load(
                                                             "Levels/" + difficultyName + "/level" + levelNumber, typeof(Sprite));
         // Only displaying first level -                    "Levels/Begginer/level1", typeof(Sprite));
 
-        goLevel.transform.FindChild("Text").GetComponent<Text>().text = levelNumber.ToString();
+        goLevel.transform.Find("Text").GetComponent<Text>().text = levelNumber.ToString();
 
         goLevel.transform.localScale = new Vector3(buttonScale.x, buttonScale.y, 1);
         goLevel.transform.position = new Vector3(offset.x,
