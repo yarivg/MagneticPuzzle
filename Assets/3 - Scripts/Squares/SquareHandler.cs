@@ -41,7 +41,7 @@ public class SquareHandler : MonoBehaviour {
         }
         if(playSound)
         {
-
+            GameObject.FindGameObjectWithTag(Tags.Pickup.ToString()).GetComponent<AudioSource>().Play();
         }
         GameObject parent = GameObject.FindGameObjectWithTag(Tags.SquareManager.ToString());
         SquareCreator.createSquare(position, Consts.SQUARE_SIZE, Prefabs.Instance.inMagnetSquere, parent);
@@ -74,7 +74,7 @@ public class SquareHandler : MonoBehaviour {
 
         if (playSound)
         {
-
+            GameObject.FindGameObjectWithTag(Tags.Pickup.ToString()).GetComponent<AudioSource>().Play();
         }
         GameObject parent = GameObject.FindGameObjectWithTag(Tags.SquareManager.ToString());
         SquareCreator.createSquare(position, Consts.SQUARE_SIZE, Prefabs.Instance.controlSquere, parent);
